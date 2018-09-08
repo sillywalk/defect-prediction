@@ -19,7 +19,7 @@ clean:
 	@echo "Cleaning *.pyc, *.DS_Store, and other junk files..."
 	@- find . -name '*.pyc' -exec rm -f {} +
 	@- find . -name '*.pyo' -exec rm -f {} +
-	@- find . -name '__pycache__' -exec rm -f {} +
+	@- find . -name '__pycache__' -exec rm -rf {} +
 	@echo ""
 
 git: clean
