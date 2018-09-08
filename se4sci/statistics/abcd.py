@@ -1,5 +1,6 @@
 from sklearn.metrics import recall_score
 from sklearn.metrics import confusion_matrix
+from pdb import set_trace
 
 class ABCD:
     def __init__(self):
@@ -19,7 +20,11 @@ class ABCD:
         
         Returns
         -------
-        (pd, pf): tuple(float, float)
-            A tuple of recall (pd) and false alarm (pf) values 
+        pd: float
+            Recall (pd) value 
+        pf: float
+            False alarm (pf) values 
         """
         
+        cnf_mtx = confusion_matrix(actual, predicted)
+        set_trace()

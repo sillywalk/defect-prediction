@@ -15,6 +15,8 @@ root = Path(os.path.abspath(os.path.join(
 if root not in sys.path:
     sys.path.append(str(root))
 
+from statistics.abcd import ABCD
+
 class PredictionModel:
     def __init__(self): pass
     
@@ -57,6 +59,7 @@ class PredictionModel:
         predicted: numpy.ndarray
             Predictied defect counts 
         """
+
         if binarize:
             train = self._binarize(train)
             test = self._binarize(test)
@@ -68,6 +71,7 @@ class PredictionModel:
         actual = test[test.columns[-1]].values
         x_test = test[test.columns[1:-1]]
         predicted = clf.predict(x_test)
+        pd, pf = ABCD.get_pd_pf(actual, predicted)
         return actual, predicted
 
 

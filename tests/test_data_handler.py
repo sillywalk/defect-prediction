@@ -21,7 +21,6 @@ class TestDataHandler(unittest.TestCase):
     def test_get_data(self):
         all_data = self.dh.get_data()
         self.assertIsInstance(all_data, dict)
-        
         for proj, datasets in all_data.items():
             self.assertIsInstance(proj, str)
             self.assertIsInstance(datasets, dict)
