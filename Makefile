@@ -12,6 +12,7 @@ test:
 	@echo "Running unit tests."
 	@echo ""
 	@nosetests -s $(TEST_PATH)
+	@- source deactivate
 	@echo ""
 
 clean:
@@ -27,5 +28,4 @@ git: clean
 	@- git add --all .
 	@- git commit -am "Autocommit from makefile"
 	@- git push origin master
-	@- source deactivate
 	
