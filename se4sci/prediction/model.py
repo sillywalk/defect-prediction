@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
 import numpy
-numpy.seterr(all='ignore')
+numpy.seterr(all='raise')
 
 
 root = Path(os.path.abspath(os.path.join(
