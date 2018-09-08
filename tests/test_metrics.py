@@ -30,5 +30,5 @@ class TestModel(unittest.TestCase):
         predicted = [1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0]
         _, __, f1 = ABCD.get_f_score(actual, predicted, beta=1)
         _, __, f2 = ABCD.get_f_score(actual, predicted, beta=2)
-        self.assertAlmostEqual(f1, 0.67, places=2)
+        self.assertAlmostEqual(f1, 0.66, places=2)
         self.assertAlmostEqual(f2, 0.69, places=2)
