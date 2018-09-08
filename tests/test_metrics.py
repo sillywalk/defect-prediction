@@ -22,13 +22,13 @@ class TestModel(unittest.TestCase):
         actual = [1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0]
         predicted = [1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0]
         pd, pf = ABCD.get_pd_pf(actual, predicted)
-        self.assertAlmostEqual(pd, 0.714, places=3)
-        self.assertAlmostEqual(pf, 0.429, places=3)
+        self.assertAlmostEqual(pd, 0.71, places=2)
+        self.assertAlmostEqual(pf, 0.43, places=2)
 
     def test_f_score(self):
         actual = [1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0]
         predicted = [1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0]
         _, __, f1 = ABCD.get_f_score(actual, predicted, beta=1)
         _, __, f2 = ABCD.get_f_score(actual, predicted, beta=2)
-        self.assertAlmostEqual(f1, 0.667, places=3)
-        self.assertAlmostEqual(f2, 0.694, places=3)
+        self.assertAlmostEqual(f1, 0.67, places=2)
+        self.assertAlmostEqual(f2, 0.69, places=2)
