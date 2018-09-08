@@ -43,8 +43,8 @@ class DataHandler:
             str(self.data_path.joinpath("[!_]*"))) if Path(proj).is_dir()]
 
         for project in projects:
-            all_data.update({project.name: [pd.read_csv(ver) for ver in glob(
-                str(project.joinpath("**/*_file_metrics*_1.csv")))]})
+            all_data.update({project.name: {ver.name: pd.read_csv(ver) for ver in glob(
+                str(project.joinpath("**/*_file_metrics*_1.csv")))}})
 
         return all_data
     
@@ -59,4 +59,6 @@ class DataHandler:
         """
 
         all_data = self.get_data()
+
+        set_trace()
         
