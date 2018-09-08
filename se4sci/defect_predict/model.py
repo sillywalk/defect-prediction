@@ -16,7 +16,7 @@ root = Path(os.path.abspath(os.path.join(
 if root not in sys.path:
     sys.path.append(str(root))
 
-from statistics.metrics import ABCD
+from metrics.abcd import ABCD
 
 class PredictionModel:
     def __init__(self): pass
