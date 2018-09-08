@@ -9,9 +9,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
-import warnings
-import warnings
-warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 root = Path(os.path.abspath(os.path.join(
     os.getcwd().split("se4sci")[0], 'se4sci/se4sci')))
