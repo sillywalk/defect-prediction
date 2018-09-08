@@ -26,7 +26,6 @@ class ABCD:
         pf: float
             False alarm (pf) values 
         """
-
         tn, fp, fn, tp = confusion_matrix(actual, predicted).ravel()
         pd = tp/(tp+fn)
         pf = fp/(fp+tn)

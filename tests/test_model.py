@@ -27,7 +27,10 @@ class TestModel(unittest.TestCase):
             for trn, tst in zip(dataset_keys[:-1], dataset_keys[1:]):
                 train = dataset[trn]
                 test = dataset[tst]
-                actual, predicted = self.mdl.predict_defects(train, test)
+                try:
+                    actual, predicted = self.mdl.predict_defects(train, test)
+                except ValueError:
+                    print(trn, tst)
                 self.assertIsInstance(actual, numpy.ndarray)
                 self.assertIsInstance(predicted, numpy.ndarray)
                 self.assertEqual(len(actual), len(predicted))
