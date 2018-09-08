@@ -8,11 +8,13 @@ all: venv test clean git
 venv: 
 	$(VENV_PATH)/bin/activate
 
+axe:
+	@- source virtualenvwrapper.sh; workon $(VENV_NAME); deactivate
+
 test:
 	@echo "Running unit tests."
 	@echo ""
 	@nosetests -s $(TEST_PATH)
-	@- deactivate
 	@echo ""
 
 clean:
@@ -22,7 +24,7 @@ clean:
 	@- find . -name '__pycache__' -exec rm -rf {} +
 	@echo ""
 
-git: clean
+git: clean axe
 	@echo "Syncing with repository"
 	@echo ""
 	@- git add --all .
