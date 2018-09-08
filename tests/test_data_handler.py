@@ -1,6 +1,7 @@
 import os
 import sys
 import unittest
+import pandas as pd
 from pathlib import Path
 from pdb import set_trace
 
@@ -19,5 +20,7 @@ class TestDataHandler(unittest.TestCase):
 
     def test_get_data(self):
         all_data = self.dh.get_data()
-        set_trace()
         self.assertIsInstance(all_data, dict)
+        self.assertIsInstance(all_data["openmm"], list)
+        self.assertIsInstance(all_data["openmm"][0], pd.core.frame.DataFrame)
+        set_trace()
