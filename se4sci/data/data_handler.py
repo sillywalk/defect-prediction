@@ -1,5 +1,5 @@
 """
-A data handler class to read and process data
+A data handler to read, write, and process data
 """
 
 import os
@@ -17,16 +17,15 @@ if root not in sys.path:
 
 
 class DataHandler:
-    """
-    A Generic data handler class
-
-    Parameters
-    ----------
-    data_path = <pathlib.PosixPath>
-        Path to the data folder.
-    """
-
     def __init__(self, data_path=root.joinpath("data")):
+        """
+        A Generic data handler class
+
+        Parameters
+        ----------
+        data_path = <pathlib.PosixPath>
+            Path to the data folder.
+        """
         self.data_path = data_path
 
     def get_data(self):
@@ -39,18 +38,16 @@ class DataHandler:
         Returns
         -------
         all_data: dict
-            A dictionary of data with key-project_name, value-dictionary of 
-            {release_version, metrics_defects}
-        
-        Example
-        -------
-        
+            A dictionary of data with key-project_name, value-list of file 
+            level metrics
         """
+
         all_data = dict()
         projects = [Path(proj) for proj in glob(
             str(self.data_path.joinpath("[!_]*"))) if Path(proj).is_dir()]
 
         for project in projects:
-            all_data.update({project.name: [pd.read_csv(ver) for ver in glob(str(project.joinpath("**/*_file_metrics*_1.csv")))]})
+            all_data.update({project.name: [pd.read_csv(ver) for ver in glob(
+                str(project.joinpath("**/*_file_metrics*_1.csv")))]})
 
         return all_data
