@@ -21,7 +21,10 @@ class TestDataHandler(unittest.TestCase):
     def test_get_data(self):
         all_data = self.dh.get_data()
         self.assertIsInstance(all_data, dict)
-        self.assertIsInstance(all_data["openmm"], dict)
-        for key, value in all_data["openmm"].items():
-            self.assertIsInstance(key, str)
-            self.assertIsInstance(value, pd.core.frame.DataFrame)
+        
+        for proj, datasets in all_data.items():
+            self.assertIsInstance(proj, str)
+            self.assertIsInstance(datasets, dict)
+            for key, value in datasets.items():
+                self.assertIsInstance(key, str)
+                self.assertIsInstance(value, pd.core.frame.DataFrame)
