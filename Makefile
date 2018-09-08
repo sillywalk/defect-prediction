@@ -13,6 +13,7 @@ test:
 	@echo ""
 	@nosetests -s $(TEST_PATH)
 	@echo ""
+	@- source deactivate
 
 clean:
 	@echo "Cleaning *.pyc, *.DS_Store, and other junk files..."
@@ -27,4 +28,4 @@ git: clean
 	@- git add --all .
 	@- git commit -am "Autocommit from makefile"
 	@- git push origin master
-	@- deactivate
+	
