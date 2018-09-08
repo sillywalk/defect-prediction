@@ -1,6 +1,7 @@
 import os
 import sys
 import unittest
+from pathlib import Path
 from pdb import set_trace
 
 root = Path(os.path.abspath(os.path.join(
@@ -17,4 +18,5 @@ class TestDataHandler:
         self.dh = DataHandler(data_path=root.joinpath("data"))
 
     def test_get_data(self):
-        
+        all_data = self.dh.get_data()
+        set_trace()

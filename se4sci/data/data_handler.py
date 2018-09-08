@@ -28,7 +28,7 @@ class DataHandler:
 
     def __init__(self, data_path=root.joinpath("data")):
         self.data_path = data_path
-    
+
     def get_data(self):
         """
         Read data as pandas and return a dictionary of data
@@ -46,4 +46,11 @@ class DataHandler:
         -------
         
         """
-        set_trace()
+        all_data = dict()
+        projects = [Path(proj) for proj in glob(
+            str(self.data_path.joinpath("[!_]*"))) if Path(proj).is_dir()]
+
+        for project in projects:
+            all_data.update({project.name: [pd.read_csv(ver) for ver in glob(str(project.joinpath("**/*_file_metrics*_1.csv")))]})
+
+        return projects
