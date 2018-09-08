@@ -30,7 +30,8 @@ class TestModel(unittest.TestCase):
                 try:
                     actual, predicted = self.mdl.predict_defects(train, test)
                 except ValueError:
-                    print(trn, tst)
+                    pass
+
                 self.assertIsInstance(actual, numpy.ndarray)
                 self.assertIsInstance(predicted, numpy.ndarray)
                 self.assertEqual(len(actual), len(predicted))
