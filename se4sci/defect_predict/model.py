@@ -7,6 +7,7 @@ import pandas as pd
 from pdb import set_trace
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
+from imblearn.over_sampling import SMOTE
 
 from pathlib import Path
 
@@ -41,7 +42,7 @@ class PredictionModel:
         dframe.loc[dframe[dframe.columns[-1]] == 0, dframe.columns[-1]] = False
         return dframe
 
-    def predict_defects(self, train, test, binarize=True):
+    def predict_defects(self, train, test, oversample=True, binarize=True):
         """
         Predict for Defects
 
@@ -51,6 +52,8 @@ class PredictionModel:
             Training dataset as a pandas dataframe
         test: pandas.core.frame.DataFrame
             Test dataset as a pandas dataframe
+        oversample: Bool
+            Oversample with SMOTE
         binarize: Bool
             A boolean variable to 
 
@@ -66,8 +69,11 @@ class PredictionModel:
             train = self._binarize(train)
             test = self._binarize(test)
 
-        x_train = train[train.columns[1:-1]]
-        y_train = train[train.columns[-1]]
+        sm = SMOTE(kind='regular')
+        x_train = train[train.columns[1:-1]].values
+        y_train = train[train.columns[-1]].values
+        if oversample:
+            x_train, y_train = sm.fit_sample(x_train, y_train)
         clf = RandomForestClassifier()
         clf.fit(x_train, y_train)
         actual = test[test.columns[-1]].values
