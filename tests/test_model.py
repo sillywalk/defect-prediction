@@ -12,7 +12,7 @@ if root not in sys.path:
     sys.path.append(str(root))
 
 from data.data_handler import DataHandler
-from defect_predict.model import PredictionModel
+from prediction.model import PredictionModel
 
 class TestModel(unittest.TestCase):
     def __init__(self, *args, **kwargs):
