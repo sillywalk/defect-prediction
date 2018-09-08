@@ -12,7 +12,7 @@ test:
 	@echo "Running unit tests."
 	@echo ""
 	@nosetests -s $(TEST_PATH)
-	@- source deactivate
+	@- deactivate
 	@echo ""
 
 clean:
