@@ -28,7 +28,7 @@ class TestModel(unittest.TestCase):
     def test_f_score(self):
         actual = [1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0]
         predicted = [1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0]
-        f1 = ABCD.get_pd_pf(actual, predicted, beta=1)
-        f2 = ABCD.get_pd_pf(actual, predicted, beta=2)
-        self.assertAlmostEqual(f1, 0.666, places=3)
+        _, __, f1 = ABCD.get_f_score(actual, predicted, beta=1)
+        _, __, f2 = ABCD.get_f_score(actual, predicted, beta=2)
+        self.assertAlmostEqual(f1, 0.667, places=3)
         self.assertAlmostEqual(f2, 0.694, places=3)
