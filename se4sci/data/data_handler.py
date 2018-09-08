@@ -5,9 +5,10 @@ import os
 import sys
 import pandas as pd
 from glob2 import glob
-from pathlib import Path
 from pdb import set_trace
 from collections import OrderedDict
+
+from pathlib import Path
 root = Path(os.path.abspath(os.path.join(
     os.getcwd().split("se4sci")[0], 'se4sci/se4sci')))
 
@@ -43,8 +44,8 @@ class DataHandler:
             str(self.data_path.joinpath("[!_]*"))) if Path(proj).is_dir()]
 
         for project in projects:
-            all_data.update(OrderedDict({project.name: OrderedDict{Path(ver).name: pd.read_csv(ver) for ver in glob(
-                str(project.joinpath("**/*_file_metrics*_1.csv")))}}))
+            all_data.update(OrderedDict({project.name: OrderedDict({Path(ver).name: pd.read_csv(ver) for ver in glob(
+                str(project.joinpath("**/*_file_metrics*_1.csv")))})}))
         return all_data
     
     def describe(self):
@@ -59,5 +60,4 @@ class DataHandler:
 
         all_data = self.get_data()
 
-        set_trace()
         
