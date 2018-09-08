@@ -1,5 +1,6 @@
 import os
 import sys
+import numpy
 import unittest
 from pathlib import Path
 from pdb import set_trace
@@ -21,5 +22,12 @@ class TestModel(unittest.TestCase):
 
     def test_prediction_model(self):
         data = self.dh.get_data()
-        for proj, datasets in data.items():
-            set_trace()
+        for proj, dataset in data.items():
+            dataset_keys = sorted(dataset.keys())
+            for trn, tst in zip(dataset_keys[:-1], dataset_keys[1:]):
+                train = dataset[trn]
+                test = dataset[tst]
+                actual, predicted = self.mdl.predict_defects(train, test)
+                self.assertIsInstance(actual, numpy.ndarray)
+                self.assertIsInstance(predicted, numpy.ndarray)
+                self.assertEqual(len(actual), len(predicted))

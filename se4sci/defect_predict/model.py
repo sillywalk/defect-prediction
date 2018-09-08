@@ -19,7 +19,7 @@ class PredictionModel:
     def __init__(self): pass
     
     @staticmethod
-    def _binarize(self, dframe):
+    def _binarize(dframe):
         """
         Turn the dependent variable column to a binary class
 
@@ -30,12 +30,12 @@ class PredictionModel:
         
         Return
         ------
-        bin_dframe: pandas.core.frame.DataFrame
+        dframe: pandas.core.frame.DataFrame
             The orignal dataframe with binary dependent variable columns
         """
-        bin_dframe = dframe.loc[dframe[dframe.columns[-1]] > 0, dframe.columns[-1]] = True
-        bin_dframe = dframe.loc[dframe[dframe.columns[-1]] == 0, dframe.columns[-1]] = False
-        return bin_dframe
+        dframe.loc[dframe[dframe.columns[-1]] > 0, dframe.columns[-1]] = True
+        dframe.loc[dframe[dframe.columns[-1]] == 0, dframe.columns[-1]] = False
+        return dframe
 
     def predict_defects(self, train, test, binarize=True):
         """
@@ -52,23 +52,24 @@ class PredictionModel:
 
         Return
         ------
-        actual: numpy.array
+        actual: numpy.ndarray
             Actual defect counts
-        predicted: numpy.array
+        predicted: numpy.ndarray
             Predictied defect counts 
         """
         if binarize:
             train = self._binarize(train)
             test = self._binarize(test)
         
-        x_train = train[train.columns[:-1]]
+        x_train = train[train.columns[1:-1]]
         y_train = train[train.columns[-1]]
         clf = RandomForestClassifier()
-        clf.fit(X, y)
-        actual = test[test.columns[-1]]
-        x_test = test[test.columns[:-1]]
+        clf.fit(x_train, y_train)
+        actual = test[test.columns[-1]].values
+        x_test = test[test.columns[1:-1]]
         predicted = clf.predict(x_test)
-        set_trace()
+        return actual, predicted
+
 
 
 
