@@ -3,3 +3,4 @@ glob2
 scipy
 pandas
 sklearn
+imbalanced-learn
