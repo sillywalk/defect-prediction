@@ -12,7 +12,7 @@ if root not in sys.path:
 
 from data.data_handler import DataHandler
 
-class TestDataHandler:
+class TestDataHandler(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestDataHandler, self).__init__(*args, **kwargs)
         self.dh = DataHandler(data_path=root.joinpath("data"))
@@ -20,3 +20,4 @@ class TestDataHandler:
     def test_get_data(self):
         all_data = self.dh.get_data()
         set_trace()
+        self.assertIsInstance(all_data, dict)

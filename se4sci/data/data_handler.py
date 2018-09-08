@@ -53,4 +53,4 @@ class DataHandler:
         for project in projects:
             all_data.update({project.name: [pd.read_csv(ver) for ver in glob(str(project.joinpath("**/*_file_metrics*_1.csv")))]})
 
-        return projects
+        return all_data
