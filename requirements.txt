@@ -4,3 +4,4 @@ scipy
 pandas
 sklearn
 imbalanced-learn
+python-coveralls

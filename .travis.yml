@@ -2,3 +2,5 @@ language: python
 python:
   - "3.6"
 script: nosetests
+after_success:
+  - coveralls
