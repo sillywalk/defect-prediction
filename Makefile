@@ -27,4 +27,4 @@ git: clean
 	@- git add --all .
 	@- git commit -am "Autocommit from makefile"
 	@- git push origin master
-	@- $(VENV_PATH)/bin/deactivate
+	@- deactivate
