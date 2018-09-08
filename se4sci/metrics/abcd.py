@@ -26,5 +26,5 @@ class ABCD:
             False alarm (pf) values 
         """
         
-        cnf_mtx = confusion_matrix(actual, predicted)
+        tn, fp, fn, tp = confusion_matrix(actual, predicted).ravel()
         set_trace()
