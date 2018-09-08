@@ -23,3 +23,6 @@ class TestDataHandler(unittest.TestCase):
         self.assertIsInstance(all_data, dict)
         self.assertIsInstance(all_data["openmm"], list)
         self.assertIsInstance(all_data["openmm"][0], pd.core.frame.DataFrame)
+
+    def test_describe_data(self):
+        self.dh.describe()

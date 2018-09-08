@@ -1,7 +1,6 @@
 """
 A data handler to read, write, and process data
 """
-
 import os
 import sys
 import pandas as pd
@@ -32,9 +31,6 @@ class DataHandler:
         """
         Read data as pandas and return a dictionary of data
 
-        Parameters
-        ----------
-
         Returns
         -------
         all_data: dict
@@ -51,3 +47,16 @@ class DataHandler:
                 str(project.joinpath("**/*_file_metrics*_1.csv")))]})
 
         return all_data
+    
+    def describe(self):
+        """
+        Describe properties of the dataset. 
+
+        Notes
+        -----
+        This method prints, for every dataset, number of rows, columns,
+        #defects, %defects, etc. as a table.
+        """
+
+        all_data = self.get_data()
+        
