@@ -3,14 +3,12 @@ A Model to contain classifiers, regressors, etc
 """
 import os
 import sys
-import warnings
 import pandas as pd
 from pdb import set_trace
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
-
 
 root = Path(os.path.abspath(os.path.join(
     os.getcwd().split("se4sci")[0], 'se4sci/se4sci')))
@@ -66,8 +64,6 @@ class PredictionModel:
             Predictied defect counts 
         """
 
-        warnings.filterwarnings("ignore", category=DeprecationWarning)
-        
         if binarize:
             train = self._binarize(train)
             test = self._binarize(test)

@@ -4,6 +4,8 @@ import numpy
 import unittest
 from pathlib import Path
 from pdb import set_trace
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 root = Path(os.path.abspath(os.path.join(
