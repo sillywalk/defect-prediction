@@ -22,10 +22,7 @@ clean:
 	@- find . -name '__pycache__' -exec rm -rf {} +
 	@echo ""
 
-doc: venv
-	@- . venv/bin/activate && cd docs; make html; cd .. 
-
-git: doc clean
+git: clean
 	@echo "Syncing with repository"
 	@echo ""
 	@- git add --all .
