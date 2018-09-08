@@ -3,11 +3,10 @@ VENV_NAME?=venv
 VENV_ACTIVATE=. $(VENV_NAME)/bin/activate
 PYTHON=${VENV_NAME}/bin/python3
 
-all: test clean git
+all: venv test clean git
 
 venv: 
 	$(VENV_PATH)/bin/activate
-
 
 test:
 	@echo "Running unit tests."
@@ -28,3 +27,4 @@ git: clean
 	@- git add --all .
 	@- git commit -am "Autocommit from makefile"
 	@- git push origin master
+	@- $(VENV_PATH)/bin/deactivate
