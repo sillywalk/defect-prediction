@@ -1,6 +1,6 @@
 language: python
 python:
   - "3.6"
-script: nosetests
+script: nosetests --with-coverage
 after_success:
   - coveralls
