@@ -9,13 +9,14 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
 
 from pathlib import Path
+
 root = Path(os.path.abspath(os.path.join(
     os.getcwd().split("se4sci")[0], 'se4sci/se4sci')))
 
 if root not in sys.path:
     sys.path.append(str(root))
 
-from statistics.abcd import ABCD
+from statistics.metrics import ABCD
 
 class PredictionModel:
     def __init__(self): pass
