@@ -1,7 +1,8 @@
 from sklearn.metrics import recall_score
 from sklearn.metrics import confusion_matrix
 from pdb import set_trace
-
+import numpy
+numpy.seterr(all='raise')
 
 class ABCD:
     def __init__(self):
