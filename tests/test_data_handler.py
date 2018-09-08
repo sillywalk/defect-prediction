@@ -21,8 +21,8 @@ class TestDataHandler(unittest.TestCase):
     def test_get_data(self):
         all_data = self.dh.get_data()
         self.assertIsInstance(all_data, dict)
-        self.assertIsInstance(all_data["openmm"], list)
-        self.assertIsInstance(all_data["openmm"][0], pd.core.frame.DataFrame)
+        self.assertIsInstance(all_data["openmm"], dict)
+        self.assertIsInstance(all_data["openmm"].items()[1], pd.core.frame.DataFrame)
 
     def test_describe_data(self):
         self.dh.describe()
