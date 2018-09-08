@@ -18,9 +18,10 @@ if root not in sys.path:
 
 from metrics.abcd import ABCD
 
+
 class PredictionModel:
     def __init__(self): pass
-    
+
     @staticmethod
     def _binarize(dframe):
         """
@@ -64,7 +65,7 @@ class PredictionModel:
         if binarize:
             train = self._binarize(train)
             test = self._binarize(test)
-        
+
         x_train = train[train.columns[1:-1]]
         y_train = train[train.columns[-1]]
         clf = RandomForestClassifier()
@@ -74,7 +75,3 @@ class PredictionModel:
         predicted = clf.predict(x_test)
         pd, pf = ABCD.get_pd_pf(actual, predicted)
         return actual, predicted
-
-
-
-

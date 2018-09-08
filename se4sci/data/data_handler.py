@@ -47,7 +47,7 @@ class DataHandler:
             all_data.update(OrderedDict({project.name: OrderedDict({Path(ver).name: pd.read_csv(ver) for ver in glob(
                 str(project.joinpath("**/*_file_metrics*_1.csv")))})}))
         return all_data
-    
+
     def describe(self):
         """
         Describe properties of the dataset. 
@@ -59,5 +59,3 @@ class DataHandler:
         """
 
         all_data = self.get_data()
-
-        
