@@ -1,20 +1,18 @@
 TEST_PATH=./
-VENV_NAME?=venv
-VENV_ACTIVATE=. $(VENV_NAME)/bin/activate
-PYTHON=${VENV_NAME}/bin/python3
 
-all: venv test clean git
+all: test git 
 
-venv: 
-	$(VENV_PATH)/bin/activate
+venv: venv/bin/activate
 
-axe:
-	@- source virtualenvwrapper.sh; workon $(VENV_NAME); deactivate
+venv/bin/activate: requirements.txt
+	@- test -d venv || virtualenv venv
+	@- . venv/bin/activate; pip install -Ur requirements.txt
+	@- touch venv/bin/activate
 
-test:
+test: venv 
 	@echo "Running unit tests."
 	@echo ""
-	@nosetests -s $(TEST_PATH)
+	@- . venv/bin/activate; nosetests -s $(TEST_PATH); deactivate
 	@echo ""
 
 clean:
@@ -24,7 +22,7 @@ clean:
 	@- find . -name '__pycache__' -exec rm -rf {} +
 	@echo ""
 
-git: clean axe
+git: clean
 	@echo "Syncing with repository"
 	@echo ""
 	@- git add --all .
