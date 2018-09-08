@@ -1,0 +1,8 @@
+bf8de1fThu Dec 4 13:08:36 2014 -0800Merge pull request #748 from peastman/fftbug
+2c68f67Thu Dec 4 11:59:12 2014 -0800Disable PME stream on old versions of cufft
+e6d78cfWed Dec 3 10:49:16 2014 -0800Merge pull request #746 from jchodera/fix-packaging-scripts
+5030c94Tue Dec 2 18:33:04 2014 -0800Removed debugging statements from packaging scripts.
+662eb73Tue Dec 2 18:11:59 2014 -0800Minor cleanup in prepare.sh script.
+741d186Tue Dec 2 18:09:15 2014 -0800Build scripts now first remove old install directory.
+74d6686Tue Dec 2 17:21:59 2014 -0800Debugging issues with packaging script.
+4fcf2b1Tue Dec 2 15:55:42 2014 -0800Modified packaging scripts so that we no longer install Python into lib.

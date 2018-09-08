@@ -1,0 +1,7 @@
+c1a64aaFri May 5 12:57:38 2017 -0700Merge pull request #1807 from peastman/7.1_branch
+a2d3156Fri May 5 12:00:20 2017 -0700Merge branch '7.1_branch' of https://github.com/peastman/openmm into 7.1_branch
+d73c2baFri May 5 11:59:56 2017 -0700Fixed error in create3DNaturalSpline()
+4b6fad2Mon May 1 09:15:47 2017 -0700Merge pull request #1798 from peastman/7.1_branch
+6e19c6bFri Apr 28 14:43:06 2017 -0700Updated version number to 7.1.1.
+2371e88Fri Apr 28 14:31:47 2017 -0700Removed C++11 style loop
+af7996fFri Apr 28 12:02:32 2017 -0700Copied bug fixes over to 7.1 branch

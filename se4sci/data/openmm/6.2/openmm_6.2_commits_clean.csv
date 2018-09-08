@@ -1,0 +1,284 @@
+hash,time,message,buggy
+ea47b89,2014-06-06 20:31:36,Python 3 compatitbility,0
+e1a378b,2014-08-05 15:34:29,Began implementing CustomManyParticleForce,0
+b6e65ad,2014-08-06 14:54:36,Continuing to create reference implementation of CustomManyParticleForce,0
+0ca8bde,2014-08-06 17:12:50,Finished reference implementation of CustomManyParticleForce,0
+d25d6a9,2014-08-06 17:34:50,Fixed errors building Python wrapper for CustomManyParticleForce,1
+b2ce1c2,2014-08-08 17:05:18,Began working on CPU implementation of CustomManyParticleForce,0
+1bc8e32,2014-08-13 11:04:21,Continuing to implement CPU version of CustomManyParticleForce,0
+0e2ffb4,2014-08-14 12:30:56,CPU version of CustomManyParticleForce is multithreaded,0
+be0d5cb,2014-08-14 16:02:28,Began vectorizing CustomManyParticleForce,0
+14d3c58,2014-08-15 10:28:00,Finished CPU implementation of CustomManyParticleForce,0
+0d5e0b5,2014-08-15 11:44:39,Eliminated some unnecessary memory allocation in CpuCustomManyParticleForce,0
+890963b,2014-08-18 16:33:58,Beginning of CUDA implementation of CustomManyParticleForce,0
+785592f,2014-08-19 13:44:44,Continuing to work on CUDA implementation of CustomManyParticleForce,0
+65b56ee,2014-08-19 14:29:55,Implemented type filters for CUDA version of CustomManyParticleForce,0
+786e1ee,2014-08-19 16:01:20,Implemented exclusions for CUDA version of CustomManyParticleForce,0
+f7406df,2014-08-19 20:56:44,Clean up some methods that serve no purpose in OpenMM.,0
+e3b631f,2014-08-20 15:06:18,Wrote code to build neighbor list for CUDA version of CustomManyParticleForce,0
+bddaf4e,2014-08-21 11:31:11,CUDA version of CustomManyParticleForce uses neighbor list,0
+263c1d7,2014-08-22 08:41:20,Improve warning messages coming from the CHARMM parsers.,0
+150d943,2014-08-22 15:08:55,Optimizations to CUDA version of CustomManyParticleForce,0
+bf46484,2014-08-26 11:48:36,Fixed a bug in Python wrapper for CustomManyParticleForce,1
+e6b8979,2014-08-26 14:58:03,small typo in checkpointreporter.py true --> True  Changes to be committed: 	modified:   checkpointreporter.py,0
+f5acdd7,2014-08-28 17:01:34,"CustomManyParticleForce offers two different ""permutation modes"".  Implemented it for Reference and CPU platforms.",0
+a306aa5,2014-08-29 10:06:45,Minor optimization to CUDA version of CustomManyParticleForce,0
+c2d461f,2014-08-29 11:31:32,Implemented UniqueCentralParticle mode in CUDA version of CustomManyParticleForce,0
+3134fbb,2014-08-29 14:24:13,Bug fixes to CustomManyParticleForce,1
+b11c806,2014-08-29 17:17:00,Bug fixes to CUDA version of CustomManyParticleForce,1
+e2c272d,2014-09-02 11:19:00,Merge pull request #600 from kmdalton/master,0
+10d3930,2014-09-02 11:19:55,Merge pull request #598 from swails/improve_warnings,0
+5376e6f,2014-09-02 11:20:17,Merge pull request #594 from swails/charmm-cleanup,0
+9a50e48,2014-09-02 14:19:55,ForceField allows defining CustomManyParticleForces in XML files,0
+2781f51,2014-09-02 16:31:03,Added scripts for generating force field XML files,0
+f2eb95d,2014-09-02 17:06:59,Merge pull request #603 from peastman/scripts,0
+1a69910,2014-09-03 10:40:17,Added documentation for CustomManyParticleForce,0
+6f7dee3,2014-09-03 14:16:53,Created OpenCL version of CustomManyParticleForce (not yet fully debugged),0
+c66766a,2014-09-03 15:12:04,Fixed errors on Windows,1
+aa97022,2014-09-03 15:40:20,Fixed a potential segfault,0
+9cd18ae,2014-09-03 16:39:29,Bug fix,1
+9f77efc,2014-09-04 12:49:53,Bug fixes to OpenCL version of CustomManyParticleForce,1
+6a38039,2014-09-04 14:58:52,Fixed errors compiling kernels in double precision mode,1
+c7f629a,2014-09-04 14:59:36,Made test cases more robust,0
+2ad1f6d,2014-09-05 10:23:01,Fixed error using type filters in UniqueCentralParticle mode,1
+1515e2b,2014-09-05 11:07:52,Added serialization support for CustomManyParticleForce,0
+604881d,2014-09-05 12:01:16,Merge pull request #604 from peastman/many,0
+4c81596,2014-09-05 13:26:13,Added a missing return statement,0
+8616b69,2014-09-05 13:44:45,Merge pull request #605 from peastman/master,0
+bfeb8ac,2014-09-08 16:11:45,Rewrote findBlocksWithInteractions() in a way that is both faster and simpler.,0
+d8be3ef,2014-09-08 16:13:05,Bug fix to addExtraParticles(),1
+a27f396,2014-09-08 16:33:35,Merge pull request #607 from peastman/master,0
+904a9c1,2014-09-08 17:16:54,Fixed bug in CustomManyParticleForce that caused crash,1
+f9e24fe,2014-09-08 17:29:08,Merge pull request #608 from peastman/master,0
+70bd61a,2014-09-09 10:58:39,Ported the new version of findBlocksWithInteractions() to OpenCL (not yet debugged),0
+f9fbe12,2014-09-09 15:13:36,Bug fixes,1
+ae46613,2014-09-09 15:33:44,Improved performance of building neighbor list on AMD GPUs,0
+3031c4d,2014-09-09 16:24:21,Fixed bug on Intel GPUs,1
+6898432,2014-09-09 16:47:42,Cleaned up obsolete code,0
+80be998,2014-09-09 17:16:52,Merge pull request #609 from peastman/nb,0
+4c19a40,2014-09-10 14:22:30,Prevent nan in CPU platform when two excluded particles are exactly on top of each other,0
+591556f,2014-09-10 15:20:53,Merge pull request #611 from peastman/master,0
+d7620ef,2014-09-11 11:04:50,Fixed a compilation error in double precision mode,1
+e96cace,2014-09-11 11:34:55,Merge pull request #614 from peastman/master,0
+4b5b08a,2014-09-11 16:05:50,Switched to a slightly faster (and more accurate) approximation for erfc(),0
+3e47d82,2014-09-11 16:11:52,Reversed a change that didn't help,0
+db67487,2014-09-11 16:26:50,Merge pull request #615 from peastman/master,0
+1e67b2e,2014-09-14 12:55:35,Updated code to obey BUILD_TESTING to allow for disabling of test compilation,0
+af55cd2,2014-09-15 10:52:12,Merge pull request #617 from Omegaice/master,0
+a83607d,2014-09-16 12:53:31,Preliminary implementation of JIT compilation for CompiledExpressions,0
+9e4b043,2014-09-16 14:21:47,Update AmoebaMultipoleForceImpl.cpp,0
+a6fe70d,2014-09-16 14:49:52,JIT compilation uses optimized calculations for many of the most common operations,0
+4a25dc7,2014-09-16 16:32:42,Added more optimized operations to JIT compilation,0
+6c8c0dd,2014-09-16 16:58:42,Added #ifdefs and CMake logic for deciding when to use JIT,0
+96b6138,2014-09-16 17:35:03,Fixed compilation error on Linux,1
+abe3e90,2014-09-16 19:54:08,Update AmoebaMultipoleForceImpl.h,0
+e03fe92,2014-09-16 19:55:23,Update AmoebaMultipoleForce.cpp,0
+c4dbd03,2014-09-16 19:57:55,Update AmoebaMultipoleForce.h,0
+bad2b09,2014-09-16 19:58:40,Update amoebaKernels.h,0
+b9b55b0,2014-09-16 19:59:47,Update AmoebaReferenceKernels.h,0
+3e7860e,2014-09-17 09:52:47,Merge pull request #619 from schwancr/patch-1,0
+3bc2ba5,2014-09-17 11:21:54,AMOEBA uses fast approximation for erfc(),0
+2a06c7b,2014-09-17 11:44:26,Merge pull request #620 from peastman/master,0
+400b2a2,2014-09-17 15:02:10,Fix issue where the last CMAP defined in a parameter file is not added to the parameter set.,0
+b162526,2014-09-17 16:40:16,Merge pull request #621 from swails/charmmparameter_fix,0
+94ac0e3,2014-09-17 19:19:36,Fix comments.,0
+2f2357f,2014-09-18 14:34:29,Fixed an illegal memory access,0
+b6fcfbd,2014-09-18 15:10:24,Set cutoff correctly for CHARMM polarizable force field,0
+fb95c56,2014-09-18 15:43:01,Merge pull request #623 from peastman/master,0
+173f7b1,2014-09-22 16:51:35,Push docs to S3,0
+f77a701,2014-09-22 18:46:26,sphinx install,0
+a162c89,2014-09-22 21:33:10,Add by-name getters to CustomIntegrator API,0
+1b24556,2014-09-22 21:48:03,Fix to compile,0
+8ab5b90,2014-09-22 21:55:34,revert change to other function,0
+392a7b0,2014-09-23 08:20:00,Merge pull request #626 from rmcgibbo/docs2,0
+77ea3bb,2014-09-23 08:28:11,Merge pull request #627 from rmcgibbo/integrator-by-name,0
+40bd2a2,2014-09-29 16:48:06,Do not use JIT compilation in 32 bit mode  since AsmJit currently doesn't support that properly,0
+5a98c0a,2014-09-29 17:16:25,Added AsmJit to Licenses.txt,0
+751ff07,2014-09-30 10:04:02,Merge pull request #630 from peastman/jit,0
+ce5559f,2014-09-30 14:16:57,Fixed uninitialized memory error,1
+deebf49,2014-09-30 14:59:02,Merge pull request #631 from peastman/master,0
+252bf5c,2014-10-01 00:21:42,Added fix for #632,0
+4c5f80c,2014-10-01 11:32:10,Merge pull request #634 from kyleabeauchamp/statepickle,0
+771842a,2014-10-01 12:58:49,Added test for python serialize,0
+3f2150d,2014-10-01 13:37:18,Renamed test to TestPickle,0
+321f64a,2014-10-01 13:41:35,Changed name of test to TestPickle.,0
+168aaa4,2014-10-01 13:42:29,Updated docstring.,0
+9c7c79a,2014-10-01 13:59:58,Added pickler for integrators and test.,0
+9a791e8,2014-10-03 10:37:10,Merge pull request #636 from kyleabeauchamp/vmpatch,0
+cc298d6,2014-10-03 12:51:12,Updated vagrant scripts for conda build and upload,0
+7d1e3fc,2014-10-03 14:18:23,Created MonteCarloMembraneBarostat,0
+9bedaa9,2014-10-03 16:46:18,Merge pull request #637 from kyleabeauchamp/cuda65,0
+08eefd6,2014-10-03 16:58:24,Created Python API for MonteCarloMembraneBarostat,0
+77c4002,2014-10-03 17:20:10,Added MonteCarloMembraneBarostat to the manual,0
+832ff70,2014-10-03 19:26:42,Use CUDA 6.5,0
+a4bda35,2014-10-03 19:29:14,Add comment warning about NVIDIA pushing new releases without warning.,0
+3439d87,2014-10-06 10:56:29,Serialization support for MonteCarloMembraneBarostat and MonteCarloAnisotropicBarostat,0
+7992969,2014-10-06 11:20:50,More documentation on MonteCarloMembraneBarostat,0
+77e33f1,2014-10-06 11:43:08,Merge pull request #641 from peastman/membrane,0
+468a8a5,2014-10-06 14:28:53,Began creating CPU version of CustomGBForce,0
+4d827cd,2014-10-06 16:53:26,More optimizations to CPU CustomGBForce,0
+ff586f5,2014-10-06 17:35:06,Merge pull request #643 from swails/numpy-unit,0
+5c029ed,2014-10-06 17:56:58,Add functions to Quantity to compute the max  min  standard deviation (as the sqrt of the variance)  and average  returning a Quantity with the proper units.,0
+8faeeb4,2014-10-06 18:29:01,More stable std calc.,0
+9c38d98,2014-10-06 18:36:27,"Stop using ""== None"" and ""!= None"". ""is"" and ""is not"" is the preferred way to do it.  Not only that  I got this FutureWarning:",0
+f6d9006,2014-10-06 19:49:12,Possible speedup for unit_math.sum function.,0
+83a0b61,2014-10-07 10:02:21,Eliminated some unnecessary memory allocation,0
+bb70341,2014-10-07 10:47:09,Further optimizations to CustomGBForce,0
+6a4ac83,2014-10-07 15:33:23,Parallelized CpuCustomGBForce,0
+ea43553,2014-10-07 15:58:21,Very minor optimization to CpuCustomGBForce,0
+4c8750a,2014-10-07 16:56:32,More optimizations to CpuCustomGBForce,0
+b8bae04,2014-10-08 10:01:21,Merge pull request #644 from peastman/cpugb,0
+832e7f0,2014-10-08 15:45:19,CUDA platform does PME on a separate stream,0
+94aa8c3,2014-10-08 16:22:05,OpenCL platform does PME on a separate stream,0
+1984114,2014-10-09 10:16:13,Bug fix,1
+8b69b9c,2014-10-09 10:41:46,Merge pull request #647 from peastman/stream,0
+86d0934,2014-10-09 14:40:33,Deleted obsolete files,0
+fea6a22,2014-10-09 14:53:08,Merge pull request #648 from peastman/master,0
+3d1b218,2014-10-09 15:40:50,Further optimizations to NonbondedForce,0
+61a8b77,2014-10-09 16:08:46,Merge pull request #649 from peastman/opt,0
+87dd382,2014-10-10 12:10:35,Optimizations to AMOEBA,0
+7b65830,2014-10-10 13:22:59,Merge pull request #650 from peastman/opt,0
+34a604b,2014-10-13 11:21:04,GBSAOBCForce allows the surface area energy to be changed,0
+438b29b,2014-10-13 11:28:57,Setting surface area energy works with Python API,0
+ead929d,2014-10-13 11:33:05,Setting surface area energy works with serialization,0
+f96c831,2014-10-13 11:51:23,Merge pull request #654 from peastman/sasa,0
+dd27dd0,2014-10-14 11:57:37,Removed some unnecessary library references that caused problems for conda on OS X,0
+0503030,2014-10-14 13:29:37,Merge pull request #655 from peastman/paths,0
+9184c37,2014-10-15 12:51:29,Fixed bug in Quantity.sum(),1
+68411b8,2014-10-15 14:02:22,Merge pull request #656 from peastman/sum,0
+942d4d7,2014-10-15 14:45:28,Workaround to support GTX 980,0
+ba66e90,2014-10-15 15:06:25,Merge pull request #658 from peastman/980,0
+390e0a6,2014-10-21 14:59:00,Optimizations to multi-GPU calculations,0
+8e2fc4e,2014-10-21 16:29:45,Workaround for driver bugs that affect GTX 980,0
+edbe9a7,2014-10-22 11:02:43,Handle hex values for atom and residue numbers,0
+e53d4f2,2014-10-22 11:25:35,Simplified handling of hex values,0
+be863b0,2014-10-22 13:40:11,Better workaround for bug on GTX 980,0
+0e36f34,2014-10-22 14:04:32,Another attempt at correctly handling different types of numbers in PDB files,0
+e19cefd,2014-10-22 14:09:03,Merge pull request #665 from peastman/980,0
+92a4bbe,2014-10-22 17:11:00,Optimizations to the custom GB models,0
+71b6742,2014-10-23 10:27:26,Further optimizations to custom GB models,0
+55bae85,2014-10-23 11:18:38,Merge pull request #668 from peastman/multi,0
+1a5029c,2014-10-23 12:45:48,Further improvements to handling of weird PDB files created by VMD,0
+5bed359,2014-10-23 14:33:29,Fixed CHARMM parser to work with changes to custom GB models,0
+9865249,2014-10-23 15:16:31,Merge pull request #667 from peastman/gb,0
+87ea843,2014-10-23 16:37:38,Minor optimization to discrete tabulated functions,0
+5b591ab,2014-10-23 16:58:10,Merge pull request #669 from peastman/custom,0
+11d73f5,2014-10-24 09:32:54,Merge pull request #664 from peastman/pdb,0
+c7cacbb,2014-10-26 15:14:52,Added manifests to use for creating source and binary distributions.,0
+5a106de,2014-10-27 10:24:42,Mac builds are 64 bit only by default,0
+fd12265,2014-10-27 10:44:32,Merge pull request #674 from peastman/master,0
+a6f749d,2014-10-27 11:39:14,Added 64 bit version of Windows pthreads library,0
+663ae99,2014-10-27 12:04:05,Merge pull request #675 from peastman/master,0
+858c90a,2014-10-27 15:18:32,Merge pull request #672 from jchodera/package-manifests,0
+a076938,2014-10-27 15:45:35,Reduced share memory for CustomGBForce,0
+1410ab3,2014-10-27 16:30:41,Merge pull request #678 from peastman/gbshared,0
+b836c4d,2014-10-27 17:26:55,Updated version number to 6.2,0
+476ee9b,2014-10-28 10:21:15,Merge pull request #679 from peastman/master,0
+63bccb5,2014-10-30 10:29:06,Checked in install.sh script,0
+10c5a10,2014-10-30 10:33:32,Merge pull request #683 from peastman/master,0
+da2e8c9,2014-10-30 10:51:36,Minor updates to manual for 6.2.,0
+105b196,2014-10-30 11:27:10,Merge pull request #684 from peastman/master,0
+e55865c,2014-11-03 12:05:54,If CUDA or OpenCL is not being built  default to not building the corresponding plugins,0
+3d8a4a0,2014-11-03 12:45:03,Merge pull request #692 from peastman/cmake,0
+dc8b403,2014-11-03 13:42:02,Allow Quantity.sum (and other attributes  like mean  max  min  and std) to take arguments and pass them to the numpy function if applicable. That way  users get the full flexibility of the numpy API on those particular methods AND get the added benefit that the result has the correct units (and it all runs fast).,0
+019f502,2014-11-03 14:42:25,"Add missing arg check. Implement ""reshape"" in Quantity that passes down to the underlying numpy array. This function would be used in instances where  for instance  a certain API would send a flattened array of coordinates or velocities with units attached  and you wanted to reshape the array into (natom  3) to be consistent with OpenMM's Context object.",0
+2bf08a9,2014-11-03 17:07:37,Merge pull request #696 from jchodera/fix-travis-badge-in-readme,0
+7216f92,2014-11-03 18:39:02,Updated broken links in travis badge in README.,0
+c1cbd44,2014-11-03 20:58:20,range check getPlatform(),0
+071b6fa,2014-11-04 10:19:47,Merge pull request #698 from rmcgibbo/range-check,0
+a8cd845,2014-11-04 10:46:46,Merge pull request #691 from swails/fix-sum,0
+96e6c4b,2014-11-04 11:17:10,testInstallation.py gives more information about errors,0
+a5c00fa,2014-11-04 11:17:13,Fix another small bug for unit handling with numpy arrays.  Fixes the exception:,1
+6269454,2014-11-04 11:36:24,Merge pull request #700 from peastman/master,0
+5b4abbb,2014-11-04 11:41:01,Oops... Forgot unit on the reshape command.,0
+f32c804,2014-11-04 13:10:55,Improvements to multi-GPU performance,0
+924af73,2014-11-04 14:58:33,Merge pull request #701 from peastman/multigpu,0
+2504cf1,2014-11-04 16:54:39,Initial support for reading PDBx/mmCIF files,0
+67a3b4c,2014-11-05 10:41:24,Further improvements to multi-GPU performance,0
+b535e65,2014-11-05 12:21:07,Cleanup to PDBx/mmCIF reader,0
+0d82906,2014-11-05 12:31:07,Added PdbxReader to Licenses.txt,0
+4ab3b42,2014-11-05 13:48:41,Merge pull request #703 from peastman/multigpu,0
+4972215,2014-11-05 16:02:52,Bug fix,1
+db72d0c,2014-11-06 11:48:50,Merge pull request #702 from peastman/pdbx,0
+8f12d8f,2014-11-06 16:09:58,Further improvements to multi-GPU scaling,0
+160c1cd,2014-11-06 16:33:46,Bug fixes and improvements to PDBxFile,1
+51fc7a1,2014-11-06 16:45:24,Merge pull request #705 from peastman/multigpu,0
+9e10769,2014-11-06 16:57:29,Merge pull request #706 from peastman/pdbx,0
+bf0420d,2014-11-07 14:41:40,Merge pull request #709 from kyleabeauchamp/removevm,0
+ea5f9ee,2014-11-07 17:13:13,Removed virtual machine.,0
+be7120e,2014-11-07 20:10:15,Added Linux packaging script.,0
+71220e6,2014-11-07 20:11:01,Changed Linux packaging script to executable.,0
+4b2487f,2014-11-07 20:47:45,Added draft build script.,0
+dda50ec,2014-11-07 20:48:53,Made Linux build script executable.,0
+3fecf85,2014-11-07 21:07:17,Version number in Linux packaging script is now extracted from CMakeCache.txt (via @peastman).,0
+81bdf03,2014-11-07 21:39:10,Added first drafts of OS X build and packaging scripts.,0
+4e9405a,2014-11-08 00:45:17,Updated build script for packaging with Linux.,0
+0198503,2014-11-08 12:41:51,Minor fix to build script for automated packaging.,0
+db34357,2014-11-08 12:48:26,Fixed python path for automated build script.,0
+0abd720,2014-11-08 12:53:55,Added miniconda/bin to path for automated build scripts.,0
+4d33ed5,2014-11-08 16:29:32,Updated OSX build/package scripts for Jenkins.,0
+8e778c6,2014-11-08 16:38:14,More updates to OS X Jenkins build script.,0
+438463e,2014-11-08 17:21:22,Updated Jenkins build scripts to also build docs.,0
+db16609,2014-11-08 17:50:20,Fixed some path errors with Jenkins build scripts  and added preparation scripts.,1
+abf0f7e,2014-11-08 17:56:18,Updated Jenkins preparation scripts.,0
+cd9a442,2014-11-08 17:57:42,Minor updates to Jenkins prepare scripts.,0
+609b6a5,2014-11-08 18:01:14,Fixed fftw3f library path error in OS X Jenkins build script.,1
+865364d,2014-11-08 19:13:45,Added relative workspace path to Jenkins build prepare scripts.,0
+8462798,2014-11-08 19:35:26,Tried to fix Jenkins build script Mac autodetection of version number.,0
+93cd76b,2014-11-08 19:39:01,Fixing more paths in Jenkins build paths.,0
+4ad0801,2014-11-08 20:10:32,Hopefully fixed issue with Jenkins linux build script.,0
+6312fe5,2014-11-10 08:58:07,Merge pull request #711 from jchodera/add-packaging-scripts,0
+d566653,2014-11-10 12:25:55,Fixed a bug in neighbor list construction,1
+20f00d8,2014-11-10 13:42:27,Merge pull request #714 from peastman/master,0
+47b73df,2014-11-10 14:05:03,Remove buffering per @swails,0
+dbd7fd3,2014-11-10 16:27:03,Merge pull request #715 from mpharrigan/py3,0
+ad5821f,2014-11-11 15:45:50,CustomIntegrator  throws an exception if variable names are ambiguous,0
+1c7d631,2014-11-11 16:10:54,Merge pull request #716 from peastman/master,0
+842f295,2014-11-13 14:54:23,Fix byte handling to work for both Py2 and Py3,0
+efce20c,2014-11-13 15:17:58,Add a basic DCD file test. There's no DCD file _reader_  so without MDTraj we can't validate the that this object does anything more than simply write without exceptions (i.e.  we can't tell if the DCD file is actually _valid_),0
+a572eec,2014-11-13 16:45:02,Further documentation updates for 6.2,0
+3a3a2aa,2014-11-14 10:26:41,Merge pull request #723 from peastman/docs,0
+4c0621e,2014-11-14 11:04:50,Minor optimization to sorting,0
+a8df200,2014-11-14 11:21:30,Merge pull request #722 from swails/fix_dcd,0
+645bf22,2014-11-14 11:27:53,Use tempfile to make a file.,0
+59ab6fc,2014-11-14 11:31:30,Merge pull request #724 from peastman/opt,0
+a64e0db,2014-11-14 11:57:39,Open as binary (needed for Python 3),0
+c6b6b89,2014-11-14 12:53:55,Make sure the DCD file handle is closed -- do it the right way in the test.,0
+5cf2c3f,2014-11-17 15:43:50,Merge pull request #733 from swails/remove_dbg,0
+f0b8ac1,2014-11-17 18:03:28,Remove what appears to be a debug message.,0
+bca1a5d,2014-11-18 12:54:08,Install benchmark.py script,0
+a0cdc1f,2014-11-18 13:11:31,Merge pull request #735 from peastman/master,0
+285a12d,2014-11-18 13:57:49,Added error codes from CUDA 5.0,0
+5bfd733,2014-11-18 14:00:13,Merge pull request #734 from swails/fixep,0
+2846622,2014-11-18 14:20:54,Merge pull request #736 from peastman/master,0
+f16e7e3,2014-11-18 14:29:40,Recognize more residue labels as water in the Amber file parser.,0
+e2c80f2,2014-11-18 15:09:05,Reduce the water labels down to just the EP models  since that's where it is most important and we don't want false positives.,0
+67cd9e1,2014-11-18 15:10:01,Add TIP4PEw name.,0
+8fb1f4d,2014-11-18 15:10:09,DrudeForce did not implement getBondedParticles(),0
+b3eaa5e,2014-11-18 15:13:14,== -> in,0
+0b0b213,2014-11-18 15:32:45,Merge pull request #737 from peastman/master,0
+7bbf933,2014-11-18 15:42:45,Workaround for CUDA bug,0
+ae338b5,2014-11-18 16:19:49,Merge pull request #738 from peastman/bug,0
+fe45563,2014-11-19 02:38:31,Copy testInstallation.py to the simtk package and make it an import-safe module. Also copy the test PDB file to the data/ directory  since we rather need it...,0
+0a86b31,2014-11-19 02:40:24,Delete all of the code from testInstallation.py and instead replace it with an import of the new testInstallation module and a command to run the tests.,0
+64ebc79,2014-11-19 02:50:26,"Apparently ""from XXX import *"" is only allowed at the module level (I get a SyntaxWarning otherwise). So move those imports back to the module level and save any error messages for when the tests are actually run (if ever).",0
+612ca41,2014-11-19 02:56:18,Tweak error message formatting.,0
+ab81ee0,2014-11-19 02:58:01,Further formatting tweaks.,0
+ab767c4,2014-11-19 10:19:12,Merge pull request #739 from swails/conda-testing,0
+b7730b8,2014-11-19 10:58:58,Updated instructions on running the test installation script,0
+9f8e733,2014-11-19 11:29:36,Add docstring to test function. Convert all raised exceptions raised in run_tests to TestingError so users only ever have one exception to catch.,0
+3b85cf4,2014-11-19 11:33:31,"Add ""python -m simtk.testInstallation"" to .travis.yml",0
+bcef4de,2014-11-19 12:02:52,Merge pull request #740 from peastman/test,0
+59484a6,2014-11-25 16:34:11,Prevent running tests on unsupported CPUs,0
+12dbd21,2014-11-25 16:49:11,Merge pull request #743 from peastman/master,0
+4b5f48e,2014-11-26 11:30:23,Workaround for compiler bug in Visual Studio,0
+a55b34e,2014-11-26 11:46:37,Fixed line endings,0
+066cdd6,2014-11-26 12:18:01,Merge pull request #744 from peastman/master,0
+4fcf2b1,2014-12-02 15:55:42,Modified packaging scripts so that we no longer install Python into lib.,0
+74d6686,2014-12-02 17:21:59,Debugging issues with packaging script.,0
+741d186,2014-12-02 18:09:15,Build scripts now first remove old install directory.,0
+662eb73,2014-12-02 18:11:59,Minor cleanup in prepare.sh script.,0
+5030c94,2014-12-02 18:33:04,Removed debugging statements from packaging scripts.,0
+e6d78cf,2014-12-03 10:49:16,Merge pull request #746 from jchodera/fix-packaging-scripts,0
+2c68f67,2014-12-04 11:59:12,Disable PME stream on old versions of cufft,0
+bf8de1f,2014-12-04 13:08:36,Merge pull request #748 from peastman/fftbug,0

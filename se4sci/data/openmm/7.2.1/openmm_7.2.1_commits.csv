@@ -1,0 +1,6 @@
+bbd6627Sat Mar 3 15:24:58 2018 -0800Merge pull request #2006 from peastman/version
+0c9ce3bSat Mar 3 13:49:27 2018 -0800Updated version number to 7.2.1
+f49084fSat Mar 3 13:35:26 2018 -0800Merge pull request #2005 from peastman/ssbond
+d7d3aa2Sat Mar 3 11:30:41 2018 -0800Regenerated files to fix missing external bonds
+6f16980Fri Mar 2 12:06:53 2018 -0800Merge pull request #2004 from peastman/7.2_branch
+715e69eFri Mar 2 11:15:20 2018 -0800Fix disulfides in Amber14

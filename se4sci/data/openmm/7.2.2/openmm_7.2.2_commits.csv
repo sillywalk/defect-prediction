@@ -1,0 +1,10 @@
+32bc79aThu May 10 16:41:24 2018 -0700Merge pull request #2065 from peastman/722
+9cc409bThu May 10 14:36:53 2018 -0700Updated version number to 7.2.2
+2b818e5Mon May 7 14:19:29 2018 -0700Merge pull request #2061 from peastman/722
+40b774cMon May 7 10:59:21 2018 -0700Removed 'fix' that isn't actually compatible with 7.2
+1f98262Mon May 7 09:51:39 2018 -0700Fixes to CHARMM36
+cc80b3dMon Apr 9 22:37:32 2018 -0700Merged bug fixes from master branch
+45023ecThu Apr 5 10:28:27 2018 -0700Fixed error in determining protein size when building membrane
+2928163Fri Mar 16 15:57:03 2018 -0700Fixed error in SWIG wrapper for CustomIntegrator.addTabulatedFunction()
+d65e27cTue Mar 13 14:40:40 2018 -0700Fixed uninitialized memory
+4909b87Tue Mar 13 14:05:01 2018 -0700Bug fix to switching function when not computing energy

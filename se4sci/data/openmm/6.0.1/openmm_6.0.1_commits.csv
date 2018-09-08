@@ -1,0 +1,13 @@
+2722a63Tue May 6 14:20:44 2014 -0700Fixed bug using multiple devices with PME
+019846fFri Apr 25 12:01:05 2014 -0700Updated version number to 6.0.1
+2f65de7Fri Apr 25 10:57:32 2014 -0700John's fixes to serialization
+269a785Tue Apr 15 10:19:25 2014 -0700Include force groups when serializing forces
+09864dbWed Apr 9 00:21:54 2014 -0700Disable OpenCL platform on known-buggy macs
+51b7144Thu Mar 27 10:48:48 2014 -0700Fixed a potential divide by zero
+0820199Wed Mar 5 16:10:13 2014 -0800Removed unnecessary synchronization that hurt performance on Nvidia
+997a6cdTue Mar 4 14:59:20 2014 -0500fix bug in Reference CustomCompoundBondForce
+4f5c2a2Mon Mar 3 14:11:15 2014 -0500Convert interaction counting to long long int to avoid integer overflows in CustomNonbondedForceImpl long-range correction.
+73865f3Mon Mar 3 13:41:01 2014 -0500More int -> double conversions to avoid overflows on _very_ big systems in which the square of the number of particles in the dominant LJ type overflows integers.
+958ca9fSun Mar 2 18:56:34 2014 -0500One more int -> double
+3531205Sun Mar 2 17:47:07 2014 -0500Fix long-range vdW correction for real systems.
+f10f4e1Fri Feb 28 01:59:48 2014 -0800fix bug

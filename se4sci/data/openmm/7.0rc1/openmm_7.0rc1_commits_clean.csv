@@ -1,0 +1,29 @@
+hash,time,message,buggy
+34b7e21,2016-02-26 11:47:28,Part of the Ewald energy was being returned even when that force group wasn't requested,0
+7633a01,2016-02-26 13:02:38,Merge pull request #1402 from peastman/ewaldenergy,0
+a4f7077,2016-02-26 13:26:47,Fixed a bug in CPU neighbor list with triclinic boxes,1
+e1c49eb,2016-02-26 14:41:59,Merge pull request #1403 from peastman/neighbors,0
+b768ff4,2016-02-29 16:28:35,Merge pull request #1405 from pgrinaway/fix-3-member-rings,0
+42b5a69,2016-02-29 16:53:09,check to make sure duplicate atoms are not assigned in torsions,0
+405607e,2016-02-29 17:15:54,fix or -> and,0
+6aea38c,2016-02-29 17:19:16,make clearer,0
+71cb735,2016-03-04 11:20:23,Updated default coefficients for extrapolated polarization,0
+9b5b52f,2016-03-04 12:54:01,Merge pull request #1407 from peastman/coefficients,0
+e179cad,2016-03-11 11:30:07,Can build manuals on Windows,0
+96fbf8b,2016-03-14 10:13:01,Merge pull request #1416 from peastman/docs,0
+d2bf268,2016-03-14 11:47:19,C and Fortran wrappers support groups argument to getState(),0
+38f8d5f,2016-03-14 13:18:59,Merge pull request #1420 from peastman/wrappergroups,0
+1647f1e,2016-03-17 16:49:35,Renamed enums that caused Fortran compiler errors,0
+0d7cf99,2016-03-18 09:52:21,Merge pull request #1424 from peastman/blockenums,0
+f6973b9,2016-03-18 11:18:48,PDBFile writes HETATM for heterogens,0
+e8ab1fa,2016-03-18 12:55:22,Merge pull request #1425 from peastman/hetatm,0
+fb96746,2016-03-21 13:54:06,Removed the UTF-8 header from a file,0
+293d7c6,2016-03-21 14:40:32,Merge pull request #1429 from peastman/utf8,0
+06818d8,2016-03-23 17:08:16,Require SWIG 3.0.5 or later,0
+5c2681d,2016-03-24 09:55:42,Merge pull request #1432 from peastman/swig,0
+a45599d,2016-03-25 14:31:11,Minor updates to manuals,0
+f2e879e,2016-03-25 15:12:04,Merge pull request #1438 from peastman/manuals,0
+52ed82e,2016-03-28 10:43:33,Fixed bug using tabulated functions with interaction groups,1
+375a708,2016-03-28 11:10:04,Merge pull request #1442 from peastman/tables,0
+2653817,2016-03-30 10:57:57,Fixed an error in the earlier fix for tabulated functions with interaction groups,1
+f433936,2016-03-30 12:02:47,Merge pull request #1444 from peastman/tabulated,0

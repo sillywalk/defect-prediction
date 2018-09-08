@@ -1,0 +1,8 @@
+hash,time,message,buggy
+af7996f,2017-04-28 12:02:32,Copied bug fixes over to 7.1 branch,1
+2371e88,2017-04-28 14:31:47,Removed C++11 style loop,0
+6e19c6b,2017-04-28 14:43:06,Updated version number to 7.1.1.,0
+4b6fad2,2017-05-01 09:15:47,Merge pull request #1798 from peastman/7.1_branch,0
+d73c2ba,2017-05-05 11:59:56,Fixed error in create3DNaturalSpline(),1
+a2d3156,2017-05-05 12:00:20,Merge branch '7.1_branch' of https://github.com/peastman/openmm into 7.1_branch,0
+c1a64aa,2017-05-05 12:57:38,Merge pull request #1807 from peastman/7.1_branch,0

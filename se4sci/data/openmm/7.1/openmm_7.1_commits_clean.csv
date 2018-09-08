@@ -1,0 +1,439 @@
+hash,time,message,buggy
+ad966d1,2015-12-11 12:52:36,Added getLabFramePermanentDipoles headers to 4 files,0
+454eda7,2016-01-14 00:50:26,Added required headers. Still need to actually implement the functions,0
+bf0fa20,2016-01-16 15:52:10,getLabFramePermanentDipoles should be completely implemented on the reference platform,0
+7197b6c,2016-01-17 21:51:13,Fixed a double declaration for getLabFrameMultipoleMoments,0
+dff059f,2016-01-17 21:51:53,Merge branch 'master' of https://github.com/saurabhbelsare/openmm,0
+a8d0f0e,2016-01-18 12:13:29,Created a public verison of the applyRotationMatrix function so that it can be accessed from outside,0
+4927779,2016-01-18 16:09:42,Restructuring the lab frame dipole moments function,0
+dd0d76e,2016-01-18 16:44:40,Added 2 labFrameDipoleMoment declarations in AmoebaReferenceMultipoleForce.h,0
+560ef30,2016-01-18 16:53:48,Removed unnecessay public function,0
+5aeef6d,2016-01-18 16:58:22,Changed call to calculate lab frame permanent dipoles function,0
+a84f728,2016-01-18 17:00:01,Fixed typo,0
+881582c,2016-01-18 17:10:45,Corrected spelling or Permanent,0
+d1b39bd,2016-01-19 19:16:31,Commenting out Dipole Calculation,0
+76bb120,2016-01-20 14:21:59,Uncommented the labFrameDipoles function,0
+1daa9bb,2016-01-20 15:32:31,Commented out all the LabFrame functions,0
+587ba7f,2016-01-20 20:00:24,Modified comments to not generate documentation for LabFrame functions,0
+5f248e6,2016-01-23 14:38:59,Uncommented all the calculate LabFramePermanentDipoles functions,0
+d3aa60e,2016-01-25 14:58:47,Commented out extra two LabFrameDipole calculation headers,0
+43d4cd9,2016-01-25 15:28:54,Added LabFramePermanentDipole function to the cuda kernels files  but it currently works as getSystemMultipoleMoments,0
+6426a47,2016-01-25 15:29:08,Added LabFramePermanentDipole function to the cuda kernels files  but it currently works as getSystemMultipoleMoments,0
+969e0e9,2016-01-25 16:16:40,Modified dummy cuda getLabFramePermanentDipoles from getSystemMultipoles to getInducedDipoles Implementation,0
+23a4934,2016-01-25 20:37:20,Debugging 1,0
+817a226,2016-01-25 20:57:02,Debugging 2,0
+ee385aa,2016-01-25 21:06:54,Debugging 3,0
+56b8df1,2016-01-25 22:41:48,Debugging 4,0
+0e492d9,2016-01-25 22:44:32,Debugging 5,0
+adc4149,2016-01-25 23:04:03,Debugging 6,0
+5fbac3a,2016-01-26 15:20:25,Debugging 7,0
+0284890,2016-01-26 15:37:58,Debugging 8,0
+72cec7e,2016-01-26 16:04:15,Debugging 9,0
+07f6ba4,2016-01-26 16:46:19,Reference Debugging complete,0
+004db14,2016-01-28 16:17:04,read all ffxmls together by section  rather than all sections in one file first,0
+01a6ddd,2016-01-30 18:13:50,Setting up the getLabFrameDipoleMoments in cuda,0
+ca28c38,2016-02-02 14:19:05,Added getLabFramePermanentDipoles to swigInputConfig.py,0
+3e9dc09,2016-02-04 00:07:45,Added calculateTotalDipoles function,0
+d1a8645,2016-02-04 00:21:04,Fixed bug in calculateTotalDipoles in AmoebaReferenceKernels.cpp,1
+18efc03,2016-02-04 11:12:56,Fixed bug in getTotalDipoles in AmoebaReferenceMultipoleForce.cpp,1
+6738527,2016-02-04 11:24:46,Fixed bug in getTotalDipoles in AmoebaCudaKernels.cpp,1
+1616693,2016-02-04 11:32:45,Fixed bug in getTotalDipoles in AmoebaCudaKernels.cpp 2,1
+f7bfc6b,2016-02-09 15:24:26,started working on NBFix generator,0
+38d4052,2016-02-09 18:12:18,fixed parseElements,0
+7db6258,2016-02-11 12:14:41,Created API for Gay-Berne force,0
+5c26fba,2016-02-15 17:52:28,nbfix generator,0
+da4cb9b,2016-02-16 12:42:21,added arguments,0
+cd74b97,2016-02-16 14:31:41,Began writing reference implementation of Gay-Berne force,0
+2352247,2016-02-16 14:43:31,added postprocessSystem,0
+b91e8d1,2016-02-16 17:08:33,check if there are two atoms with NBFIX,0
+321dcc4,2016-02-17 10:31:10,moved logic to find if NBFIX is needed to NBFixGenerator,0
+8a95c7c,2016-02-19 01:25:22,convert sigma to rmin,0
+4d3b731,2016-02-19 12:59:47,Continuing reference implementation of Gay-Berne force,0
+79e76a4,2016-02-19 16:22:07,added a test for nbfix generator,0
+208d524,2016-02-19 16:24:24,Merge branch 'master' of https://github.com/pandegroup/openmm into nbfix,0
+471f760,2016-02-19 16:29:52,fixed docstring for creatFroce,0
+7762d9f,2016-02-20 19:09:42,no multiple generators,0
+91d26a7,2016-02-23 15:41:39,add new test  move two newest into right class,0
+4ff554c,2016-02-23 21:34:09,expand on the test,0
+f3e28c4,2016-03-08 19:16:47,cleaned up L-J generator,0
+6786edc,2016-03-08 19:17:08,added test for L-J generator,0
+0642811,2016-03-08 19:23:58,changed AtomTypePair to NBFIxPair,0
+6b7ef87,2016-03-08 19:24:19,changed AtomTypePair to NBFixPair,0
+f5ec314,2016-03-08 19:33:28,Merge branch 'master' of https://github.com/pandegroup/openmm into nbfix,0
+4e9b65c,2016-03-09 15:11:07,add overriding  check for multiple matching templates  user specified template to residue matching,0
+476e820,2016-03-09 18:47:07,add tests,0
+4aa8df6,2016-03-09 18:57:51,add check for type name in overload,0
+0c68e83,2016-03-09 19:32:55,check charges in test,0
+0e05f63,2016-03-10 19:30:10,lj14 as customBondForce,0
+30cd2c1,2016-03-11 16:22:24,added scaled 1-4 LJ as customBondForce,0
+8c85cdc,2016-03-11 16:33:31,added test for scaled 1-4 LJ,0
+b44a882,2016-03-15 17:04:59,cleanup. Use lookup in dict instead of nested loops,0
+4452d43,2016-03-21 12:26:15,Continuing reference implementation of Gay-Berne force,0
+6bb42da,2016-03-23 10:55:00,remove duplicate bonds from CustomBondForce,0
+cddeb60,2016-03-28 17:20:38,Added property to request deterministic forces,0
+eda1ef2,2016-04-02 08:43:17,Support negative residue numbers in PSF files.,0
+4358678,2016-04-04 13:37:56,In mixed or double mode  don't select devices that don't support double,0
+1ffb9e0,2016-04-04 14:13:13,Merge pull request #1446 from swails/psffix,0
+d19984d,2016-04-04 14:16:30,Merge pull request #1373 from rafwiewiora/forcefield_xml,0
+369eca4,2016-04-04 14:21:10,Merge pull request #1448 from peastman/deterministic,0
+4bd2f9d,2016-04-04 14:23:25,Merge pull request #1449 from peastman/precision,0
+e1f8d44,2016-04-05 12:48:28,Beginning support for force field patches,0
+c1d35c3,2016-04-05 16:40:18,Continuing to implement force field patches,0
+af2e3c2,2016-04-06 13:58:37,Implemented matching of residues to single-residue patches,0
+6ce4339,2016-04-07 13:13:04,Implemented matching of residues to multi-residue patches,0
+238a106,2016-04-07 16:55:41,Added documentation on patches,0
+cfb26ad,2016-04-10 11:01:53,Update README.md,0
+908340c,2016-04-12 14:11:09,Reference implementation of periodic boundary conditions for bonded forces,0
+00c22e3,2016-04-12 16:07:19,OpenCL and CUDA implementation of periodic boundary conditions for bonded forces,0
+b458028,2016-04-13 10:24:23,Define APPLY_PERIODIC to 0 just to be absolutely safe,0
+0fa56f2,2016-04-13 12:44:51,Merge pull request #1461 from peastman/periodic,0
+6141281,2016-04-13 16:11:10,Optimized energy minimization when adding hydrogens,0
+2cda653,2016-04-13 16:21:47,Merge pull request #1455 from tcyrus/patch-1,0
+03a92f7,2016-04-13 16:40:53,Merge pull request #1462 from peastman/hydrogencutoff,0
+8f1f8af,2016-04-15 10:42:31,Serialization works for periodic boundary conditions on bonded forces,0
+abbf0b6,2016-04-15 11:14:05,Merge pull request #1464 from peastman/serializebonded,0
+fc0689a,2016-04-18 14:15:08,Optimized reference implementation of continuous tabulated functions,0
+b4dcef4,2016-04-18 14:44:17,Merge pull request #1465 from peastman/tabulated,0
+f091f8b,2016-04-19 11:35:25,Fixed error in Continuous3DFunction on CUDA and OpenCL,1
+fd289aa,2016-04-19 12:36:07,Merge pull request #1466 from peastman/tablederiv,0
+94fbbe9,2016-04-20 15:49:44,Reference implementation of periodic boundary conditions for AMOEBA bonded forces,0
+713cc0f,2016-04-20 16:58:24,CUDA implementation of periodic boundary conditions for AMOEBA bonded forces,0
+c54126a,2016-04-21 10:06:59,Serialization of periodic boundary conditions for AMOEBA bonded forces,0
+8190f24,2016-04-21 10:41:04,Merge pull request #1467 from peastman/amoebaperiodic,0
+50fe7be,2016-04-21 10:49:32,Changed mechanism for setting barostat temperature,0
+95584c9,2016-04-21 13:44:19,Merge pull request #1468 from peastman/mctemperature,0
+f12cb00,2016-04-21 15:45:01,Unified names of platform properties,0
+4966bdf,2016-04-21 16:45:21,Updated documentation for unified property names,0
+cc4caab,2016-04-22 10:13:40,Minor code cleanup,0
+cce1070,2016-04-22 12:11:11,Improved minimization with strict constraint tolerance,0
+7e87724,2016-04-25 10:01:16,Merge pull request #1470 from peastman/minimize,0
+bf32de7,2016-04-25 10:41:49,Optimized CPU implementation of CustomIntegrator,0
+803e826,2016-04-25 12:09:28,Fixed segfault,0
+25d2145,2016-04-25 13:12:51,Merge pull request #1471 from peastman/compiledintegrator,0
+9e66f0b,2016-04-25 13:53:32,Merge pull request #1469 from peastman/properties,0
+505824d,2016-04-29 11:50:49,Finished reference implementation of GayBerneForce,0
+e45f1f2,2016-04-29 15:02:24,Implemented switching function for GayBerneForce,0
+6c1d5eb,2016-05-02 15:18:30,Created CPU implementation of GayBerneForce,0
+3741c95,2016-05-02 17:04:40,Parallelized CPU implementation of GayBerneForce,0
+f854d10,2016-05-03 13:58:17,Bug fix and optimization to CPU GayBerneForce,1
+32ea2e9,2016-05-05 12:18:17,Changing box vectors does not change positions,0
+8f532e3,2016-05-05 14:03:05,Optimization,0
+61d15a2,2016-05-05 14:14:18,Merge pull request #1479 from peastman/boxvectors,0
+57812e2,2016-05-05 15:57:17,CPU platform shares neighbor list between forces,0
+a4d327f,2016-05-05 16:33:22,Merge pull request #1480 from peastman/neighborlist,0
+2e9c418,2016-05-05 16:34:15,Merge branch 'master' into gayberne,0
+0e683e8,2016-05-05 17:03:59,CPU GayBerneForce uses common neighbor list,0
+5b4f3fe,2016-05-09 11:10:19,Fixed error using CMAP with GRO files on Python 3,1
+6a40448,2016-05-10 09:55:39,Merge pull request #1482 from peastman/grocmap,0
+070a0f4,2016-05-10 20:53:02,Fix error check for GBneck parameters,1
+a485716,2016-05-10 21:57:43,Add a test case for the bounds checking of GBSAGBnForce. Fails for code before this PR,0
+484d5c7,2016-05-10 22:50:55,Fix tests.,0
+244dd6d,2016-05-11 09:54:50,Merge pull request #1484 from swails/gbneck_errchk,0
+fcbee6a,2016-05-11 15:44:34,Fixed bug in PME with triclinic boxes,1
+e118199,2016-05-13 10:49:08,Fixed bug in PME with triclinic boxes,1
+96a3742,2016-05-15 19:24:50,Merge pull request #1487 from peastman/triclinic,0
+9f8910c,2016-05-16 15:23:28,Merge branch 'master' into gayberne,0
+ae5c9a1,2016-05-19 13:50:21,Fixed edge case with 2D and 3D continuous functions,0
+69cab56,2016-05-19 17:58:50,Began creating OpenCL implementation of GayBerneForce,0
+c2be00a,2016-05-20 08:55:12,Merge pull request #1495 from peastman/tablelimit,0
+522e133,2016-05-20 14:30:50,Continuing OpenCL implementation of GayBerneForce,0
+3250fb4,2016-05-24 13:36:37,Continuing OpenCL implementation of GayBerneForce,0
+f1ca1e6,2016-05-25 11:35:42,Continuing to implement OpenCL version of GayBerneForce,0
+5ecc8e0,2016-05-25 12:29:45,OpenCL version of GayBerneForce requires 64 bit atomics,0
+6cc2edd,2016-05-25 15:18:13,Improved method for resizing neighbor list,0
+086501a,2016-05-26 12:40:01,Platform::getOpenMMVersion() includes patch version,0
+6c6d68d,2016-05-26 14:55:46,Merge pull request #1499 from peastman/reallocneighbors,0
+32e08b8,2016-05-26 14:56:20,Merge pull request #1500 from peastman/version,0
+31a9036,2016-05-27 21:49:40,Precompute GBNeck terms,0
+0e21823,2016-05-31 14:05:38,cleanup,0
+73183c6,2016-05-31 14:21:16,resolved conflict,0
+03e3377,2016-05-31 18:33:56,using sigma instead of rmin,0
+813275a,2016-06-03 14:35:24,Fixed incorrect checkpointing of reference random number generator,0
+88eee8c,2016-06-06 10:08:34,Merge pull request #1508 from peastman/checkpoint,0
+04165dc,2016-06-06 15:12:55,Fixed error with PME when particles are exactly on top of each other,1
+bf11baa,2016-06-07 08:18:17,Merge pull request #1509 from peastman/nan,0
+8c27e63,2016-06-07 23:44:43,Fix periodic box vector writing in the DCD reporter,0
+ada8f2e,2016-06-08 09:55:01,Merge pull request #1512 from swails/fixdcd,0
+54c96a2,2016-06-15 13:20:34,Improved speed of template matching,0
+88f19a9,2016-06-15 14:16:01,Merge pull request #1514 from peastman/fastmatching,0
+4cf5938,2016-06-16 09:36:23,Fixed compilation error on Windows,1
+4daf8d5,2016-06-16 14:27:53,Merge pull request #1516 from peastman/mpi,0
+8494cb7,2016-06-17 17:00:13,DrudeLangevinIntegrator was not disabling hardwall constraint for maxDistance=0,0
+c92dfe3,2016-06-19 12:47:40,Fixed bug with OBC2 and finalize,1
+ba68609,2016-06-20 10:17:22,Merge pull request #1517 from peastman/drude,0
+d4d25d4,2016-06-20 11:08:38,Merge pull request #1453 from peastman/patches,0
+48e55c5,2016-06-20 12:37:18,Fix OpenCL on AppVeyor,0
+2b3e7d7,2016-06-20 13:04:58,Corrected path to download icd,0
+b518ad1,2016-06-20 16:15:06,Fixed compilation errors on Windows,1
+e8c3eab,2016-06-21 09:57:48,Fixed an exception in addSolvent(),0
+4e6e8ba,2016-06-21 10:00:13,Merge pull request #1518 from peastman/appveyor,0
+a3af281,2016-06-21 12:18:11,Merge pull request #1519 from peastman/water,0
+a2ef6f6,2016-06-21 15:36:26,Fixed an exception with Python 3,0
+fe1ba84,2016-06-21 17:05:48,Merge pull request #1520 from peastman/mtserror,0
+2523d0c,2016-06-22 11:00:35,Merge branch 'nbfix' of https://github.com/ChayaSt/openmm into lj,0
+861387a,2016-06-22 14:42:31,Bug fixes and cleanup to LennardJonesGenerator,1
+0cd624b,2016-06-22 14:52:54,Bug fix,1
+e82225d,2016-06-24 10:51:06,Merge pull request #1521 from peastman/lj,0
+9b9002c,2016-06-27 11:30:52,Fixed energy error for Drude particle at same location as its parent atom,1
+133bb74,2016-06-27 12:28:52,Fixed compilation error on Windows,1
+c902f11,2016-06-27 13:53:42,Merge pull request #1522 from peastman/drude,0
+994190c,2016-06-27 16:45:52,Eliminated dependence on numpy and scipy,0
+3b25632,2016-06-28 13:08:42,Added units classes to Python API docs,0
+4278a19,2016-06-28 15:09:37,Merge pull request #1524 from peastman/unitdocs,0
+de44acd,2016-06-29 07:47:01,Added check for illegal particle index,0
+4bd3fb5,2016-06-29 11:00:47,Further optimization to template matching,0
+040890d,2016-06-29 11:14:57,Merge pull request #1526 from peastman/indexcheck,0
+54788ac,2016-06-29 11:45:39,Merge pull request #1528 from peastman/matching,0
+14b65c1,2016-06-29 13:53:42,Fixed code that checks SWIG version,0
+e79abd3,2016-06-29 15:04:34,Merge pull request #1530 from peastman/swigversion,0
+6e79e69,2016-06-30 14:55:19,Made AMOEBA API more consistent,0
+01f9e41,2016-06-30 16:07:54,Merge pull request #1533 from peastman/amoeba,0
+2af7f1b,2016-06-30 16:24:36,Removed unnecessary functions and variables which were redundant/already commented out,0
+cace5ed,2016-06-30 17:46:05,added build.sh,0
+dca54ec,2016-06-30 18:57:59,Merged fork with latest original master,0
+882de41,2016-06-30 20:43:28,Added tests for getLabFramePermanentDipoles and getTotalDipoles,0
+4a68a61,2016-06-30 20:44:43,Removed build.sh,0
+feec33e,2016-07-01 00:24:50,Had inadvertantly deleted more variables than were necessary  leading to errors. Fixed that.,1
+a00d2ad,2016-07-05 10:41:48,Added the original build.sh from the original OpenMM repo,0
+4e2505e,2016-07-05 10:42:25,Merge branch 'master' of https://github.com/saurabhbelsare/openmm,0
+37127ea,2016-07-05 10:47:16,Added the original build.sh from the original OpenMM repo again,0
+a62b6bf,2016-07-05 11:05:41,Made build.sh executable,0
+57ccd38,2016-07-05 11:07:21,Improved how AMOEBA identifies exceptions,0
+258ef06,2016-07-05 11:39:54,Eliminated warnings about unclosed files,0
+c3d1e8a,2016-07-05 12:16:48,Merge pull request #1535 from peastman/exceptionbonds,0
+9e93f89,2016-07-05 12:22:58,Attempt to get travis working again on OS X,0
+3cc6a18,2016-07-05 12:31:01,Merge pull request #1536 from peastman/filewarning,0
+92d86ea,2016-07-05 12:41:29,Removed the monopole contribution from the total dipole function  modified the tests accordingly.,0
+339167f,2016-07-05 13:16:26,Merge pull request #1537 from peastman/travisosx,0
+77b9b7b,2016-07-05 13:47:35,Merge pull request #1534 from saurabhbelsare/master,0
+cd566c6,2016-07-06 11:00:23,Beginnings of support for derivatives with respect to parameters,0
+8e01339,2016-07-06 16:58:18,Continuing to implement derivatives with respect to parameters,0
+77fe86e,2016-07-07 11:19:55,Implemented parameter derivatives in CPU platform,0
+d0d8fe9,2016-07-07 15:21:14,Implemented parameter derivatives in OpenCL platform,0
+f54a007,2016-07-08 11:19:21,Implemented parameter derivatives for CustomCompoundBondForce and CustomCentroidBondForce,0
+01d9e34,2016-07-11 10:10:56,Merge pull request #1504 from jlmaccal/fix_gb,0
+0b1f03d,2016-07-11 10:34:49,Use CompiledExpressionSet for reference CustomGBForce,0
+b347197,2016-07-11 10:38:47,Merge pull request #1 from peastman/fix_gb,0
+aeaa6f2,2016-07-12 10:44:50,Reference implementation of parameter derivatives for CustomGBForce,0
+b575235,2016-07-12 11:05:45,Fixed errors with AMOEBA force field split between multiple XML files,1
+ac8452c,2016-07-12 15:03:19,Merge pull request #1539 from peastman/splitamoeba,0
+162f5cc,2016-07-12 15:37:35,Fixed nan with GBn and GBn2,0
+ff8cac5,2016-07-12 17:31:12,CPU implementation of parameter derivatives for CustomGBForce,0
+df07fbe,2016-07-13 10:44:18,Serialization of parameter derivatives,0
+37787af,2016-07-13 11:27:04,Merge pull request #1540 from peastman/gbnerror,0
+74efa95,2016-07-22 15:56:12,OpenCL implementation of parameter derivatives for CustomGBForce,0
+2a52e20,2016-07-25 16:17:03,Reference implementation of parameter derivatives for CustomIntegrator,0
+dbdf1c6,2016-07-26 14:49:45,OpenCL implementation of parameter derivatives for CustomIntegrator,0
+e47cf90,2016-07-27 10:05:55,Bug fixes to parameter derivatives for OpenCL CustomGBForce,1
+eae8def,2016-07-27 13:46:39,Began CUDA implementation of parameter derivatives,0
+4949017,2016-07-27 16:23:35,Continuing CUDA implementation of parameter derivatives,0
+ccb2000,2016-07-27 16:58:28,Continuing CUDA implementation of parameter derivatives,0
+b90354c,2016-07-29 09:59:23,CUDA and OpenCL implementation of parameter derivatives for CustomCentroidBondForce,0
+68f1f48,2016-07-29 10:37:30,Added documentation on parameter derivatives,0
+823b9a7,2016-07-29 12:09:54,Bug fixes to OpenCL on CPU,1
+7851bad,2016-07-29 12:30:19,Fixed segfault,0
+1f7866a,2016-07-29 19:52:25,Merge pull request #1547 from peastman/paramderivs,0
+a381a3a,2016-08-01 11:26:54,Merge branch 'master' into gayberne,0
+222b3bb,2016-08-01 15:37:35,Began CUDA version of GayBerneForce,0
+01440b4,2016-08-02 11:15:52,Finished CUDA version of GayBerneForce,0
+da8a47d,2016-08-04 12:29:20,Bug fixes to reading Gromacs files,1
+5782cb5,2016-08-05 11:40:42,Merge pull request #1548 from peastman/gromacs,0
+978e3a0,2016-08-05 12:40:44,Prefer nvcc over runtime compiler,0
+2f024f1,2016-08-05 13:58:51,Fixed compilation error with OpenCL on CPU,1
+55ffb75,2016-08-05 14:37:52,Merge pull request #1550 from peastman/cpuerror,0
+09a05c0,2016-08-05 15:23:28,Merge pull request #1549 from peastman/nvcc,0
+3c65f15,2016-08-08 10:14:36,Fixed segfault related to parameter derivatives,0
+c1843f5,2016-08-08 11:46:15,Merge pull request #1552 from peastman/segfault,0
+d676ed8,2016-08-09 11:09:06,Added documentation on GayBerneForce to manual,0
+24b6882,2016-08-09 11:10:04,Merge branch 'gayberne' of https://github.com/peastman/openmm into gayberne,0
+ddd7307,2016-08-09 11:23:56,Fixed compilation error in mixed precision mode,1
+b683cd8,2016-08-09 13:01:07,Fixed compilation errors on Windows,1
+5f1c5e1,2016-08-09 16:39:09,Implemented serialization of GayBerneForce,0
+ebf0ca2,2016-08-09 16:39:29,Merge branch 'gayberne' of https://github.com/peastman/openmm into gayberne,0
+a468fa3,2016-08-09 17:03:08,Merge pull request #1553 from peastman/gayberne,0
+77c00e4,2016-08-10 12:45:55,Fixed bugs related to CustomGBForce,1
+5a8a8aa,2016-08-10 13:36:25,Merge pull request #1555 from peastman/gbbugs,0
+1c416f5,2016-08-10 16:39:01,Optimization to CustomGBForce on CPU,0
+bf0b43c,2016-08-11 14:46:05,Optimization to CustomNonbondedForce and CustomIntegrator on CPU,0
+2755063,2016-08-12 11:23:12,Merge pull request #1558 from peastman/variables,0
+8a9a502,2016-08-15 13:23:16,Empty interaction group should produce no interactions,0
+7fb7ac1,2016-08-15 14:49:54,Merge pull request #1561 from peastman/cpugroups,0
+b8be9b8,2016-08-17 12:16:43,Optimization to ForceField,0
+e93c2ab,2016-08-17 12:46:07,Merge pull request #1563 from peastman/ffopt,0
+d927ff4,2016-08-19 09:53:16,Minor optimizations,0
+b07cf77,2016-08-19 12:39:20,Further optimizations to neighbor list,0
+ad0783d,2016-08-19 15:58:21,Merge pull request #1564 from peastman/opt,0
+ec153cf,2016-08-23 10:52:57,Fixed error building static version of CUDA compiler plugin,1
+26a330a,2016-08-23 13:11:25,Merge pull request #1566 from peastman/static,0
+ce97de5,2016-09-01 09:58:25,Can build static AMOEBA libraries,0
+3e974a9,2016-09-01 12:12:59,Merge pull request #1575 from peastman/staticamoeba,0
+bdc8f29,2016-09-02 09:39:39,If temp directory does not exist  use runtime compiler,0
+e962bb4,2016-09-02 10:18:11,Merge pull request #1577 from peastman/tempdir,0
+43c8e81,2016-09-02 10:23:31,Minor code cleanup,0
+2c910db,2016-09-02 10:45:22,Fixed a test that was failing on CPU OpenCL,0
+73c4302,2016-09-02 12:05:18,Merge pull request #1578 from peastman/gaybernetest,0
+bb7cba0,2016-09-06 13:29:30,Improved GB performance in mixed precision,0
+ddcbe16,2016-09-06 14:14:55,Bug fix,1
+d027c82,2016-09-06 15:29:27,Merge pull request #1581 from peastman/gbenergy,0
+319018e,2016-09-07 09:45:59,Optimizations to DIIS,0
+e38c690,2016-09-07 10:42:59,Merge pull request #1582 from peastman/diisopt,0
+47fe6d4,2016-09-07 14:56:28,Optimizations to AMOEBA PME,0
+9e34d39,2016-09-08 12:24:13,Merge pull request #1583 from peastman/amoebapme,0
+90d90b2,2016-09-08 16:25:19,support DESTDIR and CMAKE_INSTALL_PREFIX in PythonInstall,0
+0ae80fd,2016-09-08 18:57:02,only DESTDIR makes sense for --root,0
+10b51d2,2016-09-12 13:05:04,Merge pull request #1579 from peastman/cleanup,0
+5ab3c39,2016-09-12 15:13:41,Minor optimizations,0
+f93e230,2016-09-13 16:01:57,Merge pull request #1587 from peastman/opt,0
+5fa4345,2016-09-14 13:46:14,Beginning of implementing fine grained pair list,0
+f7935fe,2016-09-14 13:48:24,Merge pull request #1584 from wesbarnett/master,0
+599a2cd,2016-09-21 14:53:07,updateParametersInContext() causes stateChanged() to be called,0
+f75c5ee,2016-09-22 10:03:30,Fixed a potential nan,0
+a3f22ab,2016-09-22 10:44:35,Fixed incorrect bound,0
+786bc04,2016-09-22 13:55:01,Merge pull request #1591 from peastman/statechanged,0
+9a0fcf7,2016-09-22 13:55:44,Merge pull request #1592 from peastman/nan,0
+e17a4dd,2016-09-22 14:01:39,ForceField supports CustomHbondForce,0
+9650d66,2016-09-22 15:57:36,Improvements to fine grained pair list,0
+73a841a,2016-09-22 16:11:22,Fixed friction coefficient in explicit solvent benchmarks,0
+6707ca5,2016-09-23 10:44:30,Merge pull request #1594 from peastman/friction,0
+dd14042,2016-09-23 15:03:26,Throw an exception if a barostat is used with a non-periodic system,0
+985d927,2016-09-23 15:42:01,Merge pull request #1596 from peastman/barostatperiodic,0
+9908d24,2016-09-26 13:29:41,Fixed error when CustomIntegrator modifies step size,1
+1de311c,2016-09-26 13:33:07,Fixed mistake in test case,0
+690f5c2,2016-09-26 13:35:57,Merge pull request #1593 from peastman/hbond,0
+283e97b,2016-09-26 14:25:36,Merge pull request #1600 from peastman/customdt,0
+222460e,2016-09-26 15:47:13,CompoundIntegrator::stateChanged() calls through to component integrators,0
+6cf592b,2016-09-27 09:41:48,Merge pull request #1601 from peastman/compoundstatechanged,0
+b44ff2f,2016-09-27 10:32:30,CustomIntegrator checks for writing to an unknown variable,0
+c216648,2016-09-27 12:04:38,Merge pull request #1603 from peastman/unknownglobal,0
+53b6ea1,2016-09-30 14:17:37,Bug fixes to building CustomHbondForce,1
+3c2a3b1,2016-10-03 19:54:56,Add support for customIntegrator serialization and test,0
+0dd0795,2016-10-03 22:06:42,Edit global compute,0
+299e589,2016-10-04 18:46:42,Add workaround for xml alphabetization issue  print exceptions in TestSerializeIntegrator,0
+171f3a2,2016-10-04 18:48:31,Fix indent,0
+67fc665,2016-10-05 10:40:26,Merge pull request #1608 from kyleabeauchamp/intser,0
+d07c0c0,2016-10-05 11:22:57,Merge pull request #1605 from peastman/hbondbug,0
+4b97a9c,2016-10-06 14:07:05,Updated version number to 7.1,0
+a32a117,2016-10-06 15:08:39,Merge pull request #1614 from peastman/version,0
+3654b78,2016-10-06 15:11:14,Updated manual to specify CUDA 8.0,0
+69d5e8b,2016-10-06 16:28:02,Merge pull request #1615 from peastman/docsversion,0
+283b1ac,2016-10-06 23:39:18,Fix precision issue in MTSIntegrator,0
+a395be3,2016-10-09 14:11:26,Remove openmm-dev conda badge and update openmm anaconda badge,0
+60d9bca,2016-10-09 14:13:32,Fix badge path,0
+b2e14e0,2016-10-09 14:14:37,Remove other openmm-dev travis badge,0
+ba62fa6,2016-10-09 14:15:19,Move badges to top,0
+6516827,2016-10-09 14:19:48,Remove out-of-date OpenMM 6.3 C++ and Python docs links,0
+7e114fb,2016-10-10 11:01:14,Merge pull request #1621 from jchodera/fix-readme,0
+2c46799,2016-10-10 16:30:53,Python API for parameter derivatives,0
+38f8ffb,2016-10-11 15:41:31,Fixed bug in reference implementation of VariableLangevinIntegrator,1
+49cb1b4,2016-10-11 15:43:18,Merge pull request #1623 from peastman/pythonderivs,0
+32d2707,2016-10-13 09:49:25,Merge pull request #1628 from peastman/variable,0
+fd91f60,2016-10-13 10:40:39,Remove warning about runtime compiler on CUDA 8.0,0
+65be515,2016-10-13 12:52:53,Merge pull request #1629 from peastman/warning,0
+7c91145,2016-10-13 13:45:31,Further improvements to pair  list,0
+1ded9a6,2016-10-13 14:53:45,Fixed bug computing energies without forces,1
+89f8a27,2016-10-13 16:00:57,Merge pull request #1631 from jchodera/fix-travis,0
+064a781,2016-10-13 16:01:55,Merge pull request #1630 from peastman/bug,0
+e997896,2016-10-13 18:01:15,Fix AMD APP SDK path,0
+388bf97,2016-10-14 09:38:18,Merge pull request #1632 from peastman/pairs,0
+669e314,2016-10-15 10:51:57,Merge remote-tracking branch 'upstream/master' into fix-mts,0
+d8f96b3,2016-10-15 11:27:30,Add tests of MTS integrator.,0
+763cbaa,2016-10-15 12:09:06,Remove noop,0
+e5be782,2016-10-17 10:23:45,Merge pull request #1618 from jchodera/fix-mts,0
+0a1895d,2016-10-17 13:21:10,Update docstrings of CustomCompoundBondForce and CustomTorsionForce to specify units and domain of torsion,0
+8ae2ee1,2016-10-17 13:53:39,Update theory and API docs with correct dihedral range.,0
+805bba9,2016-10-17 15:17:39,Solve DIIS matrix on GPU,0
+ef4e38b,2016-10-17 21:16:49,Fix API docs,0
+d02f75f,2016-10-18 00:13:11,Change variable 'q' to 'charge' in custom gb models,0
+38d967b,2016-10-18 09:41:58,Merge pull request #1639 from jchodera/update-docs,0
+c0538e1,2016-10-18 09:50:57,Added a missing fabs(),0
+d1caf10,2016-10-18 10:38:51,Merge pull request #1641 from jchodera/gb-cleanup,0
+5ea8680,2016-10-18 11:02:33,Merge pull request #1640 from peastman/diis,0
+556dddb,2016-10-18 14:34:21,Fixed bug computing neighbor list,1
+2c47f7b,2016-10-18 14:49:31,Fixed bug in OpenCL as well,1
+1f78252,2016-10-18 15:45:26,Merge pull request #1642 from peastman/radius,0
+f6d209a,2016-10-20 14:20:09,Fixed errors with multipoles set to ZOnly mode,1
+9480ec9,2016-10-20 16:24:11,Merge pull request #1646 from peastman/zonly,0
+effb1f5,2016-10-20 16:46:18,Support multipoles with polarization set to 0,0
+5f50908,2016-10-24 13:48:41,Merge pull request #1647 from peastman/polarizationzero,0
+ca4bbc1,2016-10-24 15:30:08,Handle singular matrix in DIIS,0
+ff27012,2016-10-25 09:54:06,Merge pull request #1652 from peastman/singular,0
+ba19d60,2016-10-28 12:29:08,Added error checking to axis particle indices,0
+04b1a06,2016-10-28 14:44:26,Merge pull request #1655 from peastman/checkaxis,0
+c300870,2016-11-07 15:53:38,Fixed bug in switching functions with CustomNonbondedForce,1
+31c883b,2016-11-08 15:25:55,Merge pull request #1663 from peastman/customswitch,0
+6129382,2016-11-09 12:30:22,Fixed error writing a DCD file for a very long trajectory,1
+f968bf9,2016-11-09 13:42:36,Merge pull request #1664 from peastman/dcd,0
+ff55a3a,2016-11-09 14:34:02,Added ignoreExternalBonds option to createSystem(),0
+f3ce672,2016-11-09 15:22:53,Fixed failing test case,0
+b465c98,2016-11-10 10:50:51,Merge pull request #1665 from peastman/external,0
+7c7b945,2016-11-10 15:35:24,Created Bond class that can store bond type and order,0
+311a2cf,2016-11-10 21:41:40,Add a test to make sure that the bond types are really singletons.,0
+829792e,2016-11-10 21:57:53,- Add a class to make what are intended to be Singletons really Singletons - Make Python 2.7 a minimum requirement per pandegroup/openmm#1656 - Make the bond classes as well as other forcefield.py singletons inherit from   Singleton to make them pickleable - Make class Bond inherit from namedtuple instead of tuple,0
+8f8dbd1,2016-11-11 06:57:50,Fix typo.,0
+ba924c5,2016-11-11 10:58:23,Merge pull request #4 from swails/bond,0
+ebb7a08,2016-11-11 15:06:47,Merge pull request #5 from swails/bond,0
+42686c7,2016-11-11 16:22:48,More singletons,0
+5c646b0,2016-11-14 13:31:49,Merge pull request #1668 from peastman/bond,0
+8112523,2016-11-14 13:36:20,Merge pull request #1670 from jchodera/update-packaging-scripts,0
+b9e2844,2016-11-14 14:12:59,Update build and packaging scripts.,0
+0087dcb,2016-11-14 16:09:51,Build tests for packaging,0
+308534a,2016-11-22 10:47:15,Fixed bug with ZBisect axis type in AmoebaMultipoleForce,1
+e0ee4f0,2016-11-22 11:25:30,Merge pull request #1674 from peastman/zbisect,0
+32b5568,2016-11-23 14:48:33,Minor change to avoid breaking PDBFixer,0
+9f71760,2016-11-23 15:57:02,Merge pull request #1675 from peastman/defaultarg,0
+a6fd874,2016-11-28 12:10:53,Fixed a bug in setting property by deprecated name,1
+ff851ec,2016-11-28 13:05:22,Merge pull request #1678 from peastman/property,0
+403e474,2016-11-29 16:18:37,Fixes to CustomIntegrator,0
+bbd06b1,2016-11-29 20:22:34,Merge pull request #1679 from peastman/customintegrator,0
+b7d91a8,2016-11-30 12:45:34,Disable fine-grained pair list,0
+29b1d43,2016-11-30 13:37:41,Merge pull request #1680 from peastman/disablepairlist,0
+37a87d8,2016-12-01 12:41:42,Langevin integrator supports setting friction to 0,0
+ea3c474,2016-12-01 13:28:56,Fixed error compiling kernel,1
+bb2d463,2016-12-01 14:43:27,Merge pull request #1681 from peastman/zerofriction,0
+5e53567,2016-12-02 10:54:52,Fixed error building neighbor list with triclinic boxes,1
+ea9714c,2016-12-02 13:18:47,CheckpointReporter does not create output file until first report,0
+c232858,2016-12-02 14:37:09,CheckpointReporter does a safe save,0
+0305b4b,2016-12-05 09:48:21,Merge pull request #1684 from peastman/checkpoint,0
+0071c33,2016-12-06 09:43:57,Merge pull request #1682 from peastman/triclinicerror,0
+4e6063d,2016-12-07 17:34:19,Initial scripts for automating Windows builds,0
+03d8f66,2016-12-09 11:12:09,Fixes to Windows build files,0
+e83a2f7,2016-12-12 16:19:04,Fixed a memory leak,0
+5447bb7,2016-12-12 16:34:43,Hopefully fixed compilation error on Windows,1
+877c2bf,2016-12-13 09:51:44,Merge pull request #1690 from peastman/leak,0
+3660a63,2016-12-15 10:49:41,Use APP SDK for OpenCL,0
+88b0a3e,2016-12-15 10:51:21,Merge pull request #1686 from peastman/windows,0
+74dba05,2016-12-16 16:22:06,Fixed bug merging steps in CustomIntegrator,1
+1e5b258,2016-12-16 20:28:50,Merge pull request #1692 from peastman/mergedsteps,0
+12046dc,2016-12-20 12:10:00,Fixed bug in CustomIntegrator,1
+228083e,2016-12-20 15:50:19,Merge pull request #1694 from peastman/storeposasdelta,0
+69abec4,2016-12-23 16:46:29,Update packaging scripts for jchodera/omnia-build-box:cuda80-amd30 docker image,0
+40cad32,2016-12-23 22:28:13,Update packaging scripts for clang linux builds,0
+fade85c,2016-12-23 23:26:57,Update `osx` packaging scripts.,0
+54b39e9,2016-12-24 14:34:25,Merge pull request #1697 from jchodera/update-packaging-scripts,0
+3164ee1,2016-12-24 15:02:20,Update source build script,0
+fb83a29,2016-12-24 15:07:25,Add documentation and remove gcc build scripts,0
+4b2c3ed,2016-12-24 15:24:08,Update osx build script to return to initial directory after build,0
+f8903a6,2016-12-24 17:08:20,Add back missing linux packaging scripts,0
+c21e213,2016-12-24 17:24:03,Revert two files that were accidentally caught in PR.,0
+e93e5ca,2017-01-03 12:52:29,Update travis s3 credentials,0
+7c86e87,2017-01-04 14:28:42,Support copy() and deepcopy() for TabulatedFunctions,0
+6745056,2017-01-04 15:36:46,Merge pull request #1708 from peastman/copyfunctions,0
+8eedf2b,2017-01-05 13:02:05,Fixed deprecation warnings in Python API docs,0
+a51caf7,2017-01-05 15:06:16,Merge pull request #1709 from peastman/deprecated,0
+adb3cda,2017-01-05 17:34:20,Added more error checking to constraints,0
+06c82bc,2017-01-06 10:19:44,Merge pull request #1711 from peastman/constraints,0
+9b45e32,2017-01-09 10:41:56,Avoid adding hydrogens at same location,0
+a55e1e4,2017-01-09 11:56:57,Merge pull request #1713 from peastman/hydrogens,0
+cfa7ab8,2017-01-10 15:13:49,Fixed bug in building neighbor list,1
+813f60f,2017-01-10 16:13:31,Merge pull request #1715 from peastman/nan,0
+d4465cb,2017-01-11 09:02:49,Merge pull request #1704 from mpharrigan/travis-cred,0
+5044c12,2017-01-11 10:51:33,Fix for errors on Pascal GPUs,1
+606eacf,2017-01-11 12:32:13,Merge pull request #1717 from peastman/volatile,0
+b3ce534,2017-01-12 09:48:38,Documentation updates for 7.1,0
+9500f3a,2017-01-12 10:39:04,Merge pull request #1720 from peastman/docs,0
+89a564f,2017-01-13 15:34:20,Fix handling of scientific notation in GROMACS top file for torsion field 7,0
+c1dc7ba,2017-01-13 17:02:12,Merge pull request #1721 from davidlmobley/master,0
+00d8068,2017-01-18 14:23:53,Minor improvements to Vagrant configuration,0
+02e7a5d,2017-01-18 14:47:05,Merge pull request #1722 from peastman/vagrant,0
+77fc4c1,2017-01-23 11:33:44,Fixed bug applying periodic boundary conditions to interaction groups,1
+9567ddb,2017-01-23 12:16:48,Merge pull request #1726 from peastman/groupsperiodic,0

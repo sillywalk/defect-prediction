@@ -1,0 +1,339 @@
+7a7055bMon Feb 10 09:51:11 2014 -0800Merge pull request #328 from peastman/master
+e49231bMon Feb 10 09:50:31 2014 -0800Fixed an intermittent segfault
+382b98aFri Feb 7 11:07:13 2014 -0800Merge pull request #321 from peastman/master
+6109ba6Fri Feb 7 11:06:40 2014 -0800Created PDF of latest manuals
+f6eaf2bThu Feb 6 10:44:39 2014 -0800Merge pull request #320 from peastman/master
+6b6f7f1Thu Feb 6 10:44:09 2014 -0800Fixed segfaults caused by errors in Fortran wrapper generation
+a2c68a6Wed Feb 5 17:29:14 2014 -0800Merge pull request #319 from swails/master
+fd1bb3dWed Feb 5 18:39:22 2014 -0500In the generated C wrappers, instantiate std::string arguments from 'const char*' by passing it straight to the std::string constructor rather than through a reinterpret_cast.  This solves segfaults when trying to use the OpenMM C-API (which is auto-generated from the generate*Wrappers.py scripts) when used with gcc/g++.  clang and clang++ seem to accept this (perhaps why it was not caught before).
+a6524f9Mon Feb 3 10:26:50 2014 -0800Merge pull request #311 from cxhernandez/master
+baa7a8fFri Jan 31 15:48:12 2014 -0800Update amberprmtopfile.py
+fde182cFri Jan 31 15:47:11 2014 -0800Update pdbfile.py
+c7a6155Thu Jan 30 09:41:25 2014 -0800Merge pull request #310 from rmcgibbo/readme
+db0277dWed Jan 29 23:55:10 2014 -0800Update .travis.yml
+493d2bfWed Jan 29 23:33:08 2014 -0800Add build status (travis) to readme.md
+b93b7b2Wed Jan 29 17:15:48 2014 -0800Merge pull request #296 from pgrinaway/master
+ad2c504Tue Jan 28 20:43:06 2014 -0500changed to nosetests and commented out manual python tests
+5ddfc6cTue Jan 28 11:52:56 2014 -0800Merge pull request #309 from proteneer/static_build
+50b9d14Tue Jan 28 11:49:35 2014 -0800Merge pull request #308 from swails/master
+a8bb863Tue Jan 28 11:10:41 2014 -0800Use static pthread_mt libraries when doing static builds on windows
+f690c72Tue Jan 28 10:54:53 2014 -0800Reference Amoeba and Drude static libraries can be built
+bb3d5d9Tue Jan 28 10:48:53 2014 -0800Merge pull request #307 from swails/fix_is_string
+57eba9dTue Jan 28 10:34:40 2014 -0800Fix linker issues for CPU platform on Windows
+e8baa3bTue Jan 28 13:26:13 2014 -0500Convert 1/A to 1/nm
+3872f39Tue Jan 28 13:10:15 2014 -0500Convert temperature from a quantity to float if it's a quantity.
+9519a9eTue Jan 28 10:47:02 2014 -0500Update implicit solvent salt concentration/kappa handling. Now, if implicitSolventKappa is provided it will be used. Otherwise, implicitSolventSaltConc will be used to compute kappa from the solvent dielectric constant and simulation temperature.
+9cdf9f3Tue Jan 28 08:06:02 2014 -0500Also catch ValueError in _is_string. Fix indentation to be consistent (5 spaces to 4 -- this would be a SyntaxError in Python3).
+e168759Tue Jan 28 07:52:41 2014 -0500Merge remote-tracking branch 'origin'
+d65ff65Mon Jan 27 16:25:30 2014 -0800PME Plugin can now be built statically
+8285d65Mon Jan 27 15:51:20 2014 -0800CPU, CUDA, and OpenCL platforms can now be built statically
+b661807Fri Jan 24 13:44:53 2014 -0800Merge pull request #303 from peastman/master
+b2caf6cFri Jan 24 13:44:12 2014 -0800Fixed a crash caused by a change to initialization order
+57a6768Thu Jan 23 10:57:59 2014 -0800Merge pull request #301 from peastman/master
+ee3fcb0Thu Jan 23 10:57:38 2014 -0800Prevent trying to use the CPU OpenCL device on OS X
+274b48eWed Jan 22 13:58:29 2014 -0800Merge pull request #300 from peastman/master
+77a5424Wed Jan 22 13:58:03 2014 -0800Fixed a compilation error
+18629f7Wed Jan 22 13:11:07 2014 -0800Merge pull request #299 from peastman/master
+146b66bWed Jan 22 13:10:15 2014 -0800Parallelized the initialization of positions and forces in the CPU platform
+72df8d3Wed Jan 22 12:20:06 2014 -0800Merge pull request #298 from peastman/master
+543d51dWed Jan 22 12:14:35 2014 -0800Parallelized the computation of torsions with CPU platform
+4380c7dWed Jan 22 11:54:03 2014 -0800Merge pull request #297 from peastman/master
+4f33932Wed Jan 22 11:53:14 2014 -0800Fixed errors in wrapper generation when using Visual Studio 2010
+a7ae13aWed Jan 22 11:09:24 2014 -0500uncommented make test
+9625696Wed Jan 22 10:58:02 2014 -0500set destination directory with cmake instead of make
+739d025Wed Jan 22 10:39:38 2014 -0500fixed ls directory error
+f5c6d5cWed Jan 22 10:29:19 2014 -0500changed to home directory for OpenMM root
+d3e4e7eWed Jan 22 10:18:35 2014 -0500Temporarily commented out tests during debugging added ls /OpenMM/include to see what is happening with that
+77e12eeWed Jan 22 09:30:58 2014 -0500add explicit destination dir
+0495db7Tue Jan 21 15:40:56 2014 -0500fixed some parts of travis yml
+8a279feTue Jan 21 14:14:50 2014 -0500Added a .travis.yml file to allow Travis CI to perform build tests
+9a127faTue Jan 21 09:45:30 2014 -0500Merge branch 'master' of http://github.com/SimTk/openmm
+492e7f2Fri Jan 17 12:01:54 2014 -0800Merge pull request #294 from peastman/master
+7b0faf6Fri Jan 17 12:00:57 2014 -0800Lots of documentation updates for 6.0
+de17b26Fri Jan 17 10:29:17 2014 -0800Merge pull request #293 from peastman/master
+9907260Fri Jan 17 10:28:55 2014 -0800Updated version number to 6.0
+f2c4251Thu Jan 16 16:28:28 2014 -0800Merge pull request #291 from peastman/master
+55f008eThu Jan 16 16:27:59 2014 -0800Fixed an error in CMake script when compiling with clang
+dbdb7f4Thu Jan 16 11:20:14 2014 -0800Merge pull request #290 from peastman/master
+9e2c6b0Thu Jan 16 11:17:11 2014 -0800Ensure that PYTHON_EXECUTABLE is visible to all CMake scripts
+94fd5e0Wed Jan 15 16:04:02 2014 -0800Merge pull request #289 from peastman/master
+feb0368Wed Jan 15 16:02:11 2014 -0800Fixed a test case that occasionally failed
+289abdcTue Jan 14 17:27:02 2014 -0800Merge pull request #288 from peastman/master
+9966f13Tue Jan 14 17:25:17 2014 -0800Test cases detect if CPU is not supported and exit rather than crashing
+2b10b61Tue Jan 14 15:06:17 2014 -0800Merge pull request #287 from peastman/master
+bd54340Tue Jan 14 15:05:30 2014 -0800Fixed a compilation error when building wrappers
+f16a609Tue Jan 14 17:59:07 2014 -0500Change implicitSolentKappa to implicitSolventSaltConc and convert to implicitSolventKappa the same (black-magic) way that Amber does. I have never been able to reproduce the prefactor used to convert to kappa in Amber... sigh.
+901108aTue Jan 14 11:38:52 2014 -0800Merge pull request #286 from peastman/master
+df56396Tue Jan 14 11:37:50 2014 -0800Added methods for changing default parameters on barostats and thermostats
+435be5eWed Jan 15 11:12:04 2014 -0800Workaround for bug in Visual Studio
+6341257Tue Jan 14 11:13:11 2014 -0800Merge pull request #285 from peastman/master
+c285b60Mon Jan 13 23:33:07 2014 -0800Detect Visual Studio in a way that works correctly with NMake files
+19dd114Mon Jan 13 23:30:02 2014 -0800Detect Visual Studio in a way that works correctly with NMake files
+75dc853Mon Jan 13 16:36:01 2014 -0800Merge pull request #284 from peastman/master
+9723e3bMon Jan 13 16:34:44 2014 -0800Merge pull request #283 from peastman/master
+f454559Fri Jan 10 17:01:26 2014 -0800Merge pull request #282 from peastman/master
+1e857c3Fri Jan 10 16:55:15 2014 -0800Same bug fix as the previous commit, but for CUDA
+44e65cbFri Jan 10 16:21:04 2014 -0800Fixed a bug in OpenCL implementation of CustomGBForce
+e32e1a6Fri Jan 10 15:36:49 2014 -0800Merge pull request #278 from peastman/progress
+db9528cFri Jan 10 13:43:21 2014 -0800Merge pull request #281 from peastman/master
+8c918caFri Jan 10 13:42:54 2014 -0800Updated Developer Guide for 6.0
+8e24cfcThu Jan 9 15:56:48 2014 -0800Merge pull request #280 from peastman/master
+e14ab7bThu Jan 9 15:55:47 2014 -0800Bug fix
+76d592dThu Jan 9 15:31:31 2014 -0800Fixed additional errors on Windows
+5c98328Thu Jan 9 13:19:07 2014 -0800Fixed a bug that could potentially cause LJ energy to be nan
+d3469b8Wed Jan 8 17:34:26 2014 -0800Merge pull request #279 from peastman/master
+cf52e69Wed Jan 8 17:33:17 2014 -0800Optimizations to CPU GBSA
+6c9b8cfWed Jan 8 14:49:51 2014 -0800StateDataReport can report % progress, speed, and time to completion
+6d356ddWed Jan 8 14:42:30 2014 -0800Merge pull request #277 from peastman/winvec
+72e81e0Wed Jan 8 14:06:59 2014 -0800Fixed lots of compilation errors on Windows
+a4f7ac4Tue Jan 7 10:51:23 2014 -0800Merge pull request #276 from peastman/master
+06db7acTue Jan 7 10:51:22 2014 -0800Very minor optimization
+8502013Mon Jan 6 16:27:39 2014 -0800Merge pull request #275 from swails/master
+2cbb8f4Mon Jan 6 19:22:11 2014 -0500Merge branch 'master' of https://github.com/swails/openmm
+8b44287Mon Jan 6 19:22:05 2014 -0500Merge branch 'master' of https://github.com/SimTk/openmm
+291484fMon Jan 6 16:09:45 2014 -0800Merge pull request #274 from peastman/sfmt
+b3d9358Mon Jan 6 19:06:00 2014 -0500Merge branch 'master' of http://github.com/SimTk/openmm
+9f95775Mon Jan 6 15:57:11 2014 -0800Merge pull request #264 from rmcgibbo/reset-dlopen-flags
+64b0a6cMon Jan 6 15:46:23 2014 -0800Ensure SFMT data array is correctly aligned
+2e83bfcMon Jan 6 14:48:43 2014 -0800Merged changes between repositories by hand
+d91e3f1Mon Jan 6 14:34:32 2014 -0800Improved logic for selecting a platform to better deal with exceptions in context initialization
+5e2170fMon Jan 6 12:32:36 2014 -0800Merge pull request #272 from peastman/master
+fc1d0b5Mon Jan 6 12:32:09 2014 -0800Fixed some bugs identified by Valgrind
+192fe4cMon Jan 6 11:37:03 2014 -0800Merge pull request #271 from peastman/master
+29bfe07Mon Jan 6 11:23:07 2014 -0800Workaround for compilation error on some compilers
+742ab84Mon Jan 6 10:36:21 2014 -0800Merge pull request #270 from peastman/host
+d373424Sat Jan 4 21:27:30 2014 -0800Merge pull request #268 from jchodera/minor-context-fixes
+9bb2259Sat Jan 4 10:51:38 2014 -0800Added missing required kernel names (ApplyConstraintsKernel and VirtualSitesKernel) to check for platform capabilities, since these kernels are initialized in the next code block.
+2558077Wed Jan 1 16:32:45 2014 -0500Fix misplacement of "kappa" in cutoff-GB expression.
+98ffd5fMon Dec 30 17:27:27 2013 -0800Just remove the whole nonsense
+d511503Mon Dec 30 17:11:13 2013 -0800unused variables
+bb628e2Mon Dec 30 16:58:52 2013 -0800Reset the dlopen flags
+2410cbeFri Dec 27 19:20:19 2013 -0500Correct treatment of kappa when kappa == 0 and when there is a cutoff.
+a99915bFri Dec 27 12:14:20 2013 -0800Merge pull request #260 from swails/master
+4c24a43Wed Dec 25 17:47:23 2013 -0500Apparently 1/u.nanometers is a quantity rather than a unit, so the command:
+ce46b9bWed Dec 25 14:32:12 2013 -0500Bring GBn2 into the simtk.openmm.app namespace. Also remove some redundant references.
+5219d2aSun Dec 22 15:36:22 2013 -0800Merge pull request #249 from swails/master
+38f286eSun Dec 22 13:46:51 2013 -0500Unit-ify the 0 in implicitSolventKappa.
+3ca3fe5Sat Dec 21 23:40:44 2013 -0500Oops, 1/length, not length.
+caefd49Sat Dec 21 23:38:45 2013 -0500Merge branch 'master' of https://github.com/SimTk/openmm
+508f989Sat Dec 21 23:38:02 2013 -0500Allow implicitSolventKappa to have units (it has dimensions of length) and convert the number to pure nanometers before using it in the GB code.
+cc11a44Fri Dec 20 17:38:30 2013 -0800Fixed quotes in command line when using CudaHostCompiler option
+0b35240Fri Dec 20 16:49:57 2013 -0800Merge pull request #255 from peastman/master
+8bdf082Fri Dec 20 16:49:11 2013 -0800Parallelized summing the forces from different threads
+f1258fcFri Dec 20 16:00:02 2013 -0800Merge pull request #254 from peastman/master
+83470b8Fri Dec 20 15:59:43 2013 -0800Merge branch 'master' of https://github.com/peastman/openmm
+39d270dFri Dec 20 15:21:06 2013 -0800Merge pull request #253 from peastman/master
+92b12c5Fri Dec 20 15:19:26 2013 -0800Benchmark script did not set OpenCLPrecision correctly
+3366382Fri Dec 20 15:18:48 2013 -0800Fixed a compilation error on gcc 4.4
+ddf1216Thu Dec 19 15:28:52 2013 -0800Parallelized LangevinIntegrator for CPU platform
+da998c5Thu Dec 19 10:03:00 2013 -0800Merge pull request #251 from peastman/avx
+6cde186Thu Dec 19 09:57:58 2013 -0800Fixed bug in detecting if AVX is supported
+d4af874Wed Dec 18 18:14:59 2013 -0800Automatically select whether to use the SSE or AVX version of CpuNonbondedForce
+5cd23acWed Dec 18 14:28:51 2013 -0800Improved vectorization of CpuNonbondedForce
+a727539Wed Dec 18 11:23:04 2013 -0500kappa -> implicitSolventKappa
+e22808fMon Dec 16 16:57:02 2013 -0800Created AVX implementation of CPU nonbonded force
+b56f653Mon Dec 16 18:00:42 2013 -0500Add a salt concentration term to the custom GB forces and add an optional "kappa" keyword to the Amber createSystem method call to allow users to specify it.
+ddad7c6Mon Dec 16 12:48:24 2013 -0800Created wrapper classes for AVX vectors
+b989fd9Fri Dec 13 15:53:50 2013 -0800Added option for setting CUDA host compiler
+59982c0Fri Dec 13 14:15:28 2013 -0800Merge pull request #247 from peastman/master
+ce9e41aFri Dec 13 14:15:05 2013 -0800Fixed some incorrect parameters in SWM4-NDP water model
+2def811Fri Dec 13 13:01:09 2013 -0800Merge pull request #246 from peastman/master
+8beb127Fri Dec 13 13:00:47 2013 -0800Detect if user specifies an unknown property name
+911e27dFri Dec 13 11:41:21 2013 -0800Merge pull request #245 from peastman/wrappers
+0a4ffa8Fri Dec 13 11:38:32 2013 -0800Minor fix to Python wrappers
+d56c21bFri Dec 13 11:37:35 2013 -0800Merged latest changes from main branch
+1049addFri Dec 13 11:06:19 2013 -0800Fixed compilation errors in debug mode
+306d1bbThu Dec 12 16:56:23 2013 -0800Merge pull request #244 from peastman/master
+8d062ebThu Dec 12 16:39:08 2013 -0800Reference implementation of AndersenThermostat did not handle massless particles correctly
+0865043Thu Dec 12 15:40:21 2013 -0800Merge pull request #243 from peastman/master
+7ff1faaThu Dec 12 15:39:52 2013 -0800All code is compiled with SSE enabled.  This eliminates errors with some compilers.
+1a0d715Thu Dec 12 14:17:25 2013 -0800Fixed errors when using pre-1.8 versions of Doxygen
+18eaf2cThu Dec 12 13:08:32 2013 -0800Merge pull request #241 from peastman/master
+ef83021Thu Dec 12 13:07:55 2013 -0800Plugins work with CPU platform.  This involved separating the reference implementations of plugins into their own libraries.
+ec5d89dThu Dec 12 13:05:15 2013 -0800Bug fixes to Fortran wrappers
+5c227efWed Dec 11 17:28:15 2013 -0800Merge pull request #239 from peastman/master
+b4150b1Wed Dec 11 17:27:19 2013 -0800Fixes for compilation errors on Visual Studio 2013
+56e5e00Wed Dec 11 10:53:18 2013 -0800Merge pull request #238 from peastman/master
+88a1153Wed Dec 11 10:52:57 2013 -0800RPMD works correctly with a barostat
+7a08404Wed Dec 11 10:10:22 2013 -0800Merge pull request #237 from peastman/master
+a78624eTue Dec 10 15:04:21 2013 -0800Merge branch 'master' of https://github.com/peastman/openmm
+24eb8d4Tue Dec 10 15:03:48 2013 -0800Pickling an Element object works correctly
+588a4c9Tue Dec 10 14:03:07 2013 -0800Merged changes from main branch
+ff6af02Tue Dec 10 11:46:50 2013 -0800Merge pull request #235 from peastman/master
+9ec4f59Tue Dec 10 11:46:32 2013 -0800Minor optimizations to CPU platform
+3176ab1Mon Dec 9 16:04:57 2013 -0800Merge pull request #233 from peastman/master
+0cb269fMon Dec 9 16:04:29 2013 -0800Still more fixes for problems on OS X 10.9
+1b94206Mon Dec 9 10:58:00 2013 -0800Merge pull request #232 from peastman/master
+48498b1Mon Dec 9 10:57:32 2013 -0800Fixed bug in pull request #227
+d438735Mon Dec 9 10:32:26 2013 -0800Merge pull request #231 from peastman/master
+194d031Mon Dec 9 10:11:19 2013 -0800Test case for SETTLE on CPU platform
+0674880Mon Dec 9 10:10:43 2013 -0800Parallelized SETTLE on CPU platform
+7b16da7Fri Dec 6 17:07:31 2013 -0800Merge pull request #227 from pgrinaway/units
+4c5e01aFri Dec 6 15:36:59 2013 -0800Merge pull request #230 from peastman/master
+4d25f4eFri Dec 6 15:36:12 2013 -0800Major simplification to constraint handling in reference platform
+6caf992Fri Dec 6 13:25:55 2013 -0800Merge pull request #229 from peastman/master
+99f3a8aFri Dec 6 13:25:32 2013 -0800Further optimizations to CPU platform
+8d6d552Thu Dec 5 21:22:48 2013 -0500Check type in __eq__() and __ne__(), simplify code
+d600e58Thu Dec 5 15:48:54 2013 -0800Merge pull request #228 from peastman/master
+2882737Thu Dec 5 15:48:34 2013 -0800Minor optimizations to CPU platform
+1f1a28bThu Dec 5 16:53:13 2013 -0500Added implementation for equality __eq__() and inequality __ne__() operators
+7295908Wed Dec 4 17:49:06 2013 -0800Merge pull request #225 from peastman/master
+2cd817bWed Dec 4 17:48:31 2013 -0800More fixes for problems on OS X 10.9
+6f3d9fdWed Dec 4 14:28:31 2013 -0800Merge pull request #224 from peastman/master
+b1be68dWed Dec 4 14:27:46 2013 -0800Enforce memory alignment to improve performance of vector operations.  Also fixed bugs in an earlier optimization.
+bbf3de2Wed Dec 4 10:46:43 2013 -0800Created C/Fortran wrappers for serialization
+3732e0eWed Dec 4 10:31:01 2013 -0800Merge pull request #223 from peastman/master
+be04ec5Wed Dec 4 10:28:47 2013 -0800Optimizations to CPU nonbonded forces: better load balancing between threads, use linear splines instead of cubic
+5d0aeceTue Dec 3 11:29:13 2013 -0800Merge pull request #222 from peastman/master
+56cf0fdTue Dec 3 10:49:32 2013 -0800Optimization to building neighbor list on CPU platform
+537912eTue Nov 26 10:13:44 2013 -0800Include serialization classes directly in main library
+c63c2c0Mon Nov 25 16:46:13 2013 -0800Removed files related to the old wrapper generators
+3848adcMon Nov 25 16:27:31 2013 -0800Bug fixes to wrapper generation.  Implemented wrappers for AMOEBA.
+1a1e233Mon Nov 25 11:10:13 2013 -0800Merge pull request #221 from peastman/master
+0ee8c78Mon Nov 25 11:09:38 2013 -0800Fixed bugs in computing PME energy with CPU platform
+1926664Fri Nov 22 15:16:45 2013 -0800Finished wrappers for main library
+a27fd3dThu Nov 21 16:25:13 2013 -0800Implemented generating Fortran wrapper header
+3fda987Thu Nov 21 14:17:11 2013 -0800Finished C wrapper generation
+19b4fc4Thu Nov 21 10:34:32 2013 -0800Merge branch 'master' of https://github.com/peastman/openmm into wrappers
+772b8a1Thu Nov 21 10:05:56 2013 -0800Continuing to reimplement wrapper generation
+d59a34fWed Nov 13 08:36:35 2013 -0800Merge pull request #218 from peastman/master
+c1f64b3Wed Nov 13 08:35:48 2013 -0800Fixed errors on OS X 10.9: link against libc++ instead of libstdc++
+81baff5Fri Nov 8 17:44:44 2013 -0800Began rewriting C/Fortran wrapper generation to use Doxygen/Python instead of gccxml/XSLT
+5c063a7Fri Nov 8 12:26:04 2013 -0800Merge pull request #215 from peastman/master
+9d207e8Fri Nov 8 12:25:14 2013 -0800Added some missing virtual destructors
+ed0abe8Thu Nov 7 15:21:33 2013 -0800Merge pull request #213 from peastman/master
+9a26412Thu Nov 7 15:20:53 2013 -0800Fixed compilation errors on OS X 10.9
+fd2708bThu Nov 7 13:49:28 2013 -0800Merge pull request #212 from peastman/master
+f39a554Thu Nov 7 13:41:58 2013 -0800Tabulated log(x) to improve GB performance
+59893e5Thu Nov 7 11:59:43 2013 -0800Merge pull request #211 from peastman/master
+7714f7fThu Nov 7 11:55:01 2013 -0800Fixed compilation errors on gcc
+f52c8d4Wed Nov 6 12:55:26 2013 -0800Merge pull request #208 from peastman/master
+cf80933Wed Nov 6 12:54:43 2013 -0800Improved the geometry of hydroxyls when adding hydrogens
+7ac8f66Wed Nov 6 10:30:18 2013 -0800Merge pull request #207 from peastman/master
+563914aWed Nov 6 10:29:51 2013 -0800Optimizations to CPU version of GBSA
+412d42cTue Nov 5 11:42:14 2013 -0800Merge pull request #206 from peastman/master
+c6b335eTue Nov 5 11:39:36 2013 -0800Merge branch 'master' of https://github.com/peastman/openmm
+b1d9891Tue Nov 5 11:38:27 2013 -0800Bug fix to benchmarking script
+aae25fdTue Nov 5 11:35:26 2013 -0800Bug fix to benchmarking script
+be0b1aeTue Nov 5 11:03:38 2013 -0800Moved benchmarking script into main repository
+4cb0518Mon Nov 4 16:44:10 2013 -0800Merge pull request #205 from peastman/gb
+775866bMon Nov 4 16:40:36 2013 -0800Minor optimizations to CPU version of GBSAOBCForce
+c97ca97Mon Nov 4 15:54:16 2013 -0800Created optimized CPU version of GBSAOBCForce
+7b60851Mon Nov 4 12:12:01 2013 -0800Bug fixes
+be61ee5Fri Nov 1 13:01:39 2013 -0700Centralized the forces, positions, and thread pool so they can be shared between kernels
+2bc341aThu Oct 31 17:35:01 2013 -0700Merge pull request #200 from rmcgibbo/pgi
+16978d1Thu Oct 31 17:18:15 2013 -0700include what you use
+8e11ed9Wed Oct 30 16:18:30 2013 -0700Merge pull request #195 from peastman/master
+521f61eWed Oct 30 16:17:42 2013 -0700Skip all /internal directories when building Python wrappers.  This allows the configuration file to be simplified.
+641389fWed Oct 30 13:55:25 2013 -0700Merge pull request #193 from peastman/master
+79f064aWed Oct 30 13:51:11 2013 -0700Also use the previous optimization with reaction field
+62c64e3Wed Oct 30 13:31:18 2013 -0700Minor optimizations to CPU platform: avoid applying periodic boundary conditions unnecessarily
+eda6920Wed Oct 30 10:29:21 2013 -0700Merge pull request #191 from peastman/master
+a69227cWed Oct 30 10:17:14 2013 -0700Further optimizations to CPU nonbonded force
+2563e95Tue Oct 29 14:02:11 2013 -0700Added a missing dependency on pthreads
+f3fe550Tue Oct 29 13:39:36 2013 -0700Created ThreadPool to simplify parallel code
+9c656d8Tue Oct 29 10:36:08 2013 -0700Merge pull request #190 from rmcgibbo/typo
+6073a3bTue Oct 29 02:42:29 2013 -0700typo
+d389692Mon Oct 28 17:41:16 2013 -0700Merge pull request #189 from rmcgibbo/fix
+bb25994Mon Oct 28 17:07:03 2013 -0700Fix
+a6613bfMon Oct 28 11:08:01 2013 -0700Merge pull request #188 from rmcgibbo/fix3
+4d36334Sat Oct 26 12:11:26 2013 -0700Fix for #151
+e26ad5dThu Oct 24 18:54:29 2013 -0700Merge pull request #186 from peastman/master
+0be0772Thu Oct 24 18:53:34 2013 -0700Fixed errors in Python wrapping of AmoebaMultipoleForce
+15f8a12Thu Oct 24 18:50:10 2013 -0700Merge pull request #185 from peastman/master
+a5bcc4bThu Oct 24 10:43:51 2013 -0700Minor optimizations to CPU platform
+79fd69cWed Oct 23 17:47:52 2013 -0700Merge pull request #182 from peastman/master
+062a2dbWed Oct 23 17:45:59 2013 -0700Minor change to the neighbor list padding distance
+8d9950dWed Oct 23 17:28:11 2013 -0700Do a more complex test to decide when to rebuild the neighbor list
+6ad8697Wed Oct 23 16:54:02 2013 -0700Minor optimizations to neighbor list construction
+3dea0a6Wed Oct 23 15:53:46 2013 -0700Enabled the SSE version of SFMT
+cf6ca0aWed Oct 23 15:41:11 2013 -0700Fixed an error in generating Python wrappers
+d6b2eb7Wed Oct 23 14:59:57 2013 -0700Parallelized the processing of exclusions for Ewald
+b5da738Wed Oct 23 14:01:12 2013 -0700Merge pull request #179 from swails/master
+f301042Wed Oct 23 13:53:33 2013 -0700Optimized algorithm for building neighbor list.
+56902b4Tue Oct 22 14:15:22 2013 -0700Restructured nonbonded calculation to allow more efficient vectorization
+6eacad4Mon Oct 21 11:01:59 2013 -0700Created vector classes to simplify SSE code
+844b38dSat Oct 19 11:08:58 2013 -0400Tweak comment in createSystem docstring to indicate GBn2 as an available choice.
+51a20b8Sat Oct 19 10:25:07 2013 -0400Implement GBn2 (equivalent to igb==8 in Amber) via CustomGBForce. [1] The energy computed with OpenMM matches that computed with Amber for the new model as well as the existing models do (see table below). GBn2 is a much better GB model than either the OBC models or the original GB neck by all indications...
+9c66613Fri Oct 18 10:58:49 2013 -0700Merge pull request #178 from swails/master
+17d440fFri Oct 18 13:40:55 2013 -0400Add the flush calls back to statedatareporter properly protected by try-except.
+7b28f2cFri Oct 18 13:35:34 2013 -0400Add sulphur and aluminium aliases.
+28020b3Fri Oct 18 09:21:54 2013 -0400Support gzip and bzip2 compression for StateDataReporter (based on filename extension). Users were already able to pass gzip.GzipFile objects and StateDataReporter would write compressed data. bz2.BZ2File objects also worked after I removed the self._out.flush() calls.
+8eb840bThu Oct 17 15:23:07 2013 -0700Merge pull request #176 from peastman/master
+2ff9f47Thu Oct 17 15:22:25 2013 -0700Added AmoebaMultipoleForce::getInducedDipoles()
+a42c55aThu Oct 17 13:07:50 2013 -0700Merge pull request #175 from peastman/master
+925fc9dThu Oct 17 13:06:18 2013 -0700Merge branch 'master' of https://github.com/SimTk/openmm
+8f16850Thu Oct 17 12:37:16 2013 -0700Fixed segfaults on some computers
+7b133c7Thu Oct 17 10:36:15 2013 -0700Merge pull request #174 from peastman/master
+587ed0cThu Oct 17 10:35:39 2013 -0700Updated documentation for Lepton
+18587bdWed Oct 16 16:39:21 2013 -0700Merge pull request #173 from peastman/master
+54e47d2Wed Oct 16 16:36:18 2013 -0700Converted lots of ExpressionPrograms to CompiledExpressions
+8b3bfc9Wed Oct 16 14:25:42 2013 -0700Lots of optimizations to Lepton, including creating CompiledExpression class.
+54bfc13Wed Oct 16 10:39:43 2013 -0700Merge pull request #171 from swails/master
+efe7ff4Wed Oct 16 10:33:43 2013 -0700Merge pull request #169 from peastman/connect
+b2a6f40Tue Oct 15 23:21:11 2013 -0400Take the 1-4 non-bonded scaling parameters from the Amber topology files if present, defaulting to 1.2 (SCEE) and 2.0 (SCNB) if they're not present. If values for scee and scnb are provided to readAmberSystem they will override any values in the topology file, but a warning will be printed (since ignoring the scaling parameters in the topology file really changes the force field).
+089767bTue Oct 15 15:41:10 2013 -0700Merge pull request #170 from peastman/master
+d389e50Tue Oct 15 15:40:22 2013 -0700Prevent segfaults when a simulation blows up
+27471ddTue Oct 15 14:45:23 2013 -0700Write CONECT records to PDB files
+79e2fb0Tue Oct 15 13:47:32 2013 -0700Merge pull request #167 from peastman/cpu
+2943d62Tue Oct 15 13:39:32 2013 -0700Bug fix
+dd175b2Tue Oct 15 12:31:55 2013 -0700Bug fix, plus a minor optimization to reference platform
+7901182Mon Oct 14 17:32:43 2013 -0700Assorted optimizations
+f153370Mon Oct 14 16:02:57 2013 -0700Tabulate the Ewald scale factor
+eba7ac0Mon Oct 14 14:48:07 2013 -0700Merge pull request #165 from swails/master
+95b6034Mon Oct 14 15:21:54 2013 -0400Add a comment to clarify that calling setReactionFieldDielectric on force instead of gb is intentional.
+f7b98d0Mon Oct 14 15:06:10 2013 -0400Corrected minor bug in GBneck screening parameter assignment. The existing logic was:
+9491eb7Mon Oct 14 10:42:13 2013 -0700Fixed a race condition
+18f1cd3Fri Oct 11 17:07:33 2013 -0700Do not rebuild the neighbor list every time step
+b278bb6Fri Oct 11 16:40:18 2013 -0700Direct space nonbonded is multithreaded
+3c435fbFri Oct 11 15:34:55 2013 -0700Use optimized PME implementation when available
+e22b8f5Fri Oct 11 15:16:29 2013 -0700PME works correctly in CPU platform
+6b10b90Fri Oct 11 11:58:19 2013 -0700Continuing to optimize CPU nonbonded routines
+9bc194bThu Oct 10 16:27:40 2013 -0700Began creating optimized implementation of direct space nonbonded calculation
+50d4f9dThu Oct 10 13:32:06 2013 -0700Separated hardware query functions into a separate file.  CPU platform checks for the correct hardware.
+f4a1847Thu Oct 10 12:58:16 2013 -0700Neighborlist construction is multithreaded.
+3b3fd57Wed Oct 9 17:25:02 2013 -0700More optimizations to neighborlist construction, including SSE intrinsics
+d4d9ce1Wed Oct 9 16:42:23 2013 -0700Optimizations to neighbor list construction
+d4a343eWed Oct 9 11:13:46 2013 -0700Early beginnings of creating an optimized CPU platform
+48dc97bTue Oct 8 15:16:46 2013 -0700Merge pull request #159 from peastman/install
+d6d7919Tue Oct 8 15:15:59 2013 -0700Made identification of plugin directory slightly more robust
+64b39ffTue Oct 8 14:47:54 2013 -0700Merge pull request #164 from peastman/master
+e68df53Tue Oct 8 14:47:14 2013 -0700Lots of code cleanup related to constraints in the reference platform
+bf8db55Tue Oct 8 10:53:17 2013 -0700Merge pull request #162 from peastman/master
+3e36fd7Tue Oct 8 10:49:00 2013 -0700Added option to omit PILE thermostat from RPMD
+1d93120Mon Oct 7 12:34:58 2013 -0700Merge pull request #161 from peastman/master
+bb8c2c6Mon Oct 7 12:34:11 2013 -0700Created reference implementation of SETTLE
+a402cf1Wed Oct 2 14:10:44 2013 -0700Python records where OpenMM is installed, so it doesn't need to be specified with environment variables at runtime
+e16ffacWed Oct 2 09:34:34 2013 -0700Merge pull request #156 from rmcgibbo/dmstests
+f00953bWed Oct 2 09:27:48 2013 -0700Merge pull request #158 from rmcgibbo/pdbbug-bugfix
+25d8559Tue Oct 1 22:41:25 2013 -0700Fix to PR #152
+45f3165Tue Oct 1 20:05:39 2013 -0700same fix about list(quantity) vs quantity(list) for unitcell dimensions
+7cbc52eTue Oct 1 18:08:57 2013 -0700typo: extra s
+ee1323bTue Oct 1 18:06:00 2013 -0700Bugfix: dms.positions should be a Quantity(list(Vec3)), not a list(Quantity(Vec3))
+552544aTue Oct 1 17:14:14 2013 -0700Added unittest and 1 system tests. Includes 1 bugfix to resolving a circular import and 1 bugfix where dms wasn't creating the topology correctly when the water was specified in different chains
+e0966c7Tue Oct 1 16:38:49 2013 -0700Merge pull request #155 from peastman/master
+d26b180Tue Oct 1 16:03:16 2013 -0700Merge pull request #154 from rmcgibbo/dms
+25ac85aTue Oct 1 15:27:58 2013 -0700Add provenance
+622cae1Tue Oct 1 15:14:57 2013 -0700Fixed bug in previous commit
+5a5d895Tue Oct 1 15:11:41 2013 -0700Implement virtualsites and better checking of unsupported params/tables
+303e0feTue Oct 1 14:46:26 2013 -0700intermediate commit, work on virtualsites
+803faa8Tue Oct 1 14:38:40 2013 -0700Ignore constraints that connect two massless particles (feature request 1915)
+2c83421Tue Oct 1 13:28:13 2013 -0700reorder the exclusion before the pair_12_6_es_term so simplify code
+8244403Tue Oct 1 13:13:35 2013 -0700Simpler use of quantity
+ecd8776Mon Sep 30 16:51:31 2013 -0700Add a reader and createSystem interface for Desmond dms files
+e23c002Mon Sep 30 16:46:26 2013 -0700Merge branch 'master' of github.com:SimTk/openmm
+578e25fMon Sep 30 14:23:21 2013 -0700Merge pull request #153 from rmcgibbo/element
+82cab8dMon Sep 30 14:15:23 2013 -0700Merge pull request #152 from rmcgibbo/pdbbug
+3ea7265Mon Sep 30 13:20:39 2013 -0700Merge branch 'element'
+5bcbbcfMon Sep 30 13:20:35 2013 -0700Merge branch 'pdbbug'
+7a44101Mon Sep 30 12:57:09 2013 -0700Remove the module-level function
+572160eMon Sep 30 12:54:52 2013 -0700Move left by one column
+1975b62Sun Sep 29 20:04:18 2013 -0700Merge branch 'pdbbug'
+a5e0c8eSun Sep 29 17:37:39 2013 -0700add get_by_atomic_number to element
+4ab1376Sat Sep 28 17:17:06 2013 -0700ATOM lines should be 80 chars
+0742628Fri Sep 27 07:37:27 2013 -0700Merge pull request #150 from rmcgibbo/gmxbug
+167253dThu Sep 26 20:52:00 2013 -0700Merge pull request #149 from rmcgibbo/gmxpath
+efd3fedThu Sep 26 18:40:33 2013 -0700Add an elseStack
+4537062Thu Sep 26 18:29:10 2013 -0700Fix typo
+0e9144dWed Sep 25 22:47:04 2013 -0700Fix bug in gromacs top file parser where #else preprocessor directives were not being followed
+2084a6bWed Sep 25 19:01:45 2013 -0700Look for gromacs include directory in a more flexible way
