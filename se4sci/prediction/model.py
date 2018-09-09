@@ -68,15 +68,16 @@ class PredictionModel:
             train = self._binarize(train)
             test = self._binarize(test)
 
-        sm = SMOTE(kind='regular')
         x_train = train[train.columns[1:-1]].values
         y_train = train[train.columns[-1]].values
+
         if oversample:
+            sm = SMOTE(kind='svm', k_neighbors=sum(y_train)-1)
             x_train, y_train = sm.fit_sample(x_train, y_train)
+
         clf = RandomForestClassifier()
         clf.fit(x_train, y_train)
         actual = test[test.columns[-1]].values
         x_test = test[test.columns[1:-1]]
         predicted = clf.predict(x_test)
-        pd, pf = ABCD.get_pd_pf(actual, predicted)
         return actual, predicted

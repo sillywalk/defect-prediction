@@ -5,3 +5,4 @@ pandas
 sklearn
 imbalanced-learn
 python-coveralls
+PTable

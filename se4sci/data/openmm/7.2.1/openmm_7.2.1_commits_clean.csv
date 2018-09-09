@@ -1,7 +1,0 @@
-hash,time,message,buggy
-715e69e,2018-03-02 11:15:20,Fix disulfides in Amber14,0
-6f16980,2018-03-02 12:06:53,Merge pull request #2004 from peastman/7.2_branch,0
-d7d3aa2,2018-03-03 11:30:41,Regenerated files to fix missing external bonds,0
-f49084f,2018-03-03 13:35:26,Merge pull request #2005 from peastman/ssbond,0
-0c9ce3b,2018-03-03 13:49:27,Updated version number to 7.2.1,0
-bbd6627,2018-03-03 15:24:58,Merge pull request #2006 from peastman/version,0

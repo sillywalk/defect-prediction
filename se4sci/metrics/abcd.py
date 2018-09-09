@@ -25,8 +25,8 @@ class ABCD:
             False alarm (pf) values 
         """
         tn, fp, fn, tp = confusion_matrix(actual, predicted).ravel()
-        pd = tp/(tp+fn+1e-5)
-        pf = fp/(fp+tn+1e-5)
+        pd = int(100 * tp/(tp+fn+1e-5))
+        pf = int(100 * fp/(fp+tn+1e-5))
 
         return pd, pf
 
@@ -57,6 +57,8 @@ class ABCD:
         tn, fp, fn, tp = confusion_matrix(actual, predicted).ravel()
         prec = tp / (tp + fp + 1e-5)
         recall = tp / (tp + fn + 1e-5)
-        f = (1 + beta**2) * (prec * recall) / (beta**2 * prec + recall)
-
+        f = int(100 * (1 + beta**2) * (prec * recall) /
+                (beta**2 * prec + recall + 1e-5))
+        prec = int(100 * prec)
+        recall = int(100 * recall)
         return prec, recall, f
