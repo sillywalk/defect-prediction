@@ -48,14 +48,3 @@ class DataHandler:
                 str(project.joinpath("**/*_file_metrics*_1.csv")))})}))
         return all_data
 
-    def describe(self):
-        """
-        Describe properties of the dataset. 
-
-        Notes
-        -----
-        This method prints, for every dataset, number of rows, columns,
-        #defects, %defects, etc. as a table.
-        """
-
-        all_data = self.get_data()
