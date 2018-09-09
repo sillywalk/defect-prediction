@@ -12,7 +12,7 @@ venv/bin/activate: requirements.txt
 test: venv 
 	@echo "Running unit tests."
 	@echo ""
-	@- . venv/bin/activate; nosetests -s $(TEST_PATH); deactivate
+	@- . venv/bin/activate; nosetests -s --with-coverage $(TEST_PATH); deactivate
 	@echo ""
 
 clean:
