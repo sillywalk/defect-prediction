@@ -31,9 +31,11 @@ class TestModel(unittest.TestCase):
                 train = dataset[trn]
                 test = dataset[tst]
                 try:
-                    actual, predicted = self.mdl.predict_defects(train, test)
+                    actual, predicted = self.mdl.predict_defects(
+                        train, test, oversample=True)
                 except ValueError:
-                    pass
+                    "Data issue, if all class values are the same."
+                    continue
 
                 self.assertIsInstance(actual, numpy.ndarray)
                 self.assertIsInstance(predicted, numpy.ndarray)
