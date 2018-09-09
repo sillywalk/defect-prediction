@@ -2,7 +2,7 @@ nose
 glob2
 scipy
 pandas
+PTable
 sklearn
 imbalanced-learn
 python-coveralls
-PTable
