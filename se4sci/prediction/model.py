@@ -72,7 +72,8 @@ class PredictionModel:
         y_train = train[train.columns[-1]].values
 
         if oversample:
-            sm = SMOTE(kind='svm', k_neighbors=sum(y_train)-1)
+            k = min(5, sum(y_train)-1)
+            sm = SMOTE(kind='svm', k_neighbors=k)
             x_train, y_train = sm.fit_sample(x_train, y_train)
 
         clf = RandomForestClassifier()
