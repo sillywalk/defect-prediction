@@ -4,8 +4,6 @@ from pdb import set_trace
 
 
 class ABCD:
-    def __init__(self):
-        pass
 
     @classmethod
     def get_pd_pf(cls, actual, predicted):
