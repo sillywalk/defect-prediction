@@ -10,9 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
 
-root = Path(os.path.abspath(os.path.join(
-    os.getcwd().split("se4sci")[0], 'se4sci/se4sci')))
-
+root = Path(os.path.abspath(os.path.join(os.getcwd().split("src")[0], 'src')))
 if root not in sys.path:
     sys.path.append(str(root))
 
@@ -31,7 +29,7 @@ class PredictionModel:
         ----------
         dframe: pandas.core.frame.DataFrame
             A pandas dataframe with independent and dependent variable columns
-        
+
         Return
         ------
         dframe: pandas.core.frame.DataFrame
@@ -54,14 +52,14 @@ class PredictionModel:
         oversample: Bool
             Oversample with SMOTE
         binarize: Bool
-            A boolean variable to 
+            A boolean variable to
 
         Return
         ------
         actual: numpy.ndarray
             Actual defect counts
         predicted: numpy.ndarray
-            Predictied defect counts 
+            Predictied defect counts
         """
 
         if binarize:
