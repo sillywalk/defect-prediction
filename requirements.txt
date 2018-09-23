@@ -4,5 +4,6 @@ scipy
 pandas
 PTable
 sklearn
+matplotlib
 imbalanced-learn
 python-coveralls
