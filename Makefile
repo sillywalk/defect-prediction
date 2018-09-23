@@ -1,6 +1,6 @@
 TEST_PATH=./
 
-all: test git 
+all: test git
 
 venv: venv/bin/activate
 
@@ -9,7 +9,7 @@ venv/bin/activate: requirements.txt
 	@- . venv/bin/activate; pip install -Ur requirements.txt
 	@- touch venv/bin/activate
 
-test: venv 
+test: venv
 	@echo "Running unit tests."
 	@echo ""
 	@- . venv/bin/activate; nosetests -s --with-coverage $(TEST_PATH); deactivate
@@ -26,6 +26,5 @@ git: clean
 	@echo "Syncing with repository"
 	@echo ""
 	@- git add --all .
-	@- git commit -am "Autocommit from makefile"
+	@- git commit -am "$m"
 	@- git push origin master
-	
