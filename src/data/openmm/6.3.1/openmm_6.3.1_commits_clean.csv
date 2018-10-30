@@ -1,7 +1,0 @@
-hash,time,message,buggy
-2fdfe48,2015-12-14 15:23:42,Backported fix for error in energy computation to 6.3,1
-ba35467,2015-12-14 15:35:04,Fixed compilation error,1
-96f20f6,2015-12-14 16:56:19,Bug fixes to mixed precision energy accumulation,1
-d71b45d,2015-12-15 10:13:44,Merge pull request #1297 from peastman/energypatch,0
-731a9e2,2015-12-16 15:12:37,Updated version number to 6.3.1,0
-a81f286,2015-12-16 15:17:00,Merge pull request #1303 from peastman/6.3_branch,0

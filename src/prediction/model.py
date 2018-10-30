@@ -7,6 +7,7 @@ import pandas as pd
 from pdb import set_trace
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.svm import LinearSVC
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
 
@@ -18,7 +19,14 @@ from metrics.abcd import ABCD
 
 
 class PredictionModel:
-    def __init__(self): pass
+    def __init__(self, classifier = "SVC"): 
+        self._set_classifier(classifier)
+    
+    def _set_classifier(self, classifier):
+        if classifier == "SVC":
+            self.clf = LinearSVC(C=1, dual=False)
+        elif classifier == "RF":
+            self.clf = RandomForestClassifier()
 
     @staticmethod
     def _binarize(dframe):
@@ -35,8 +43,8 @@ class PredictionModel:
         dframe: pandas.core.frame.DataFrame
             The orignal dataframe with binary dependent variable columns
         """
-        dframe.loc[dframe[dframe.columns[-1]] > 0, dframe.columns[-1]] = True
-        dframe.loc[dframe[dframe.columns[-1]] == 0, dframe.columns[-1]] = False
+        dframe.loc[dframe[dframe.columns[-1]] > 0, dframe.columns[-1]] = 1
+        dframe.loc[dframe[dframe.columns[-1]] == 0, dframe.columns[-1]] = 0
         return dframe
 
     def predict_defects(self, train, test, oversample=True, binarize=True):
@@ -70,13 +78,13 @@ class PredictionModel:
         y_train = train[train.columns[-1]].values
 
         if oversample:
-            k = min(5, sum(y_train)-1)
-            sm = SMOTE(kind='svm', k_neighbors=k)
+            k = min(2, sum(y_train)-1)
+            sm = SMOTE(kind='regular', k_neighbors=k)
             x_train, y_train = sm.fit_sample(x_train, y_train)
 
-        clf = RandomForestClassifier()
-        clf.fit(x_train, y_train)
+        
+        self.clf.fit(x_train, y_train)
         actual = test[test.columns[-1]].values
         x_test = test[test.columns[1:-1]]
-        predicted = clf.predict(x_test)
+        predicted = self.clf.predict(x_test)
         return actual, predicted

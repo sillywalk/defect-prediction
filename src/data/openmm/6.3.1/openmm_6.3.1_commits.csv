@@ -1,6 +1,0 @@
-a81f286Wed Dec 16 15:17:00 2015 -0800Merge pull request #1303 from peastman/6.3_branch
-731a9e2Wed Dec 16 15:12:37 2015 -0800Updated version number to 6.3.1
-d71b45dTue Dec 15 10:13:44 2015 -0800Merge pull request #1297 from peastman/energypatch
-96f20f6Mon Dec 14 16:56:19 2015 -0800Bug fixes to mixed precision energy accumulation
-ba35467Mon Dec 14 15:35:04 2015 -0800Fixed compilation error
-2fdfe48Mon Dec 14 15:23:42 2015 -0800Backported fix for error in energy computation to 6.3

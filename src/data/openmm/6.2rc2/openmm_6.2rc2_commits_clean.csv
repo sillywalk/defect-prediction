@@ -1,9 +1,0 @@
-hash,time,message,buggy
-4fcf2b1,2014-12-02 15:55:42,Modified packaging scripts so that we no longer install Python into lib.,0
-74d6686,2014-12-02 17:21:59,Debugging issues with packaging script.,0
-741d186,2014-12-02 18:09:15,Build scripts now first remove old install directory.,0
-662eb73,2014-12-02 18:11:59,Minor cleanup in prepare.sh script.,0
-5030c94,2014-12-02 18:33:04,Removed debugging statements from packaging scripts.,0
-e6d78cf,2014-12-03 10:49:16,Merge pull request #746 from jchodera/fix-packaging-scripts,0
-2c68f67,2014-12-04 11:59:12,Disable PME stream on old versions of cufft,0
-bf8de1f,2014-12-04 13:08:36,Merge pull request #748 from peastman/fftbug,0

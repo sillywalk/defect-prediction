@@ -43,6 +43,6 @@ class DataHandler:
             str(self.data_path.joinpath("[!_]*"))) if Path(proj).is_dir()]
 
         for project in projects:
-            all_data.update(OrderedDict({project.name: OrderedDict({Path(ver).name: pd.read_csv(ver) for ver in glob(
-                str(project.joinpath("**/*_file_metrics*_1.csv")))})}))
+            all_data.update(OrderedDict({project.name: [pd.read_csv(ver) for ver in glob(str(project.joinpath("*.csv")))]}))
+        
         return all_data

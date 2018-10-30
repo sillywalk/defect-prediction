@@ -26,5 +26,5 @@ git: clean
 	@echo "Syncing with repository"
 	@echo ""
 	@- git add --all .
-	@- git commit -am "$m"
+	@- git commit -am "Autocommit"
 	@- git push origin master
