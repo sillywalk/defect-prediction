@@ -41,27 +41,19 @@ class DataHandler:
         all_data = OrderedDict()
         types = [Path(t) for t in glob(str(self.data_path.joinpath("[!_]*"))) if Path(t).is_dir()]
         for t in types:
-            if t.name != "release_level":
-                projects = [Path(p) for p in glob(str(t.joinpath("[!_]*"))) if Path(p).is_dir()]
-                temp_dict = OrderedDict()
-                for p in projects:
-                    versions = [filename for filename in os.listdir(str(p)) if filename.endswith(".csv")]
-                    for i in range(len(versions)):
+            projects = [Path(p) for p in glob(str(t.joinpath("[!_]*"))) if Path(p).is_dir()]
+            temp_dict = OrderedDict()
+            for p in projects:
+                versions = [filename for filename in os.listdir(str(p)) if filename.endswith(".csv")]
+                temp_df = []
+                for i in range(len(versions)):
+                    if t.name != "release_level":
                         ver = "%s_%s_%s_ready.csv" % (p.name, i, t.name)
-                        temp_dict.update(OrderedDict({p.name: [pd.read_csv(t.joinpath(p, ver))]}))
-                all_data[t.name] = temp_dict
-            else:
-                projects = [Path(p) for p in glob(str(t.joinpath("[!_]*"))) if Path(p).is_dir()]
-                temp_dict = OrderedDict()
-                for p in projects:
-                    versions = [filename for filename in os.listdir(str(p)) if filename.endswith(".csv")]
-                    temp_df = []
-                    for i in range(len(versions)):
+                    else:
                         ver = "%s_%s.csv" % (p.name, i)
-                        temp_df.append(pd.read_csv(t.joinpath(p, ver)))
-                    temp_dict.update(OrderedDict({p.name: temp_df}))
-                all_data[t.name] = temp_dict
-
+                    temp_df.append(pd.read_csv(t.joinpath(p, ver)))
+                temp_dict.update(OrderedDict({p.name: temp_df}))
+            all_data[t.name] = temp_dict
         print(all_data.keys())
         set_trace()
         return all_data
