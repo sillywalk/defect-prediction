@@ -50,10 +50,13 @@ class DataHandler:
                     if t.name != "release_level":
                         ver = "%s_%s_%s_ready.csv" % (p.name, i, t.name)
                     else:
-                        ver = "%s_%s.csv" % (p.name, i)
+                        #print(t, p, i)
+                        if i >= len(versions) // 2:
+                            break
+                        ver = "%s_%s_ready.csv" % (p.name, i)
                     temp_df.append(pd.read_csv(t.joinpath(p, ver)))
                 temp_dict.update(OrderedDict({p.name: temp_df}))
             all_data[t.name] = temp_dict
-        print(all_data.keys())
-        set_trace()
+        #print(all_data.keys())
+        #set_trace()
         return all_data

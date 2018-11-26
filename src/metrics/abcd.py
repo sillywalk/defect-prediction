@@ -12,7 +12,40 @@ class ABCD:
         self.dframe = pd.concat([self.actual, self.predicted, self.loc], axis=1)
         self.dframe['InspectedLOC'] = self.dframe.CountLine.cumsum()
         self._set_aux_params()
-    
+
+    def get_score_total(self, beta=1):
+        """
+        Obtain metric scores for investigating everything
+
+        Parameters
+        ----------
+        actual: numpy.ndarray, shape=[n_samples]
+            Ground truth (correct) target values.
+        predicted: numpy.ndarray, shape=[n_samples]
+            Estimated targets as returned by a classifier.
+        beta: float, default=1
+            Amount by which recall is weighted higher than precision
+
+        Returns
+        -------
+        prec: float
+            Precision
+        f: float
+            F score
+        """
+
+        tn, fp, fn, tp = confusion_matrix(
+            self.actual.values, self.predicted.values).ravel()
+
+        prec = tp / (tp + fp + 1e-5)
+        recall = tp / (tp + fn + 1e-5)
+        f = int(100 * (1 + beta ** 2) * (prec * recall) /
+                (beta ** 2 * prec + recall + 1e-5))
+        prec = int(100 * prec)
+        recall = int(100 * recall)
+        #print("hello", prec, f)
+        return prec, f
+
     def _set_aux_params(self):
         self.M = len(self.dframe)
         self.N = self.dframe.Actual.sum()
@@ -76,8 +109,8 @@ class ABCD:
 
         tn, fp, fn, tp = confusion_matrix(
             self.inspected_20.Actual, self.inspected_20.Predicted).ravel()
-        prec = tp / (tp + fp)
-        recall = tp / (tp + fn)
+        prec = tp / (tp + fp + 1e-5)
+        recall = tp / (tp + fn + 1e-5)
         f = int(100 * (1 + beta**2) * (prec * recall) /
                 (beta**2 * prec + recall + 1e-5))
         prec = int(100 * prec)

@@ -146,9 +146,9 @@ def execute(filename, file_type):
                 #      sep=",\t")
             print()
             set_trace()
-        filehandler = open(filename, "wb")
-        pickle.dump(records, filehandler)
-        filehandler.close()
+        #filehandler = open(filename, "wb")
+        #pickle.dump(records, filehandler)
+        #filehandler.close()
         for type_p in data_collections:
             dataset = data[type_p][proj]
             no_datasets = len(dataset)
@@ -193,4 +193,4 @@ if __name__ == "__main__":
     file_name = sys.argv[1]
     file_type = sys.argv[2]
     print(file_name, file_type)
-    execute(file_name)
+    execute(file_name, file_type)
