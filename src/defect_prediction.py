@@ -37,7 +37,7 @@ def execute(filename, file_type):
     dh = DataHandler()
     mdl = PredictionModel()
     data = dh.get_data()
-    set_trace()
+    #set_trace()
     "Create a Table than can pretty printed"
     results = PrettyTable()
     results.field_names = [
@@ -71,7 +71,7 @@ def execute(filename, file_type):
             #    "Prec_all", "F1_all",
             #    sep=",\t")
             for i in range(no_datasets-1):
-                print(" -> ", i, end="")
+                #print(" -> ", i, end="")
                 #train_dataframe = dataset[i]
                 if i == 0:
                     train_dataframe = dataset[i]
@@ -145,7 +145,7 @@ def execute(filename, file_type):
                 #      little_res,
                 #      sep=",\t")
             print()
-            set_trace()
+            #set_trace()
         #filehandler = open(filename, "wb")
         #pickle.dump(records, filehandler)
         #filehandler.close()

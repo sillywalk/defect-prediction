@@ -7,9 +7,14 @@ import pandas as pd
 from pdb import set_trace
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
+from smote import *
+
 from sklearn.svm import LinearSVC
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
+import warnings
+warnings.filterwarnings("ignore")
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, QuantileTransformer, Normalizer
 
 root = Path(os.path.abspath(os.path.join(os.getcwd().split("src")[0], 'src')))
 if root not in sys.path:
@@ -19,9 +24,9 @@ from metrics.abcd import ABCD
 
 
 class PredictionModel:
-    def __init__(self, classifier = "SVC"): 
+    def __init__(self, classifier = "SVC"):
         self._set_classifier(classifier)
-    
+
     def _set_classifier(self, classifier):
         if classifier == "SVC":
             self.clf = LinearSVC(C=1, dual=False)
@@ -74,17 +79,34 @@ class PredictionModel:
             train = self._binarize(train)
             test = self._binarize(test)
 
-        x_train = train[train.columns[1:-1]].values
+        x_train = train[train.columns[2:-1]].values
         y_train = train[train.columns[-1]].values
+        #scaler = QuantileTransformer()
+        #x_train = scaler.fit_transform(x_train)
+
+        #if oversample:
+        #   k = min(3, sum(y_train)-1)
+        #   x_train, y_train = execute([k, 3], x_train, y_train)
 
         if oversample:
-            k = min(2, sum(y_train)-1)
-            sm = SMOTE(kind='regular', k_neighbors=k)
-            x_train, y_train = sm.fit_sample(x_train, y_train)
+            k = min(3, sum(y_train)-1)
+            print(k, sum(y_train)-1, x_train.shape[0], len(y_train))
+            sm = SMOTE(kind='regular', k_neighbors=int(k))
+        #    try:
+        #        x_train, y_train = sm.fit_sample(x_train, y_train)
+        #    except ValueError:
+        #        k = min(3, sum(y_train) - 1)
+        #        x_train, y_train = execute([k, 3], x_train, y_train)
 
-        
+
+
         self.clf.fit(x_train, y_train)
         actual = test[test.columns[-1]].values
-        x_test = test[test.columns[1:-1]]
-        predicted = self.clf.predict(x_test)
+        x_test = test[test.columns[2:-1]]
+        try:
+            predicted = self.clf.predict(x_test)
+        except:
+            set_trace()
+            predicted = [0]*actual
+            print("FAIL")
         return actual, predicted

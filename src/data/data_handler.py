@@ -40,23 +40,25 @@ class DataHandler:
 
         all_data = OrderedDict()
         types = [Path(t) for t in glob(str(self.data_path.joinpath("[!_]*"))) if Path(t).is_dir()]
+        print(types)
         for t in types:
-            projects = [Path(p) for p in glob(str(t.joinpath("[!_]*"))) if Path(p).is_dir()]
-            temp_dict = OrderedDict()
-            for p in projects:
-                versions = [filename for filename in os.listdir(str(p)) if filename.endswith(".csv")]
-                temp_df = []
-                for i in range(len(versions)):
-                    if t.name != "release_level":
-                        ver = "%s_%s_%s_ready.csv" % (p.name, i, t.name)
-                    else:
-                        #print(t, p, i)
-                        if i >= len(versions) // 2:
-                            break
-                        ver = "%s_%s_ready.csv" % (p.name, i)
-                    temp_df.append(pd.read_csv(t.joinpath(p, ver)))
-                temp_dict.update(OrderedDict({p.name: temp_df}))
-            all_data[t.name] = temp_dict
+            if t.name != "keyword_guru":
+                projects = [Path(p) for p in glob(str(t.joinpath("[!_]*"))) if Path(p).is_dir()]
+                temp_dict = OrderedDict()
+                for p in projects:
+                    versions = [filename for filename in os.listdir(str(p)) if filename.endswith(".csv")]
+                    temp_df = []
+                    for i in range(len(versions)):
+                        if t.name != "release_level":
+                            ver = "%s_%s_%s_ready.csv" % (p.name, i, t.name)
+                        else:
+                            #print(t, p, i)
+                            if i >= len(versions) // 2:
+                                break
+                            ver = "%s_%s_ready.csv" % (p.name, i)
+                        temp_df.append(pd.read_csv(t.joinpath(p, ver)))
+                    temp_dict.update(OrderedDict({p.name: temp_df}))
+                all_data[t.name] = temp_dict
         #print(all_data.keys())
         #set_trace()
         return all_data
