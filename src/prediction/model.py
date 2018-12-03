@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
 from smote import *
 
-from sklearn.svm import LinearSVC
+from sklearn.svm import LinearSVC, SVC
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
 import warnings
@@ -28,8 +28,10 @@ class PredictionModel:
         self._set_classifier(classifier)
 
     def _set_classifier(self, classifier):
-        if classifier == "SVC":
+        if classifier == "LinearSVC":
             self.clf = LinearSVC(C=1, dual=False)
+        elif classifier == "SVC":
+            self.clf = SVC(kernel="poly")
         elif classifier == "RF":
             self.clf = RandomForestClassifier()
 
@@ -52,7 +54,7 @@ class PredictionModel:
         dframe.loc[dframe[dframe.columns[-1]] == 0, dframe.columns[-1]] = 0
         return dframe
 
-    def predict_defects(self, train, test, oversample=True, binarize=True):
+    def predict_defects(self, train, test, oversample=True, binarize=True, samplingtechnique='sk'):
         """
         Predict for Defects
 
@@ -81,7 +83,7 @@ class PredictionModel:
 
         x_train = train[train.columns[2:-1]].values
         y_train = train[train.columns[-1]].values
-        #scaler = QuantileTransformer()
+        #scaler = Normalizer()
         #x_train = scaler.fit_transform(x_train)
 
         #if oversample:
@@ -89,14 +91,18 @@ class PredictionModel:
         #   x_train, y_train = execute([k, 3], x_train, y_train)
 
         if oversample:
-            k = min(3, sum(y_train)-1)
-            print(k, sum(y_train)-1, x_train.shape[0], len(y_train))
-            sm = SMOTE(kind='regular', k_neighbors=int(k))
-        #    try:
-        #        x_train, y_train = sm.fit_sample(x_train, y_train)
-        #    except ValueError:
-        #        k = min(3, sum(y_train) - 1)
-        #        x_train, y_train = execute([k, 3], x_train, y_train)
+            if "sk" in samplingtechnique:
+                k = min(3, sum(y_train)-1)
+                #print(k, sum(y_train)-1, x_train.shape[0], len(y_train))
+                sm = SMOTE(kind='regular', k_neighbors=int(k))
+                try:
+                    x_train, y_train = sm.fit_sample(x_train, y_train)
+                except ValueError:
+                    k = min(3, sum(y_train) - 1)
+                    x_train, y_train = execute([k, 3], x_train, y_train)
+            else:
+                k = min(3, sum(y_train) - 1)
+                x_train, y_train = execute([k, 3], x_train, y_train)
 
 
 

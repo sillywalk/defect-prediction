@@ -2,6 +2,8 @@ from sklearn.metrics import recall_score
 from sklearn.metrics import confusion_matrix
 from pdb import set_trace
 import pandas as pd
+from numpy import trapz
+import numpy as np
 from sklearn.metrics import auc
 
 class ABCD:
@@ -10,8 +12,21 @@ class ABCD:
         self.actual = pd.DataFrame(actual, columns=['Actual'])
         self.predicted = pd.DataFrame(predicted, columns=['Predicted'])
         self.dframe = pd.concat([self.actual, self.predicted, self.loc], axis=1)
-        self.dframe['InspectedLOC'] = self.dframe.CountLine.cumsum()
-        self._set_aux_params()
+        self.dframe['InspectedLOC'] = self.loc.cumsum().iloc[:,0]
+        self.inspected_perc = {'datasets': [], 'Pf': [], 'Pd': [], 'Prec': [], 'F1': [], 'G1': []}
+        self._set_aux_params(.2)
+        try:
+            self.tn, self.fp, self.fn, self.tp = confusion_matrix(self.inspected_20.Actual, self.inspected_20.Predicted).ravel()
+        except ValueError:
+            self._set_aux_params(.5)
+            self.tn, self.fp, self.fn, self.tp = self.manual_count(self.inspected_20.Actual.values.tolist(),
+                                                                   self.inspected_20.Predicted.values.tolist())
+
+    def get_G(self):
+        pd = 1 * self.tp / (self.tp + self.fn + 1e-5)
+        pf = 1 * self.fp / (self.fp + self.tn + 1e-5)
+        g = int((2 * 100 * pd * (1 - pf))/(1 + pd - pf + 1e-5))
+        return g
 
     def get_score_total(self, beta=1):
         """
@@ -33,10 +48,8 @@ class ABCD:
         f: float
             F score
         """
-
         tn, fp, fn, tp = confusion_matrix(
             self.actual.values, self.predicted.values).ravel()
-
         prec = tp / (tp + fp + 1e-5)
         recall = tp / (tp + fn + 1e-5)
         f = int(100 * (1 + beta ** 2) * (prec * recall) /
@@ -46,12 +59,12 @@ class ABCD:
         #print("hello", prec, f)
         return prec, f
 
-    def _set_aux_params(self):
+    def _set_aux_params(self, perc):
         self.M = len(self.dframe)
         self.N = self.dframe.Actual.sum()
         inspected_max = self.dframe.InspectedLOC.max()
         for i in range(self.M):
-            if self.dframe.InspectedLOC.iloc[i] >= 0.2 * inspected_max:
+            if self.dframe.InspectedLOC.iloc[i] >= (perc * inspected_max):
                 # If we have inspected more than 20% of the total LOC
                 # break
                 break
@@ -60,6 +73,55 @@ class ABCD:
         # Number of changes when we inspect 20% of LOC
         self.m = len(self.inspected_20)
         self.n = self.inspected_20.Predicted.sum()
+
+    def manual_count(self, actual, predicted, indx=1):
+        TP, TN, FP, FN = 0, 0, 0, 0
+        for a, b in zip(actual, predicted):
+            if a == indx and b == indx:
+                TP += 1
+            elif a == b and a != indx:
+                TN += 1
+            elif a != indx and b == indx:
+                FP += 1
+            elif a == indx and b != indx:
+                FN += 1
+        return TN, FP, FN, TP
+
+    def _set_auc(self, h):
+        self.M = len(self.dframe)
+        self.N = self.dframe.Actual.sum()
+        inspected_max = self.dframe.InspectedLOC.max()
+
+        threshold_loc = 0
+        for j in range(h):
+            threshold_loc += 0.5 / h
+            for i in range(self.M):
+                if self.dframe.InspectedLOC.iloc[i] >= (threshold_loc * inspected_max):
+                    self.inspected_perc['datasets'].append(self.dframe.iloc[:i])
+                    try:
+                        tn, fp, fn, tp = confusion_matrix(self.inspected_perc['datasets'][-1].Actual, self.inspected_perc['datasets'][-1].Predicted).ravel()
+                    except ValueError:
+                        tn, fp, fn, tp = self.manual_count(self.inspected_perc['datasets'][-1].Actual.values.tolist(),
+                                                    self.inspected_perc['datasets'][-1].Predicted.values.tolist())
+                    prec = tp / (tp + fp + 1e-5)
+                    pd = tp / (tp + fn + 1e-5)
+                    pf = 1 * fp / (fp + tn + 1e-5)
+                    self.inspected_perc['F1'].append(int(100 * (1 + 1 ** 2) * (prec * pd) /
+                            (1 ** 2 * prec + pd + 1e-5)))
+                    self.inspected_perc['G1'].append(int((2 * 100 * pd * (1 - pf)) / (1 + pd - pf + 1e-5)))
+                    self.inspected_perc['Pf'].append(int(100 * pf))
+                    self.inspected_perc['Prec'].append(int(100 * prec))
+                    self.inspected_perc['Pd'].append(int(100 * pd))
+                    # If we have inspected more than 20% of the total LOC
+                    break
+        return trapz(np.array(self.inspected_perc['Pd']), dx=0.5 / h), \
+               trapz(np.array(self.inspected_perc['Pf']), dx=0.5 / h), \
+               trapz(np.array(self.inspected_perc['Prec']), dx=0.5 / h), \
+               trapz(np.array(self.inspected_perc['F1']), dx=0.5 / h), \
+               trapz(np.array(self.inspected_perc['G1']), dx=0.5 / h)
+
+
+
 
     def get_pd_pf(self, ):
         """
@@ -79,10 +141,8 @@ class ABCD:
         pf: float
             False alarm (pf) values 
         """
-        tn, fp, fn, tp = confusion_matrix(
-            self.inspected_20.Actual, self.inspected_20.Predicted).ravel()
-        pd = int(100 * tp/(tp+fn+1e-5))
-        pf = int(100 * fp/(fp+tn+1e-5))
+        pd = int(100 * self.tp/(self.tp+self.fn+1e-5))
+        pf = int(100 * self.fp/(self.fp+self.tn+1e-5))
 
         return pd, pf
 
@@ -106,11 +166,8 @@ class ABCD:
         f: float
             F score 
         """
-
-        tn, fp, fn, tp = confusion_matrix(
-            self.inspected_20.Actual, self.inspected_20.Predicted).ravel()
-        prec = tp / (tp + fp + 1e-5)
-        recall = tp / (tp + fn + 1e-5)
+        prec = self.tp / (self.tp + self.fp + 1e-5)
+        recall = self.tp / (self.tp + self.fn + 1e-5)
         f = int(100 * (1 + beta**2) * (prec * recall) /
                 (beta**2 * prec + recall + 1e-5))
         prec = int(100 * prec)
