@@ -35,7 +35,6 @@ def release_base_running():
 
 def execute(filename, file_type, level, learner, sampling, all):
     dh = DataHandler(level)
-    mdl = PredictionModel()
     data = dh.get_data()
     #set_trace()
     records = {}
@@ -65,11 +64,13 @@ def execute(filename, file_type, level, learner, sampling, all):
             for i in range(no_datasets-1):
                 print(" -> ", i, end="")
                 if all == 1:
+                    #print("all")
                     if i == 0:
                         train_dataframe = dataset[i]
                     else:
                         train_dataframe = pd.concat(dataset[:i+1])
                 else:
+                    #print("incremental")
                     train_dataframe = dataset[i]
                 if level == "file":
                     test_dataframe = data['human_jit_file'][proj][i + 1]
@@ -164,6 +165,7 @@ def execute(filename, file_type, level, learner, sampling, all):
                 #      sep=",\t")
             print()
             #set_trace()
+        print("save + ", filename)
         filehandler = open(filename, "wb")
         pickle.dump(records, filehandler)
         for type_p in data.keys():
@@ -222,9 +224,13 @@ def execute(filename, file_type, level, learner, sampling, all):
 if __name__ == "__main__":
     file_name = sys.argv[1]
     file_type = sys.argv[2]
-    all = sys.argv[3]
+    all = int(sys.argv[3])
     level = file_name.split("_")[0]
     learner = file_name.split("_")[1]
     oversampling = file_name.split("_")[2]
-    print(level, learner, oversampling, file_type)
+    if all == 1:
+        file_name += "_all.p"
+    else:
+        file_name += "_incremental.p"
+    print(level, learner, oversampling, file_type, all)
     execute(file_name, file_type, level, learner, oversampling, all)

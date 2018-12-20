@@ -67,14 +67,14 @@ class DataHandler:
             for label_t in label_types:
                 temp_dict = OrderedDict()
                 irr_columns = [l + "_buggy_fixes" for l in label_types if l != label_t]
-                irr_columns.append("time")
+                #irr_columns.append("time")
                 for p in types:
                     versions = [filename for filename in os.listdir(str(p)) if filename.endswith(".csv")]
                     temp_df = []
                     for i in range(len(versions)):
                         ver = "%s_%s.csv" % (p.name, i + 1)
                         temp_ver_df = pd.read_csv(self.data_path.joinpath(p, ver))
-                        temp_ver_df.drop(irr_columns, axis=1)
+                        temp_ver_df = temp_ver_df.drop(irr_columns, axis=1)
                         temp_df.append(temp_ver_df)
                     temp_dict.update(OrderedDict({p.name: temp_df}))
                 all_data[label_t] = temp_dict

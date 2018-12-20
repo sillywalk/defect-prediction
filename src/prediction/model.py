@@ -31,7 +31,7 @@ class PredictionModel:
         if classifier == "LinearSVC":
             self.clf = LinearSVC(C=1, dual=False)
         elif classifier == "SVC":
-            self.clf = SVC(kernel="poly")
+            self.clf = SVC(kernel="rbf")
         elif classifier == "RF":
             self.clf = RandomForestClassifier()
 
@@ -83,7 +83,7 @@ class PredictionModel:
 
         x_train = train[train.columns[2:-1]].values
         y_train = train[train.columns[-1]].values
-        #scaler = Normalizer()
+        #scaler = QuantileTransformer()
         #x_train = scaler.fit_transform(x_train)
 
         #if oversample:
