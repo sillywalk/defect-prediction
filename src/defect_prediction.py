@@ -1,13 +1,17 @@
+from __future__ import print_function
+
 """
 A Defect Prediction model for file level metrics
 """
 import os
 import re
+import random
 import sys
+sys.path
+sys.path.append('/home/huyqt7/Projects/PhD/defect-prediction/src/fft_src/')
 import numpy as np
 import pandas as pd
 import pdb
-from prettytable import PrettyTable
 import warnings
 warnings.filterwarnings("ignore")
 import pickle
@@ -18,51 +22,69 @@ import time
 from pathlib import Path
 root = Path(os.path.abspath(os.path.join(os.getcwd().split("src")[0], 'src')))
 print(root)
-if root not in sys.path:
-    sys.path.append(str(root))
 
 from metrics.abcd import ABCD
 from data.data_handler import DataHandler
 from prediction.model import PredictionModel
 
-
-projects =['mdanalysis', 'libmesh', 'lammps', 'abinit']
+random.seed(9001)
+np.random.seed(47)
+projects =['mdanalysis', 'libmesh', 'lammps', 'abinit', 'hoomd', 'amber', 'rmg-py', 'pcmsolver', 'xenon']
 data_collections = ['fastread_jit_file', 'release_level', 'keyword_jit_file', 'human_jit_file']
 
 def release_base_running():
     return None
 
-
-def execute(filename, file_type, level, learner, sampling, all):
-    dh = DataHandler(level)
-    data = dh.get_data()
-    #set_trace()
-    records = {}
-
+def check_results(filename, type_p, proj, length):
+    results_records_file = []
     if os.path.isfile(filename):
         filehandler = open(filename, "rb")
         try:
             results_records_file = pickle.load(filehandler)
         except EOFError:
-            results_records_file = []
+            pass
         filehandler.close()
+    if not results_records_file:
+        return False
+    else:
+        if proj not in results_records_file.keys():
+            return False
+        else:
+            if type_p not in results_records_file[proj].keys():
+                return False
+            else:
+                if len(results_records_file[proj][type_p]['Prec']) != length:
+                    return False
+                else:
+                    return True
 
+
+def execute(filename, file_type, level, learner, sampling, reduce, all):
+    dh = DataHandler(level)
+    data = dh.get_data()
+    #set_trace()
+    records = {}
 
     for proj in projects:
         print(proj.upper())
-        for type_p in data.keys():
-            if type_p not in records.keys():
-                records[type_p] = {}
-            records[type_p][proj] = {"Prec": [], "Pd": [], "Pf": [], "F1":[],  "G1": [],
+        for type_p in data[proj].keys():
+            if proj not in records.keys():
+                records[proj] = {}
+            records[proj][type_p] = {"Prec": [], "Pd": [], "Pf": [], "F1":[],  "G1": [],
                                      "AUC_Prec": [], "AUC_Pd": [], "AUC_Pf": [], "AUC_F1": [], "AUC_G1": [],
                                      "IFA":[], "PCI20":[],
-                "Prec_all":[], "F1_all":[], "Time": []}
-            dataset = data[type_p][proj]
+                                     "Prec_all":[], "F1_all":[], "G1_all": []}
 
-            print(type_p.upper(), str(len(dataset)) + " releases, ", end= "")
+            dataset = data[proj][type_p]
+
+            print(type_p.upper(), str(len(dataset)) + " releases, ", end=" ")
             no_datasets = len(dataset)
+
+            #if not check_results(filename, type_p, proj, no_datasets-1):
             for i in range(no_datasets-1):
-                print(" -> ", i, end="")
+                #filehandler = open(filename, "wb")
+                print(" -> ", i, end=" ")
+                # all vs incremental
                 if all == 1:
                     #print("all")
                     if i == 0:
@@ -72,6 +94,8 @@ def execute(filename, file_type, level, learner, sampling, all):
                 else:
                     #print("incremental")
                     train_dataframe = dataset[i]
+
+                # file vs commit level
                 if level == "file":
                     test_dataframe = data['human_jit_file'][proj][i + 1]
                     # Get lines of code of the test instances
@@ -79,23 +103,51 @@ def execute(filename, file_type, level, learner, sampling, all):
                     if type_p == "release_level":
                         train_dataframe = train_dataframe.drop(['fastread_bugs', 'human_bugs'], axis=1)
                 else:
-                    test_dataframe = data['human'][proj][i + 1]
-                    loc = test_dataframe["lt"]*test_dataframe["nf"]
-
+                    if proj in ['mdanalysis', 'libmesh', 'lammps', 'abinit']:
+                        test_dataframe = data[proj]['human'][i + 1]
+                    else:
+                        test_dataframe = dataset[i + 1]
+                    loc = list(np.abs(test_dataframe["lt"]*test_dataframe["nf"]))
                 #set_trace()
                 p_d, p_f = [], []
                 f_1, prec = [], []
                 ifa , pci20 = [], []
                 g_1 = []
                 auc_pd, auc_pf, auc_prec, auc_f1, auc_g1 = [], [], [], [], []
-                total_prec, total_f1 = [], []
+                total_prec, total_f1, total_g1 = [], [], []
                 running_times = []
                 pred_mod = PredictionModel(classifier=learner)
-                for _ in range(10):
-                    # Make predictions
+                for _ in range(20):
                     start_time = time.time()
-                    actual, predicted = pred_mod.predict_defects(
-                        train_dataframe, test_dataframe, samplingtechnique=sampling)
+
+                    if reduce == "1":
+                        #print("yes reduce")
+                        n_train_samples = int(train_dataframe.shape[0] * .5)
+                        #n_test_samples = int(test_dataframe.shape[0] * 1)
+                        train_sample_indices = random.sample(range(0, train_dataframe.shape[0]), n_train_samples)
+                        #test_sample_indices = random.sample(range(0, test_dataframe.shape[0]), n_test_samples)
+                        #test_sample_indices.sort()
+                        train_sample_indices.sort()
+                        #print("train_df", train_dataframe.shape)
+                        temp_train_df = train_dataframe.iloc[train_sample_indices]
+                        #temp_test_df = test_dataframe.iloc[test_sample_indices]
+
+                        try:
+                            actual, predicted = pred_mod.predict_defects(
+                                temp_train_df, test_dataframe, samplingtechnique=sampling)
+                        except ValueError:
+                            break
+                    else:
+                        #print("no reduce")
+                        try:
+                            actual, predicted = pred_mod.predict_defects(
+                                train_dataframe, test_dataframe, samplingtechnique=sampling)
+                        except ValueError:
+                            break
+
+
+                    # Make predictions
+
                     delta_time = time.time() - start_time
                     abcd = ABCD(actual, predicted, loc)
 
@@ -106,7 +158,7 @@ def execute(filename, file_type, level, learner, sampling, all):
                     prec_obtained, f1_obtained = abcd.get_f_score()
                     g1_obtained = abcd.get_G()
                     auc_pd_val, auc_pf_val, auc_prec_val, auc_f1_val, auc_g1_val = abcd._set_auc(3)
-                    total_prec_val, total_f1_val = abcd.get_score_total()
+                    total_prec_val, total_f1_val, total_g1_val = abcd.get_score_total()
 
 
                     # Gather the obtained performance metrics
@@ -124,6 +176,7 @@ def execute(filename, file_type, level, learner, sampling, all):
                     pci20.append(pci20_obtained)
                     total_prec.append(total_prec_val)
                     total_f1.append(total_f1_val)
+                    total_g1.append(total_g1_val)
                     running_times.append(delta_time)
 
                 i += 1
@@ -140,83 +193,85 @@ def execute(filename, file_type, level, learner, sampling, all):
                               np.median(ifa).astype("int"),
                               np.median(pci20).astype("int"),
                               np.median(total_prec).astype("int"),
-                              np.median(total_f1).astype("int")]
+                              np.median(total_f1).astype("int"),
+                              np.median(total_g1).astype("int")]
                               #np.median(running_times)]
-                records[type_p][proj]['Prec'].append(little_res[0])
-                records[type_p][proj]['Pd'].append(little_res[1])
-                records[type_p][proj]['Pf'].append(little_res[2])
-                records[type_p][proj]['F1'].append(little_res[3])
-                records[type_p][proj]['G1'].append(little_res[4])
-                records[type_p][proj]['AUC_Prec'].append(little_res[5])
-                records[type_p][proj]['AUC_Pd'].append(little_res[6])
-                records[type_p][proj]['AUC_Pf'].append(little_res[7])
-                records[type_p][proj]['AUC_F1'].append(little_res[8])
-                records[type_p][proj]['AUC_G1'].append(little_res[9])
-                records[type_p][proj]['IFA'].append(little_res[10])
-                records[type_p][proj]['PCI20'].append(little_res[11])
-                records[type_p][proj]['Prec_all'].append(little_res[12])
-                records[type_p][proj]['F1_all'].append(little_res[13])
-                #records[type_p][proj]['Time'].append(little_res[9])
+                records[proj][type_p]['Prec'].append(little_res[0])
+                records[proj][type_p]['Pd'].append(little_res[1])
+                records[proj][type_p]['Pf'].append(little_res[2])
+                records[proj][type_p]['F1'].append(little_res[3])
+                records[proj][type_p]['G1'].append(little_res[4])
+                records[proj][type_p]['AUC_Prec'].append(little_res[5])
+                records[proj][type_p]['AUC_Pd'].append(little_res[6])
+                records[proj][type_p]['AUC_Pf'].append(little_res[7])
+                records[proj][type_p]['AUC_F1'].append(little_res[8])
+                records[proj][type_p]['AUC_G1'].append(little_res[9])
+                records[proj][type_p]['IFA'].append(little_res[10])
+                records[proj][type_p]['PCI20'].append(little_res[11])
+                records[proj][type_p]['Prec_all'].append(little_res[12])
+                records[proj][type_p]['F1_all'].append(little_res[13])
+                records[proj][type_p]['G1_all'].append(little_res[14])
 
-
+                #records[proj][type_p]['Time'].append(little_res[9])
 
                 #print(#i, i+1,
                 #      little_res,
                 #      sep=",\t")
             print()
-            #set_trace()
         print("save + ", filename)
         filehandler = open(filename, "wb")
         pickle.dump(records, filehandler)
-        for type_p in data.keys():
-            dataset = data[type_p][proj]
+        for type_p in data[proj].keys():
+            dataset = data[proj][type_p]
             no_datasets = len(dataset)
             print(type_p.upper(), no_datasets)
             print(  # "Train", "Test",
                 "Prec", "Pd", "Pf", "F1", "G1",
                 "AUC_Pr", "AUC_Pd", "AUC_Pf", "AUC_F1", "AUC_G1",
-                "IFA", "PCI20", "Pr_all", "F1_all",
+                "IFA", "PCI20", "PREC", "F1_A", "G1_A",
                 #"Time",
                 sep=",\t")
             if type_p != file_type:
                 for i in range(no_datasets - 1):
-                    little_c = [records[file_type][proj]['Prec'][i] - records[type_p][proj]['Prec'][i],
-                                records[file_type][proj]['Pd'][i] - records[type_p][proj]['Pd'][i],
-                                records[file_type][proj]['Pf'][i] - records[type_p][proj]['Pf'][i],
-                                records[file_type][proj]['F1'][i] - records[type_p][proj]['F1'][i],
-                                records[file_type][proj]['G1'][i] - records[type_p][proj]['G1'][i],
-                                records[file_type][proj]['AUC_Prec'][i] - records[type_p][proj]['AUC_Prec'][i],
-                                records[file_type][proj]['AUC_Pd'][i] - records[type_p][proj]['AUC_Pd'][i],
-                                records[file_type][proj]['AUC_Pf'][i] - records[type_p][proj]['AUC_Pf'][i],
-                                records[file_type][proj]['AUC_F1'][i] - records[type_p][proj]['AUC_F1'][i],
-                                records[file_type][proj]['AUC_G1'][i] - records[type_p][proj]['AUC_G1'][i],
-                                records[file_type][proj]['IFA'][i] - records[type_p][proj]['IFA'][i],
-                                records[file_type][proj]['PCI20'][i] - records[type_p][proj]['PCI20'][i],
-                                records[file_type][proj]['Prec_all'][i] - records[type_p][proj]['Prec_all'][i],
-                                records[file_type][proj]['F1_all'][i] - records[type_p][proj]['F1_all'][i]]
-                                #records[type_p][proj]['Time'][i]]
-                    for j, m in zip([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13],
-                                    ['Prec', 'Pd', 'Pf', 'F1', 'G1', 'AUC_Prec', 'AUC_Pd', 'AUC_Pf', 'AUC_F1', 'AUC_G1', 'Prec_all', 'F1_all']):
-                        if records[type_p][proj][m][i] != 0:
-                            little_c[j] = (float(little_c[j]) * 100) / (records[type_p][proj][m][i])
+                    #print(i, records)
+                    little_c = [records[proj][file_type]['Prec'][i] - records[proj][type_p]['Prec'][i],
+                                records[proj][file_type]['Pd'][i] - records[proj][type_p]['Pd'][i],
+                                records[proj][file_type]['Pf'][i] - records[proj][type_p]['Pf'][i],
+                                records[proj][file_type]['F1'][i] - records[proj][type_p]['F1'][i],
+                                records[proj][file_type]['G1'][i] - records[proj][type_p]['G1'][i],
+                                records[proj][file_type]['AUC_Prec'][i] - records[proj][type_p]['AUC_Prec'][i],
+                                records[proj][file_type]['AUC_Pd'][i] - records[proj][type_p]['AUC_Pd'][i],
+                                records[proj][file_type]['AUC_Pf'][i] - records[proj][type_p]['AUC_Pf'][i],
+                                records[proj][file_type]['AUC_F1'][i] - records[proj][type_p]['AUC_F1'][i],
+                                records[proj][file_type]['AUC_G1'][i] - records[proj][type_p]['AUC_G1'][i],
+                                records[proj][file_type]['IFA'][i] - records[proj][type_p]['IFA'][i],
+                                records[proj][file_type]['PCI20'][i] - records[proj][type_p]['PCI20'][i],
+                                records[proj][file_type]['Prec_all'][i] - records[proj][type_p]['Prec_all'][i],
+                                records[proj][file_type]['F1_all'][i] - records[proj][type_p]['F1_all'][i],
+                                records[proj][file_type]['G1_all'][i] - records[proj][type_p]['G1_all'][i]]
+                                #records[proj][type_p]['Time'][i]]
+                    for j, m in zip([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14],
+                                    ['Prec', 'Pd', 'Pf', 'F1', 'G1', 'AUC_Prec', 'AUC_Pd', 'AUC_Pf', 'AUC_F1', 'AUC_G1', 'Prec_all', 'F1_all', 'G1_all']):
+                        if records[proj][type_p][m][i] != 0:
+                            little_c[j] = (float(little_c[j]) * 100) / (records[proj][type_p][m][i])
                         else:
                             little_c[j] = little_c[j]
                     print(  # i, i+1,
                         int(little_c[0]), int(little_c[1]), int(little_c[2]), int(little_c[3]), int(little_c[4]),
                         int(little_c[5]), int(little_c[6]), int(little_c[7]), int(little_c[8]), int(little_c[9]),
-                        little_c[10], little_c[11], int(little_c[12]), int(little_c[13]),
+                        little_c[10], little_c[11], int(little_c[12]), int(little_c[13]), int(little_c[14]),
                         #round(little_c[9], 3),
                     sep = ",\t")
             else:
                 for i in range(no_datasets - 1):
-                    print(records[type_p][proj]['Prec'][i],
-                          records[type_p][proj]['Pd'][i], records[type_p][proj]['Pf'][i],
-                          records[type_p][proj]['F1'][i], records[type_p][proj]['G1'][i],
-                          records[type_p][proj]['AUC_Prec'][i], records[type_p][proj]['AUC_Pd'][i], records[type_p][proj]['AUC_Pf'][i],
-                          records[type_p][proj]['AUC_F1'][i], records[type_p][proj]['AUC_G1'][i],
-                          records[type_p][proj]['IFA'][i], records[type_p][proj]['PCI20'][i], records[type_p][proj]['Prec_all'][i],
-                          records[type_p][proj]['F1_all'][i],
-                          #round(records[type_p][proj]['Time'][i],3),
+                    print(records[proj][type_p]['Prec'][i],
+                          records[proj][type_p]['Pd'][i], records[proj][type_p]['Pf'][i],
+                          records[proj][type_p]['F1'][i], records[proj][type_p]['G1'][i],
+                          records[proj][type_p]['AUC_Prec'][i], records[proj][type_p]['AUC_Pd'][i], records[proj][type_p]['AUC_Pf'][i],
+                          records[proj][type_p]['AUC_F1'][i], records[proj][type_p]['AUC_G1'][i],
+                          records[proj][type_p]['IFA'][i], records[proj][type_p]['PCI20'][i], records[proj][type_p]['Prec_all'][i],
+                          records[proj][type_p]['F1_all'][i], records[proj][type_p]['G1_all'][i],
+                          #round(records[proj][type_p]['Time'][i],3),
                           sep=",\t")
             print("\n" + 50 * "-" + "\n")
 
@@ -228,9 +283,10 @@ if __name__ == "__main__":
     level = file_name.split("_")[0]
     learner = file_name.split("_")[1]
     oversampling = file_name.split("_")[2]
+    reduce = file_name.split("_")[3]
     if all == 1:
         file_name += "_all.p"
     else:
         file_name += "_incremental.p"
-    print(level, learner, oversampling, file_type, all)
-    execute(file_name, file_type, level, learner, oversampling, all)
+    print(level, learner, oversampling, file_type, reduce, all)
+    execute(file_name, file_type, level, learner, oversampling, reduce, all)
