@@ -5,14 +5,18 @@ import os
 import sys
 import pandas as pd
 from glob2 import glob
+from pathlib import Path
 from pdb import set_trace
 from collections import OrderedDict
 
-from pathlib import Path
-root = Path(os.path.abspath(os.path.join(os.getcwd().split("src")[0], 'src')))
+# Set path to src
+root = Path.cwd()
+while root.name is not 'src':
+    # Climb up the directory tree until you reach
+    root = root.parent
 
 if root not in sys.path:
-    sys.path.append(str(root))
+    sys.path.append(root)
 
 
 class DataHandler:
@@ -27,7 +31,7 @@ class DataHandler:
         """
         self.data_path = data_path
 
-    def get_data(self):
+    def get_data(self, top_k=10):
         """
         Read data as pandas and return a dictionary of data
 
@@ -39,21 +43,13 @@ class DataHandler:
         """
 
         all_data = OrderedDict()
-        types = [Path(t) for t in glob(str(self.data_path.joinpath("[!_]*"))) if Path(t).is_dir()]
-        for t in types:
-            projects = [Path(p) for p in glob(str(t.joinpath("[!_]*"))) if Path(p).is_dir()]
-            temp_dict = OrderedDict()
-            for p in projects:
-                versions = [filename for filename in os.listdir(str(p)) if filename.endswith(".csv")]
-                temp_df = []
-                for i in range(len(versions)):
-                    if t.name != "release_level":
-                        ver = "%s_%s_%s_ready.csv" % (p.name, i, t.name)
-                    else:
-                        ver = "%s_%s.csv" % (p.name, i)
-                    temp_df.append(pd.read_csv(t.joinpath(p, ver)))
-                temp_dict.update(OrderedDict({p.name: temp_df}))
-            all_data[t.name] = temp_dict
-        print(all_data.keys())
-        set_trace()
+        projects = [file for file in self.data_path.glob("*.csv")]
+        projects = sorted(
+            projects, key=lambda file: file.stat().st_size, reverse=True)
+        if top_k:
+            projects = projects[:top_k]
+
+        for p in projects:
+            temp_df = pd.read_csv(p)
+            all_data.update(OrderedDict({p.stem: temp_df}))
         return all_data

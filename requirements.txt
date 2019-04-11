@@ -7,3 +7,4 @@ sklearn
 matplotlib
 imbalanced-learn
 python-coveralls
+xgboost
