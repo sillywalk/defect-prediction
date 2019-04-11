@@ -5,13 +5,17 @@ import os
 import sys
 import pandas as pd
 from pdb import set_trace
+from sklearn.feature_selection import SelectFromModel
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.svm import LinearSVC
+from sklearn.decomposition import PCA
 from xgboost import XGBClassifier
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
 from typing import Tuple
+from sklearn.base import clone
+from imblearn.under_sampling import EditedNearestNeighbours
 
 root = Path(os.path.abspath(os.path.join(os.getcwd().split("src")[0], 'src')))
 if root not in sys.path:
@@ -26,11 +30,11 @@ class PredictionModel:
 
     def _set_classifier(self, classifier: str) -> None:
         if classifier == "SVC":
-            self.clf = LinearSVC(C=1, dual=False)
+            self.clf = LinearSVC(C=0.01, penalty="l1", dual=False)
         elif classifier == "RF":
             self.clf = RandomForestClassifier()
         elif classifier == "XGBoost":
-            self.clf = RandomForestClassifier()
+            self.clf = XGBClassifier()
 
     @staticmethod
     def _binarize(dframe: pd.DataFrame) -> pd.DataFrame:
@@ -82,16 +86,32 @@ class PredictionModel:
             train = self._binarize(train)
             test = self._binarize(test)
 
-        x_train = train[train.columns[1:-1]].values
+        x_train = train[train.columns[:-1]].values
         y_train = train[train.columns[-1]].values
-
+        
+        # pca = PCA(n_components=3)
+        # pca.fit(x_train)
+        # x_train = pca.transform(x_train)
+        # x_train = model.transform(x_train)
+        
         if oversample:
             k = min(2, sum(y_train) - 1)
-            sm = SMOTE(kind='regular', k_neighbors=k)
+            # sm = SMOTE(kind='regular', k_neighbors=k)
+            sm = EditedNearestNeighbours()
             x_train, y_train = sm.fit_sample(x_train, y_train)
-
+        
+        lsvc = clone(self.clf, safe=True)
+        lsvc.fit(x_train, y_train)
+        model = SelectFromModel(lsvc, prefit=True)
+        x_train = model.transform(x_train)
+        # set_trace()
+        # pca = PCA(n_components=3)
+        # pca.fit(x_train)
+        # x_train = pca.transform(x_train)
         self.clf.fit(x_train, y_train)
         actual = test[test.columns[-1]].values.astype(int)
-        x_test = test[test.columns[1:-1]]
+        x_test = test[test.columns[:-1]]
+        x_test = model.transform(x_test)
+        # x_test = pca.transform(x_test)
         predicted = self.clf.predict(x_test).astype(int)
         return actual, predicted

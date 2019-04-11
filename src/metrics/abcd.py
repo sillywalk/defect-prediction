@@ -30,7 +30,7 @@ class ABCD:
         self.N = self.dframe.Actual.sum()
         inspected_max = self.dframe.InspectedLOC.max()
         for i in range(self.M):
-            if self.dframe.InspectedLOC.iloc[i] >= 0.5 * inspected_max:
+            if self.dframe.InspectedLOC.iloc[i] >= 1 * inspected_max:
                 # If we have inspected more than 20% of the total LOC
                 # break
                 break
@@ -59,7 +59,7 @@ class ABCD:
 
         return pd, pf
 
-    def get_g_score(self, beta: int = 1) -> int:
+    def get_g_score(self, beta: int = 2) -> int:
         """
         Obtain G score
 
