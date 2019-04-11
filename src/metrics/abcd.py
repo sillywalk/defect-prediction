@@ -30,15 +30,15 @@ class ABCD:
         self.N = self.dframe.Actual.sum()
         inspected_max = self.dframe.InspectedLOC.max()
         for i in range(self.M):
-            if self.dframe.InspectedLOC.iloc[i] >= 0.2 * inspected_max:
+            if self.dframe.InspectedLOC.iloc[i] >= 0.5 * inspected_max:
                 # If we have inspected more than 20% of the total LOC
                 # break
                 break
 
-        self.inspected_20 = self.dframe.iloc[:i]
+        self.inspected_50 = self.dframe.iloc[:i]
         # Number of changes when we inspect 20% of LOC
-        self.m = len(self.inspected_20)
-        self.n = self.inspected_20.Predicted.sum()
+        self.m = len(self.inspected_50)
+        self.n = self.inspected_50.Predicted.sum()
 
     def get_pd_pf(self) -> Tuple[int, int]:
         """
@@ -52,7 +52,7 @@ class ABCD:
             False alarm (pf) values 
         """
         tn, fp, fn, tp = confusion_matrix(
-            self.inspected_20.Actual, self.inspected_20.Predicted, labels=[0, 1]).ravel()
+            self.inspected_50.Actual, self.inspected_50.Predicted, labels=[0, 1]).ravel()
 
         pd = int(100 * tp / (tp + fn + 1e-5))
         pf = int(100 * fp / (fp + tn + 1e-5))
@@ -98,7 +98,7 @@ class ABCD:
             F score 
         """
         tn, fp, fn, tp = confusion_matrix(
-            self.inspected_20.Actual, self.inspected_20.Predicted, labels=[0, 1]).ravel()
+            self.inspected_50.Actual, self.inspected_50.Predicted, labels=[0, 1]).ravel()
         prec = tp / (tp + fp)
         recall = tp / (tp + fn)
         try:
