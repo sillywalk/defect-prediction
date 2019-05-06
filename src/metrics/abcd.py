@@ -59,7 +59,7 @@ class ABCD:
 
         return pd, pf
 
-    def get_g_score(self, beta: int = 1) -> int:
+    def get_g_score(self, beta: int = 2) -> int:
         """
         Obtain G score
 
