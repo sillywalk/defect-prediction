@@ -4,7 +4,7 @@ scipy
 pandas
 PTable
 sklearn
-xgboost
+# xgboost
 matplotlib
 imbalanced-learn
 python-coveralls
