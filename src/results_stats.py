@@ -4,7 +4,9 @@ import pickle
 import math
 import sys
 
-projects =['mdanalysis', 'lammps', 'libmesh', 'abinit', 'hoomd', 'amber', 'pcmsolver', 'rmg-py', 'xenon']
+#projects =['mdanalysis', 'libmesh', 'lammps', 'abinit', 'hoomd', 'amber', 'pcmsolver', 'rmg-py', 'xenon']
+projects =['libmesh', 'mdanalysis', 'abinit', 'lammps']
+
 #projects =['hoomd']
 
 data_collections = ['fastread_jit_file', 'keyword_jit_file', 'human_jit_file', 'release_level']
@@ -162,11 +164,17 @@ def reading_stats_fft(file_name, file_type):
             print("\n" + 50 * "-" + "\n")
 
 
-def read_metrics(metric):
-    file_names = ['commit_LR_amrit_0_incremental.p', 'commit_RF_amrit_0_incremental.p', 'commit_LinearSVC_amrit_0_incremental.p',
-                  'commit_FFT_amrit_G1_0_incremental.p']
+def read_metrics_full(metric):
+    file_names = ['commit_LR_nosmote_0_incremental.p', 'commit_LR_amrit_0_incremental.p', 'commit_LR_sk_0_incremental.p',
+                  'commit_RF_nosmote_0_incremental.p', 'commit_RF_amrit_0_incremental.p', 'commit_RF_sk_0_incremental.p',
+                  'commit_LinearSVC_nosmote_0_incremental.p', 'commit_LinearSVC_amrit_0_incremental.p', 'commit_LinearSVC_sk_0_incremental.p']
+                  #'commit_FFT_amrit_G1_0_temp_incremental.p', 'commit_FFT_nosmote_G1_0_temp_incremental.p']
+                  #'commit_FFT_nosmote_G1_0_full_incremental.p', 'commit_FFT_amrit_G1_0_full_incremental.p', 'commit_FFT_sk_G1_0_full_incremental.p']
     records = []
+    index = 0
     for f in file_names:
+        print(index)
+        index += 1
         records.append(pickle.load(open(f, "rb")))
 
     for proj in projects:
@@ -174,16 +182,13 @@ def read_metrics(metric):
         for type_p in records[0][proj].keys():
             no_datasets = len(records[0][proj][type_p]['Prec'])
             print(type_p.upper(), no_datasets + 1)
-            print(  # "Train", "Test",
-                "Prec", "Pd", "Pf", "F1", "G1",
-                "AUC_Pr", "AUC_Pd", "AUC_Pf", "AUC_F1", "AUC_G1",
-                "IFA", "PCI20", "Pr_all", "F1_all",
+            print("LR", "RF", "SVM", "FFT_G1", "FFT_D2H",
                 # "Time",
                 sep=",\t")
             for i in range(no_datasets):
                 index = 0
                 for rec in records:
-                    if index < 3 and metric == "G1":
+                    if index < 9 and metric == "G1":
                         print(rec[proj][type_p][metric + "_all"][i],
                             end=", ")
                     else:
@@ -194,9 +199,43 @@ def read_metrics(metric):
             print("\n" + 50 * "-" + "\n")
 
 
-def rq1(metric):
+def read_metrics_partial(metric):
+    file_names = ['commit_LR_nosmote_0_temp_incremental.p', 'commit_LR_amrit_0_temp_incremental.p', 'commit_LR_sk_0_temp_incremental.p',
+                  'commit_RF_nosmote_0_temp_incremental.p', 'commit_RF_amrit_0_temp_incremental.p', 'commit_RF_sk_0_temp_incremental.p',
+                  'commit_LinearSVC_nosmote_0_temp_incremental.p', 'commit_LinearSVC_amrit_0_temp_incremental.p', 'commit_LinearSVC_sk_0_temp_incremental.p',
+                  'commit_FFT_nosmote_G1_0_partial_incremental.p', 'commit_FFT_amrit_G1_0_partial_incremental.p', 'commit_FFT_sk_G1_0_partial_incremental.p']
+    records = []
+    for f in file_names:
+        records.append(pickle.load(open(f, "rb")))
+
+    if metric == "IFA":
+        records = records[:9]
+
+    for proj in projects:
+        print(proj.upper())
+        for type_p in records[0][proj].keys():
+            no_datasets = len(records[0][proj][type_p]['Prec'])
+            print(type_p.upper(), no_datasets + 1)
+            print("LR", "RF", "SVM", "FFT_G1", "FFT_D2H",
+                # "Time",
+                sep=",\t")
+            for i in range(no_datasets):
+                index = 0
+                for rec in records:
+                    print(rec[proj][type_p][metric][i],
+                            end=", ")
+                    index += 1
+                print()
+            print("\n" + 50 * "-" + "\n")
+
+
+def rq1_second(metric):
     file_names = ['commit_LR_amrit_0_incremental.p', 'commit_RF_amrit_0_incremental.p',
-                  'commit_LinearSVC_amrit_0_incremental.p', 'commit_FFT_amrit_G1_0_incremental.p']
+                  'commit_LinearSVC_amrit_0_incremental.p', 'commit_FFT_amrit_G1_0_full_incremental.p']
+    #file_names = ['commit_LR_nosmote_0_temp_incremental.p', 'commit_RF_nosmote_0_temp_incremental.p',
+    #              'commit_LinearSVC_nosmote_0_temp_incremental.p', 'commit_FFT_nosmote_G1_0_full_incremental.p']
+    #file_names = ['commit_LR_sk_0_temp_incremental.p', 'commit_RF_sk_0_temp_incremental.p',
+    #              'commit_LinearSVC_sk_0_temp_incremental.p', 'commit_FFT_sk_G1_0_full_incremental.p']
     records = []
     for f in file_names:
         records.append(pickle.load(open(f, "rb")))
@@ -213,7 +252,32 @@ def rq1(metric):
                 print(file_names[index].split("_")[1],
                       hedges(rec[proj]['keyword'][metric], rec[proj]['fastread'][metric]))
             index += 1
-        print()
+        print("\n" + 50 * "-" + "\n")
+
+
+def rq1_human(metric):
+    file_names = ['commit_LR_amrit_0_human_incremental.p', 'commit_RF_amrit_0_human_incremental.p',
+                  'commit_LinearSVC_amrit_0_human_incremental.p', 'commit_FFT_amrit_G1_0_human_incremental.p']
+    #file_names = ['commit_LR_nosmote_0_temp_incremental.p', 'commit_RF_nosmote_0_temp_incremental.p',
+    #              'commit_LinearSVC_nosmote_0_temp_incremental.p', 'commit_FFT_nosmote_G1_0_full_incremental.p']
+    #file_names = ['commit_LR_sk_0_temp_incremental.p', 'commit_RF_sk_0_temp_incremental.p',
+    #              'commit_LinearSVC_sk_0_temp_incremental.p', 'commit_FFT_sk_G1_0_full_incremental.p']
+    records = []
+    for f in file_names:
+        records.append(pickle.load(open(f, "rb")))
+
+    for proj in projects:
+        no_datasets = len(records[0][proj]['fastread']['Prec'])
+        print(proj.upper(), no_datasets + 1)
+        index = 0
+        for rec in records:
+            if index < 3:
+                print(file_names[index].split("_")[1],
+                      hedges(rec[proj]['keyword'][metric + "_all"], rec[proj]['fastread'][metric + "_all"]))
+            else:
+                print(file_names[index].split("_")[1],
+                      hedges(rec[proj]['keyword'][metric], rec[proj]['fastread'][metric]))
+            index += 1
         print("\n" + 50 * "-" + "\n")
 
 
@@ -250,4 +314,6 @@ if __name__ == "__main__":
         else:
             reading_stats_fft(file_name, file_type)
 
+    #read_metrics_full('G1')
+    #rq1_human("G1")
 
