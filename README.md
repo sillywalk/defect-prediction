@@ -4,6 +4,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/se4sci/defect-prediction/badge.svg?branch=master)](https://coveralls.io/github/se4sci/defect-prediction?branch=master)![Python Version](https://img.shields.io/badge/python-3.6-blue.svg)
 ![AUR](https://img.shields.io/aur/license/yaourt.svg)
 
-### F3T repository: 
+### [F3T Paper](https://arxiv.org/abs/1905.01719) repository: 
 
 The open source code for this work is updated here: https://github.com/sillywalk/defect-prediction/tree/dev 
