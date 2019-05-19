@@ -11,6 +11,7 @@ This repository is the open source implementation of the F3T paper work.
 - most of the required python libs can be obtained by running ```pip install -r requirements.txt```.
 
 
+### Statistical Results:
 You can run the commands below for the numerical + statistical results for RQ2, 3, and 4 accordingly: 
 
 ```
