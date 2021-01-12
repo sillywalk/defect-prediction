@@ -2,6 +2,8 @@
 
 Ingests and analyzes code repositories to get map the bug-fixing commits with the bug-introducing commits. Credits to [CAS_CodeRepoAnalyzer](https://github.com/CommitAnalyzingService/CAS_CodeRepoAnalyzer) and their work of FSE's [Commit-Guru](http://users.encs.concordia.ca/~eshihab/pubs/Rosen_FSE2015Tool.pdf)
 
+Updated `analyzer/analyzer_emblem.py` and `ingester/git_emblem.py`
+
 ### Installation
 1. Clone this repository in to an empty directory
 2. Copy the `./config.example.json` to `./config.json` and change the
