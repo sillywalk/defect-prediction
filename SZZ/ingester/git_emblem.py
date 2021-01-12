@@ -114,16 +114,16 @@ class Git():
             file_m = {"File": "", "la": 0, "ld": 0, "ns": 0, "ns": 0, "nd": 0, "nuc": 0,
                       "entrophy": 0, "lt": 0, "ndev": 0, "age": 0,
                       "exp": 0, "rexp": 0, "sexp": 0, "fix": 0}
-​
+
             if (stat == ' ' or stat == ''):
                 continue
-​
+
             fileStat = stat.split("\\t")
-​
+
             # Check that we are only looking at file stat (i.e., remove extra newlines)
             if (len(fileStat) < 2):
                 continue
-​
+
             # catch the git "-" line changes
             try:
                 fileLa = int(fileStat[0])
@@ -131,14 +131,14 @@ class Git():
             except:
                 fileLa = 0
                 fileLd = 0
-​
+
             # Remove oddities in filename so we can process it
             fileName = (fileStat[2].replace("'", '').replace('"', '').replace("\\", ""))
             file_m['File'] = fileName
             file_m['la'] = fileLa
             file_m['ld'] = fileLd
             totalModified = fileLa + fileLd
-​
+
             # have we seen this file already?
             if (fileName in commitFiles):
                 prevFileChanged = commitFiles[fileName]
