@@ -1,7 +1,6 @@
-# CAS_CodeRepoAnalyzer
-====================
+# SZZ Tracking
 
-Ingests and analyzes code repositories
+Ingests and analyzes code repositories to get map the bug-fixing commits with the bug-introducing commits. Credits to [CAS_CodeRepoAnalyzer](https://github.com/CommitAnalyzingService/CAS_CodeRepoAnalyzer) and their work of FSE's [Commit-Guru](http://users.encs.concordia.ca/~eshihab/pubs/Rosen_FSE2015Tool.pdf)
 
 ### Installation
 1. Clone this repository in to an empty directory
