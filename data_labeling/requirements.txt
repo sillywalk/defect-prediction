@@ -1,0 +1,5 @@
+## required packages ##
+scikit-learn
+matplotlib
+flask
+pandas

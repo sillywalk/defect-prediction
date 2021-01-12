@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Machine assisted Reading</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}">
+    <script type=text/javascript src="{{url_for('static', filename='jquery-3.0.0.min.js') }}"></script>
+    <script type=text/javascript src="{{url_for('static', filename='myScript.js') }}"></script>
+</head>
+<body>
+
+    <div class="learn">
+        <font size="2">Target: </font><input type="file" id="myFile" onchange="handleFileSelect(this.files)"/>
+        <br/>
+<!--        <font size="2">Import: </font><input type="file" id="oldFile" onchange="handleOldSelect(this.files)" disabled/>-->
+<!--        <br/>-->
+        <select id="view_options" name="view" style="float:left" onchange="view_selection(this)">
+            <option id="uncertain" value="uncertain" onclick="view_uncertain()" title="Uncertainty sampling or random sampling (if no relevant found so far), recommended when #relevant is low (say < 30% of estimated number)." selected>Uncertain</option>
+            <option id="certain" value="certain" onclick="view_certain()" title="Certainty sampling, recommended when #relevant is higher (say > 30% of estimated number)." >Certain</option>
+            <option id="pos" value="labeled pos" onclick="view_pos()" title="Review the studies labeled as Relevant." >Labeled Pos</option>
+            <option id="neg" value="labeled neg" onclick="view_neg()" title="Review the studies labeled as Irrelevant." >Labeled Neg</option>
+            <option id="latest" value="labeled latest" onclick="view_latest()" title="Review the latest labeled studies." >Latest Labeled</option>
+        </select>
+        <button onclick="train_send()" style="float:right" disabled> Next </button>
+        <button onclick="auto_review()" id="auto" style="float:right" disabled> Auto Review </button>
+        <br/>
+        <form id="search" action="javascript:;" onsubmit="search_send(this)">
+            <input type="text" name="query" id="query" style="float:left">
+            <input type="submit" value="Search" style="float:right" >
+        </form>
+        <ol id="learn_result" style="float:left; overflow-y: scroll; height: 450px">
+        </ol>
+    </div>
+
+    <div class="read">
+        <form id="display" action="javascript:;" onsubmit="labeling_send(this)">
+            <label name="which_part" id="which_part"></label>
+            <label name="doc_id" id="displaydoc_id"></label>
+            <input type="radio" name="labeling" value="yes"> Relevant
+            <input type="radio" name="labeling" value="no"> Irrelevant
+            <input type="radio" name="labeling" value="undetermined"> Undetermined
+            <input type="submit" id="send_label" disabled>
+            <p id="truelabel" style="background-color: white; width: 480px; height: 25px" readonly> </p>
+            <p id="displaydoc" style="background-color: white; overflow-y: scroll; width: 480px; height: 550px" readonly> </p>
+        </form>
+    </div>
+    <div class="image" id="image_div">
+        <h3 id="num_labeled"> </h3>
+        <h3 id="num_estimated"> </h3>
+        <button onclick="plot_send()" disabled> Plot </button>
+        <input type="checkbox" id="auto_plot"> Auto Plot
+        <input type="checkbox" id="estimate" onchange="estimate_stat(this)" disabled> Enable Estimation
+        <button onclick="export_send()" disabled> Export </button>
+        <button onclick="restart_send()" disabled> Restart </button>
+        <img id="myImage" style="width:440px"/>
+    </div>
+</body>
