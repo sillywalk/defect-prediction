@@ -11,7 +11,9 @@ This repository is the open source implementation of the EMBLEM paper work.
 - most of the required python libs can be obtained by running ```pip install -r requirements.txt```.
 
 ### Process:
-- Data Labeling: 
+- Bug-fixing Commits Labeling: get github commits for each project and label them bug-fixing or no bug-fixing through this [folder](https://github.com/sillywalk/defect-prediction/tree/dev/data_labeling)
+- Defect-introducing Commits Labels Retrieval: based on the labels from the previous step through SZZ from this [folder](https://github.com/sillywalk/defect-prediction/tree/dev/SZZ)
+- Defect prediction: [comparing](https://github.com/sillywalk/defect-prediction/tree/dev/src) between all data miners across keyword generated labels and incremental AI+Human labels. 
 
 
 ### Statistical Results:
