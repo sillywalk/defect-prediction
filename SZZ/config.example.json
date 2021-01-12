@@ -1,0 +1,37 @@
+{
+	"db": {
+		"type":"postgresql",
+		"adapter":"pypostgresql",
+		"username": "USERNAME",
+		"password": "PASSWORD",
+		"host": "localhost",
+		"port": "5432",
+		"database": "cas"
+	},
+	"logging_system": {
+		"filename": "CASLog.log"
+	},
+	"logging_analyzer": {
+		"filename": "Analyzer.log"
+	},
+	"gmail": {
+		"user": "USERNAME@gmail.com",
+		"pass": "PASSWORD"
+	},
+	"repoUpdates": {
+		"freqInDays": "FREQUENCY IN DAYS"
+	},
+	"system": {
+		"workers": "NUMBER OF WORKER THREADS"
+	},
+	"github": {
+		"user": "example_user",
+		"pass": "PASSWORD"
+	},
+	"glm_modeling":{
+		"months": "3"
+	},
+	"data_dumps": {
+		"location": "THE FULL PATH TO /analyzer/datasets"
+	}
+}
